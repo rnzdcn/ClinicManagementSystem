@@ -22,23 +22,20 @@ import javax.swing.JTextField;
  * @author jomari
  */
 public class addnewPatients extends javax.swing.JFrame {
-    
+
     Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
-    Statement st=null;
+    Statement st = null;
     private Object arg0;
+
     public addnewPatients() {
         initComponents();
         this.setLocationRelativeTo(null);
 
-         conn = connection.ConnecrDb();  ANPstudId.requestFocus();
+        conn = connection.ConnecrDb();
+        ANPstudId.requestFocus();
     }
-    
-
-     
-    
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -100,7 +97,6 @@ public class addnewPatients extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("addNewPatientModal");
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(750, 500));
         setSize(new java.awt.Dimension(750, 500));
         setType(java.awt.Window.Type.POPUP);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -398,6 +394,7 @@ public class addnewPatients extends javax.swing.JFrame {
         ANPadd.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         ANPadd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewSAVE.png"))); // NOI18N
         ANPadd.setText("Add");
+        ANPadd.setBorder(null);
         ANPadd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ANPaddActionPerformed(evt);
@@ -410,6 +407,7 @@ public class addnewPatients extends javax.swing.JFrame {
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/RegisterIMG/registerback.png"))); // NOI18N
         jButton2.setText("Back");
+        jButton2.setBorder(null);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -521,16 +519,12 @@ public class addnewPatients extends javax.swing.JFrame {
     }//GEN-LAST:event_ANPcontactnumberActionPerformed
 
     private void ANPaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ANPaddActionPerformed
-       // sa mga ADD at EDIT form di pa naayos yung sa text field na nakakapaginput si user sa textfield ng
+        // sa mga ADD at EDIT form di pa naayos yung sa text field na nakakapaginput si user sa textfield ng
         // number kahit text lang dapat ang dapat tinatamad pa ako
-        
-        
+
         if (ANPstudId.getText().trim().isEmpty() && ANPfirst.getText().trim().isEmpty() && ANPlast.getText().trim().isEmpty() && ANPmiddle.getText().trim().isEmpty()
-               && ANPage.getText().trim().isEmpty() && ANPcontactnumber.getText().trim().isEmpty() && ANPtime.getText().trim().isEmpty()
-               && ANPbednumber.getText().trim().isEmpty()&& ANPsick.getText().trim().isEmpty()&& ANPguardian.getText().trim().isEmpty()
-                ) 
-        //di pa naayos tinamad na
-            
+                && ANPage.getText().trim().isEmpty() && ANPcontactnumber.getText().trim().isEmpty() && ANPtime.getText().trim().isEmpty()
+                && ANPbednumber.getText().trim().isEmpty() && ANPsick.getText().trim().isEmpty() && ANPguardian.getText().trim().isEmpty()) //di pa naayos tinamad na
         {
             ANPstudentIDempty.setText("Student ID is empty");
             ANPfirstempty.setText("first name is empty");
@@ -542,69 +536,64 @@ public class addnewPatients extends javax.swing.JFrame {
             ANPbedempty.setText("bed number is empty");
             ANPsickempty.setText("sickness is empty");
             ANPguardianempty.setText("Guardian contact number is empty");
-         
 
-            } else if (ANPstudId.getText().trim().isEmpty()) {
-               ANPstudentIDempty.setText("record number  is empty");
-            } else if (ANPfirst.getText().trim().isEmpty()) {
-               ANPfirstempty.setText("first name is empty");
-            } else if (ANPlast.getText().trim().isEmpty()) {
-                ANPlastempty.setText("last name is empty");
-            } else if (ANPmiddle.getText().trim().isEmpty()) {
-                 ANPmiddleempty.setText("middle name is empty");
-             } else if (ANPage.getText().trim().isEmpty()) {
-                 ANPageempty.setText("Age is empty");
-             } else if (ANPcontactnumber.getText().trim().isEmpty()) {
-                 ANPcontactempty.setText("contact number is empty");
-             } else if (ANPtime.getText().trim().isEmpty()) {
-                 ANPtimeempty.setText("time admit is empty");
-             } else if (ANPbednumber.getText().trim().isEmpty()) {
-                 ANPbedempty.setText("bed number is empty");
-             } else if (ANPsick.getText().trim().isEmpty()) {
-                 ANPsickempty.setText("sickness is empty");
-             } else if (ANPguardian.getText().trim().isEmpty()) {
-                 ANPguardianempty.setText("Guardian contact number is empty");
-            }else{
-        String sql = "Insert into clinicmanagement.patients (studentid, firstname, lastname, middlename, age, gender, date, contactnumber, time, bednumber, sick ,guardiannumber) values (?,?,?,?,?,?,?,?,?,?,?,?)";
-        try{
-              pst = conn.prepareStatement(sql);
-       
-                    
-               pst.setInt(1, Integer.parseInt(ANPstudId.getText()));
-               pst.setString(2, ANPfirst.getText());
-               pst.setString(3, ANPlast.getText());
-               pst.setString(4, ANPmiddle.getText());
-               pst.setInt(5, Integer.parseInt(ANPage.getText()));
-               pst.setString(6,   ANPgender.getSelectedItem().toString());
-               pst.setString(7, ((JTextField)ANPdate.getDateEditor().getUiComponent()).getText());
-               pst.setInt(8, Integer.parseInt(ANPcontactnumber.getText()));
-               pst.setInt(9, Integer.parseInt(ANPtime.getText()));
-               pst.setInt(10, Integer.parseInt(ANPbednumber.getText()));
-               pst.setString(11, ANPsick.getText());
-               pst.setInt(12, Integer.parseInt(ANPguardian.getText()));
-               pst.execute();
+        } else if (ANPstudId.getText().trim().isEmpty()) {
+            ANPstudentIDempty.setText("record number  is empty");
+        } else if (ANPfirst.getText().trim().isEmpty()) {
+            ANPfirstempty.setText("first name is empty");
+        } else if (ANPlast.getText().trim().isEmpty()) {
+            ANPlastempty.setText("last name is empty");
+        } else if (ANPmiddle.getText().trim().isEmpty()) {
+            ANPmiddleempty.setText("middle name is empty");
+        } else if (ANPage.getText().trim().isEmpty()) {
+            ANPageempty.setText("Age is empty");
+        } else if (ANPcontactnumber.getText().trim().isEmpty()) {
+            ANPcontactempty.setText("contact number is empty");
+        } else if (ANPtime.getText().trim().isEmpty()) {
+            ANPtimeempty.setText("time admit is empty");
+        } else if (ANPbednumber.getText().trim().isEmpty()) {
+            ANPbedempty.setText("bed number is empty");
+        } else if (ANPsick.getText().trim().isEmpty()) {
+            ANPsickempty.setText("sickness is empty");
+        } else if (ANPguardian.getText().trim().isEmpty()) {
+            ANPguardianempty.setText("Guardian contact number is empty");
+        } else {
+            String sql = "Insert into clinicmanagement.patients (studentid, firstname, lastname, middlename, age, gender, date, contactnumber, time, bednumber, sick ,guardiannumber) values (?,?,?,?,?,?,?,?,?,?,?,?)";
+            try {
+                pst = conn.prepareStatement(sql);
 
-           
-              JOptionPane.showMessageDialog(null,"Successfully Added");
-               new Main().setVisible(true);
-               setVisible(false);
-                
-               
-       }
-       catch(Exception e)
-       {
-    JOptionPane.showMessageDialog(null, "studentID is already use");
-       }     
+                pst.setInt(1, Integer.parseInt(ANPstudId.getText()));
+                pst.setString(2, ANPfirst.getText());
+                pst.setString(3, ANPlast.getText());
+                pst.setString(4, ANPmiddle.getText());
+                pst.setInt(5, Integer.parseInt(ANPage.getText()));
+                pst.setString(6, ANPgender.getSelectedItem().toString());
+                pst.setString(7, ((JTextField) ANPdate.getDateEditor().getUiComponent()).getText());
+                pst.setInt(8, Integer.parseInt(ANPcontactnumber.getText()));
+                pst.setInt(9, Integer.parseInt(ANPtime.getText()));
+                pst.setInt(10, Integer.parseInt(ANPbednumber.getText()));
+                pst.setString(11, ANPsick.getText());
+                pst.setInt(12, Integer.parseInt(ANPguardian.getText()));
+
+                pst.execute();
+
+                JOptionPane.showMessageDialog(null, "Successfully Added");
+                new Main().setVisible(true);
+                setVisible(false);
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "studentID is already use");
             }
-    
-    
+        }
+
+
     }//GEN-LAST:event_ANPaddActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Main c = new Main  ();
+        Main c = new Main();
         c.setVisible(true);
         setVisible(false);
-                        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void ANPgenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ANPgenderActionPerformed
@@ -612,22 +601,19 @@ public class addnewPatients extends javax.swing.JFrame {
     }//GEN-LAST:event_ANPgenderActionPerformed
 
     private void ANPstudIdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPstudIdKeyPressed
-          ANPstudentIDempty.setText("");
-              
+        ANPstudentIDempty.setText("");
     }//GEN-LAST:event_ANPstudIdKeyPressed
 
     private void ANPfirstKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPfirstKeyPressed
-          ANPfirstempty.setText("");
-
+        ANPfirstempty.setText("");
     }//GEN-LAST:event_ANPfirstKeyPressed
 
     private void ANPlastKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPlastKeyPressed
-           ANPlastempty.setText("");
-
+        ANPlastempty.setText("");
     }//GEN-LAST:event_ANPlastKeyPressed
 
     private void ANPmiddleKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPmiddleKeyPressed
-           ANPmiddleempty.setText("");
+        ANPmiddleempty.setText("");
     }//GEN-LAST:event_ANPmiddleKeyPressed
 
     private void ANPageKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPageKeyPressed
@@ -639,7 +625,7 @@ public class addnewPatients extends javax.swing.JFrame {
     }//GEN-LAST:event_ANPcontactnumberKeyPressed
 
     private void ANPtimeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPtimeKeyPressed
-       ANPtimeempty.setText("");
+        ANPtimeempty.setText("");
     }//GEN-LAST:event_ANPtimeKeyPressed
 
     private void ANPbednumberKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPbednumberKeyPressed

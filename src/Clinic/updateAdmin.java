@@ -344,7 +344,7 @@ public class updateAdmin extends javax.swing.JFrame {
             EAconfirmempty.setText("confirm password is empty");
         } else if (EAcode.getText().trim().isEmpty()) {
             EAcodeempty.setText("code is empty");
-        }else if(EApassword.getText().length()<6){
+        }else if(EApassword.getText().length()<5){
             JOptionPane.showMessageDialog(null, "password must be 6 character .");
         }else if(EAuser.getText().length()<6){
             JOptionPane.showMessageDialog(null, "username must be 6 character .");

@@ -9,14 +9,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author jomari
  */
 public class forgotpassword extends javax.swing.JFrame {
+
     Connection conn = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
+
     /**
      * Creates new form forgotpassword
      */
@@ -173,6 +176,7 @@ public class forgotpassword extends javax.swing.JFrame {
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, 120, 40));
 
         FPfirst.setEditable(false);
+        FPfirst.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         FPfirst.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         FPfirst.setPreferredSize(new java.awt.Dimension(60, 20));
         FPfirst.addActionListener(new java.awt.event.ActionListener() {
@@ -183,6 +187,7 @@ public class forgotpassword extends javax.swing.JFrame {
         jPanel1.add(FPfirst, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 190, 30));
 
         FPlast.setEditable(false);
+        FPlast.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         FPlast.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         FPlast.setPreferredSize(new java.awt.Dimension(60, 20));
         FPlast.addActionListener(new java.awt.event.ActionListener() {
@@ -192,6 +197,7 @@ public class forgotpassword extends javax.swing.JFrame {
         });
         jPanel1.add(FPlast, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 190, 30));
 
+        FPpassword.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         FPpassword.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         FPpassword.setPreferredSize(new java.awt.Dimension(60, 20));
         FPpassword.addActionListener(new java.awt.event.ActionListener() {
@@ -201,6 +207,7 @@ public class forgotpassword extends javax.swing.JFrame {
         });
         jPanel1.add(FPpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 190, 30));
 
+        FPuser.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         FPuser.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         FPuser.setPreferredSize(new java.awt.Dimension(60, 20));
         FPuser.addActionListener(new java.awt.event.ActionListener() {
@@ -210,6 +217,7 @@ public class forgotpassword extends javax.swing.JFrame {
         });
         jPanel1.add(FPuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 190, 30));
 
+        FPsecuritycode.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         FPsecuritycode.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         FPsecuritycode.setPreferredSize(new java.awt.Dimension(60, 20));
         jPanel1.add(FPsecuritycode, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 190, 30));
@@ -264,61 +272,61 @@ public class forgotpassword extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void FPsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FPsearchActionPerformed
-      if (FPuser.getText().trim().isEmpty()){
-        FPusernameempty.setText("username is empty");
-       } else if (FPuser.getText().trim().isEmpty()) {
+        if (FPuser.getText().trim().isEmpty()) {
             FPusernameempty.setText("username is empty");
-       }else{
-        FPsearch.setEnabled(rootPaneCheckingEnabled);
-        String al = FPuser.getText();
-        String all = "select * from clinicmanagement.admin where username= '" + al + "'";
-        try {
-            pst = conn.prepareStatement(all);
-            rs = pst.executeQuery();
-            if (rs.next()) {
-                FPfirst.setText(rs.getString(2));
-                FPlast.setText(rs.getString(3));
-               FPsecuritycode.setEditable(rootPaneCheckingEnabled);
-                
-                rs.close();
-                pst.close();
-                retrieveclick.setText("<--Click this to retrieve your account");
-                FPsecurityempty.setText("type your security answer here");
+        } else if (FPuser.getText().trim().isEmpty()) {
+            FPusernameempty.setText("username is empty");
+        } else {
+            FPsearch.setEnabled(rootPaneCheckingEnabled);
+            String al = FPuser.getText();
+            String all = "select * from clinicmanagement.admin where username= '" + al + "'";
+            try {
+                pst = conn.prepareStatement(all);
+                rs = pst.executeQuery();
+                if (rs.next()) {
+                    FPfirst.setText(rs.getString(2));
+                    FPlast.setText(rs.getString(3));
+                    FPsecuritycode.setEditable(rootPaneCheckingEnabled);
 
-            } else {
-                JOptionPane.showMessageDialog(null, "Incorrect Username");
-                FPusernameempty.setText("");
+                    rs.close();
+                    pst.close();
+                    retrieveclick.setText("<--Click this to retrieve your account");
+                    FPsecurityempty.setText("type your security answer here");
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Incorrect Username");
+                    FPusernameempty.setText("");
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
 
-       }
+        }
     }//GEN-LAST:event_FPsearchActionPerformed
 
     private void FPretrieveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FPretrieveActionPerformed
-        if (FPsecuritycode.getText().trim().isEmpty()){
-      FPsecurityempty.setText("security code is empty");
-       } else if (FPsecuritycode.getText().trim().isEmpty()) {
+        if (FPsecuritycode.getText().trim().isEmpty()) {
+            FPsecurityempty.setText("security code is empty");
+        } else if (FPsecuritycode.getText().trim().isEmpty()) {
             FPsecurityempty.setText("answer is empty");
-       }else{
-        String asl = FPsecuritycode.getText();
-        String asll = "select * from clinicmanagement.admin where code='" + asl + "'";
-        try {
-            pst = conn.prepareStatement(asll);
-            rs = pst.executeQuery();
-            if (rs.next()) {
-                FPpassword.setText(rs.getString(4));
-                rs.close();
-                pst.close();
-                FPpasswordempty.setText("Your password is ");
-            } else {
-                JOptionPane.showMessageDialog(null, "Incorrecrt Answer");
+        } else {
+            String asl = FPsecuritycode.getText();
+            String asll = "select * from clinicmanagement.admin where code='" + asl + "'";
+            try {
+                pst = conn.prepareStatement(asll);
+                rs = pst.executeQuery();
+                if (rs.next()) {
+                    FPpassword.setText(rs.getString(4));
+                    rs.close();
+                    pst.close();
+                    FPpasswordempty.setText("Your password is ");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Incorrecrt Answer");
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
         }
-       }
     }//GEN-LAST:event_FPretrieveActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -334,11 +342,11 @@ public class forgotpassword extends javax.swing.JFrame {
         FPlastempty.requestFocus();
         FPsecurityempty.setText("");
         retrieveclick.setText("");
-          
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void FPfirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FPfirstActionPerformed
-     
+
     }//GEN-LAST:event_FPfirstActionPerformed
 
     private void FPlastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FPlastActionPerformed
@@ -354,7 +362,10 @@ public class forgotpassword extends javax.swing.JFrame {
     }//GEN-LAST:event_FPuserActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        //Back button
+        signup back = new signup();
+        back.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**

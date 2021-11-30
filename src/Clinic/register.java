@@ -269,9 +269,9 @@ public class register extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        updateAdmin s = new updateAdmin();
-            s.setVisible(true);
-            setVisible(false); 
+        manageAdmin s = new manageAdmin();
+        s.setVisible(false);
+        setVisible(false); 
     
 
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -328,6 +328,7 @@ public class register extends javax.swing.JFrame {
          }
         catch(Exception e)
         {
+         
             JOptionPane.showMessageDialog(null,"username is already used");
             CRusername.setText("");
         }

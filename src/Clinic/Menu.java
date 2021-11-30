@@ -98,7 +98,7 @@ public class Menu extends javax.swing.JFrame {
             CategoryPlot plot = null;
             renderer = new BarRenderer();
             ChartPanel CP1 = new ChartPanel(cha);
-             jPanel4.setPreferredSize(new Dimension(500, 250));
+            jPanel4.setPreferredSize(new Dimension(500, 250));
             jPanel4.setLayout(new java.awt.BorderLayout());
             
             jPanel4.add(CP1, BorderLayout.CENTER);
@@ -107,10 +107,10 @@ public class Menu extends javax.swing.JFrame {
         } catch (Exception e) {
            JOptionPane.showMessageDialog(null, e);
         }
-        
-        
-       
-//        //line chart codes
+//        
+//        
+//       
+////        //line chart codes
         try {
             String query = "select daterecieved,quantity from clinicmanagement.inventory";
             JDBCCategoryDataset dataset = new JDBCCategoryDataset(connection.ConnecrDb(), query);
@@ -127,17 +127,17 @@ public class Menu extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
-        
-        Border whiteLine = BorderFactory.createLineBorder(Color.WHITE);
-        panel1.setBorder(whiteLine);
-        panel1.setBounds(6, 6, 180, 100);
-        panel1.setOpaque(false);
-        panel1.setBackground(new Color(10,46,54));
-        
-        panel2.setBorder(whiteLine);
-        panel2.setBounds(6, 6, 180, 100);
-        panel2.setOpaque(false);
-        panel2.setBackground(new Color(10,46,54));
+//        
+//        Border whiteLine = BorderFactory.createLineBorder(Color.WHITE);
+//        panel1.setBorder(whiteLine);
+//        panel1.setBounds(6, 6, 180, 100);
+//        panel1.setOpaque(false);
+//        panel1.setBackground(new Color(10,46,54));
+//        
+//        panel2.setBorder(whiteLine);
+//        panel2.setBounds(6, 6, 180, 100);
+//        panel2.setOpaque(false);
+//        panel2.setBackground(new Color(10,46,54));
         
         //codes sa panel na border keme
         
@@ -192,8 +192,6 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         panel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -208,6 +206,9 @@ public class Menu extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -215,23 +216,11 @@ public class Menu extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1280, 700));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(87, 191, 109));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/logo.png"))); // NOI18N
-        jLabel1.setText("<html>Cavite State University - Silang Campus <br><center>Clinic Management System</center></html>");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 600, 80));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 100));
-
         jPanel2.setBackground(new java.awt.Color(10, 46, 54));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panel2.setBackground(new java.awt.Color(255, 255, 255));
-        panel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panel2.setOpaque(false);
 
         jLabel3.setBackground(new java.awt.Color(10, 46, 54));
@@ -259,7 +248,7 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(panel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
                     .addComponent(Mtotalmedicine, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -270,12 +259,12 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Mtotalmedicine, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         jPanel2.add(panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, 190, 120));
 
-        panel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panel1.setOpaque(false);
 
         Label1.setBackground(new java.awt.Color(10, 46, 54));
@@ -319,8 +308,9 @@ public class Menu extends javax.swing.JFrame {
 
         jPanel2.add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, -1, -1));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setLayout(new java.awt.BorderLayout());
+        jPanel3.setBackground(new java.awt.Color(10, 46, 54));
+        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 270, 310));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -335,8 +325,8 @@ public class Menu extends javax.swing.JFrame {
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/medecine_record.png"))); // NOI18N
         jButton3.setText("Student Medicine");
+        jButton3.setBorder(null);
         jButton3.setHideActionText(true);
-        jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -349,7 +339,7 @@ public class Menu extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/patient_record.png"))); // NOI18N
         jButton1.setText("Patients Record");
-        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton1.setBorder(null);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -362,7 +352,7 @@ public class Menu extends javax.swing.JFrame {
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/inventory.png"))); // NOI18N
         jButton4.setText("Inventory");
-        jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton4.setBorder(null);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -375,7 +365,7 @@ public class Menu extends javax.swing.JFrame {
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/profile.png"))); // NOI18N
         jButton2.setText("Manage Admin");
-        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton2.setBorder(null);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -383,15 +373,39 @@ public class Menu extends javax.swing.JFrame {
         });
         jPanel5.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 230, 50));
 
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 600));
+
         userName.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         userName.setForeground(new java.awt.Color(255, 255, 255));
         userName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         userName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/user_icon.png"))); // NOI18N
-        jPanel5.add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 230, -1));
-
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 600));
+        jPanel2.add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 20, 230, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1280, 600));
+
+        jPanel1.setBackground(new java.awt.Color(87, 191, 109));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/logo.png"))); // NOI18N
+        jLabel1.setText("<html>Cavite State University - Silang Campus Clinic Management System</html>");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 600, 80));
+
+        jButton7.setBackground(new java.awt.Color(255, 255, 255));
+        jButton7.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/mainLogout.png"))); // NOI18N
+        jButton7.setText("LogOut");
+        jButton7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 30, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 100));
 
         pack();
         setLocationRelativeTo(null);
@@ -432,6 +446,13 @@ public class Menu extends javax.swing.JFrame {
     private void MtotalmedicineMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MtotalmedicineMouseDragged
         // TODO add your handling code here:
     }//GEN-LAST:event_MtotalmedicineMouseDragged
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        logout c = new logout();
+        c.setVisible(true);
+        setVisible(false);
+
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -476,6 +497,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;

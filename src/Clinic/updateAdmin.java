@@ -26,9 +26,9 @@ public class updateAdmin extends javax.swing.JFrame {
     
     public updateAdmin() {
         initComponents();
-        conn = connection.ConnecrDb();
+        conn = connection.ConnecrDb(); //marunong naman eh
         this.setLocationRelativeTo(null);
-        String sql2 = "select * from clinicmanagement.admin where username =?";
+        String sql2 = "select * from clinicmanagement.admin where username = ?";
         try{
             pst = conn.prepareStatement(sql2);
             pst.setString(1,tmp);
@@ -359,10 +359,10 @@ public class updateAdmin extends javax.swing.JFrame {
         try{
            //nakavarchar lahat sa database ng admin di ko pa inaayos tinatamad pa 
             
-            sql = "update clinicmanagement.admin  set  username=?, firstname=?, lastname=? ,password=?, confirmpassword=? , code=? where username='"+tmp+"'";
+            sql = "update clinicmanagement.admin  set username=?, firstname=?, lastname=? ,password=?, confirmpassword=? , code=? where username='"+tmp+"'";
             pst = conn.prepareStatement(sql);
-
-            
+                
+    
                     pst.setString(1, EAuser.getText());
                     pst.setString(2, EAfirst.getText());
                     pst.setString(3, EAlast.getText());
@@ -384,6 +384,7 @@ public class updateAdmin extends javax.swing.JFrame {
        }
        catch(Exception e)
        {
+//              naglalabas to ng error na USERNAME IS ALREADY USED, pano pag ayokong baguhin yong username ko ? 
         JOptionPane.showMessageDialog(null, "username is already use");
        }  finally{
             try{

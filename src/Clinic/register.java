@@ -5,6 +5,7 @@
  */
 package Clinic;
 
+import java.awt.Dialog;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,7 +16,7 @@ import javax.swing.JOptionPane;
  *
  * @author jomari
  */
-public class register extends javax.swing.JFrame {
+public class register extends javax.swing.JDialog {
     
     Connection conn = null;
     ResultSet rs = null;
@@ -24,7 +25,11 @@ public class register extends javax.swing.JFrame {
      * Creates new form register
      */
     public register() {
+        //for modal
+        setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+//        setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         initComponents();
+        //Connection
         conn = connection.ConnecrDb();
         this.setLocationRelativeTo(null);
         setTitle("Create Account");
@@ -65,8 +70,8 @@ public class register extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         setSize(new java.awt.Dimension(750, 500));
         setType(java.awt.Window.Type.POPUP);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

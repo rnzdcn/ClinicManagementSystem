@@ -569,11 +569,13 @@ public class addnewPatients extends javax.swing.JFrame {
                 pst.setInt(5, Integer.parseInt(ANPage.getText()));
                 pst.setString(6, ANPgender.getSelectedItem().toString());
                 pst.setString(7, ((JTextField) ANPdate.getDateEditor().getUiComponent()).getText());
-                pst.setInt(8, Integer.parseInt(ANPcontactnumber.getText()));
+                  pst.setString(8, ANPcontactnumber.getText());
+//                pst.setInt(8, Integer.parseInt(ANPcontactnumber.getText()));
                 pst.setInt(9, Integer.parseInt(ANPtime.getText()));
                 pst.setInt(10, Integer.parseInt(ANPbednumber.getText()));
                 pst.setString(11, ANPsick.getText());
-                pst.setInt(12, Integer.parseInt(ANPguardian.getText()));
+                pst.setString(12, ANPguardian.getText());
+//                pst.setInt(12, Integer.parseInt(ANPguardian.getText()));
 
                 pst.execute();
 

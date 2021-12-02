@@ -266,7 +266,11 @@ public class updateMedicine extends javax.swing.JFrame {
             }
         });
         jPanel2.add(UMidmedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 190, 30));
+
+        UMdateR.setDateFormatString("yyyy-MM-d");
         jPanel2.add(UMdateR, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 190, 30));
+
+        UMdateE.setDateFormatString("yyyy-MM-d");
         jPanel2.add(UMdateE, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 190, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 750, 400));

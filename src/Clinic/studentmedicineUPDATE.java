@@ -378,17 +378,17 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
 
          try{
              //di pa nababago yung sa first column edit pero tmp lang ilalagay
-            sql = "update clinicmanagement.studentmedicine  set  firstname=?, lastname=? ,date=?,time=? ,medicine=? , description=? where studentid=?";
+            sql = "update clinicmanagement.studentmedicine  set  studentid=?, firstname=?, lastname=? ,date=?,time=? ,medicine=? , description=? where studentid=' "+tmp+" ' ";
             pst = conn.prepareStatement(sql);
        
-                    
-               pst.setString(1, USfirst.getText());
-               pst.setString(2, USlast.getText());
-               pst.setString(3, ((JTextField)USdate.getDateEditor().getUiComponent()).getText());
-               pst.setInt(4, Integer.parseInt(UStime.getText()));
-               pst.setString(5, USmedicine.getText()); 
-               pst.setString(6, USdescription.getText()); 
-               pst.setInt(7, Integer.parseInt(USstudID.getText()));
+                 pst.setInt(1, Integer.parseInt(USstudID.getText()));     
+               pst.setString(2, USfirst.getText());
+               pst.setString(3, USlast.getText());
+               pst.setString(4, ((JTextField)USdate.getDateEditor().getUiComponent()).getText());
+               pst.setInt(5, Integer.parseInt(UStime.getText()));
+               pst.setString(6, USmedicine.getText()); 
+               pst.setString(7, USdescription.getText()); 
+             
                pst.executeUpdate();
            
               JOptionPane.showMessageDialog(null,"Successfully Edit","Success",JOptionPane.INFORMATION_MESSAGE);

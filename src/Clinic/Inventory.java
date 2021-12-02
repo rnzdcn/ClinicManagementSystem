@@ -17,10 +17,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import net.proteanit.sql.DbUtils;
 
-/**
- *
- * @author jomari
- */
 public class Inventory extends javax.swing.JFrame {
     Connection conn = null;
     ResultSet rs = null;

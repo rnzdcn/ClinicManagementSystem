@@ -314,6 +314,8 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         ASlastempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
         ASlastempty.setForeground(new java.awt.Color(237, 74, 65));
         jPanel2.add(ASlastempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 190, 20));
+
+        ASdate.setDateFormatString("yyyy-MM-d");
         jPanel2.add(ASdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 190, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 750, 400));

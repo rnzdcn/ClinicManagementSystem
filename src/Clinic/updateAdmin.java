@@ -5,29 +5,36 @@
  */
 package Clinic;
 
-import static Clinic.updateMedicine.tmp;
+import java.awt.Dialog;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author jomari
  */
-public class updateAdmin extends javax.swing.JFrame {
+public class updateAdmin extends javax.swing.JDialog {
      Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
     static String tmp;
     
-    
     public updateAdmin() {
-        initComponents();
-        conn = connection.ConnecrDb(); //marunong naman eh
+          //for modal
+        setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+        setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
+        setTitle("Create Account");
+        
+        initComponents();
+        
+        //Connection to database
+        conn = connection.ConnecrDb(); //marunong naman eh
+     
         String sql2 = "select * from clinicmanagement.admin where username = ?";
         try{
             pst = conn.prepareStatement(sql2);
@@ -69,7 +76,6 @@ public class updateAdmin extends javax.swing.JFrame {
     public static void setRow(String row){
         tmp = row;
     
-    
     }
 
     /**
@@ -105,8 +111,11 @@ public class updateAdmin extends javax.swing.JFrame {
         EApassempty = new javax.swing.JLabel();
         EAconfirmempty = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Update Account");
         setUndecorated(true);
+        setResizable(false);
+        setType(java.awt.Window.Type.POPUP);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(87, 191, 109));

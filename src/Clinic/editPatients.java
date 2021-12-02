@@ -19,11 +19,12 @@ import javax.swing.JTextField;
  * @author jomari
  */
 public class editPatients extends javax.swing.JFrame {
+
     Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
     static String tmp;
-    
+
     /**
      * Creates new form editPatients
      */
@@ -32,11 +33,12 @@ public class editPatients extends javax.swing.JFrame {
         conn = connection.ConnecrDb();
         this.setLocationRelativeTo(null);
         String sql5 = "select * from clinicmanagement.patients where studentid =?";
-        try{
+
+        try {
             pst = conn.prepareStatement(sql5);
-            pst.setString(1,tmp);
+            pst.setString(1, tmp);
             rs = pst.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 String edit1 = rs.getString("studentid");
                 editpatientstudID.setText(edit1);
                 String edit2 = rs.getString("firstname");
@@ -50,7 +52,7 @@ public class editPatients extends javax.swing.JFrame {
                 String edit6 = rs.getString("gender");
                 editpatientgender.setSelectedItem(edit6);
                 Date edit7 = rs.getDate("date");
-                editpatientdate.setDate(edit7);                      
+                editpatientdate.setDate(edit7);
                 String edit8 = rs.getString("contactnumber");
                 editpatientcontact.setText(edit8);
                 String edit9 = rs.getString("time");
@@ -61,29 +63,25 @@ public class editPatients extends javax.swing.JFrame {
                 editpatientsick.setText(edit11);
                 String edit12 = rs.getString("guardiannumber");
                 editpatientguardian.setText(edit12);
-               
+
             }
-       }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null,"this Data is incomplete");
-        }
-         finally{
-            try{
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "this Data is incomplete");
+        } finally {
+            try {
                 rs.close();
-                pst.close();   
+                pst.close();
+            } catch (Exception e) {
+
             }
-            catch(Exception e){
-                
-            }
-        
+
         }
-        
-    
+
     }
-    public static void setRow(String row){
+
+    public static void setRow(String row) {
         tmp = row;
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -506,7 +504,7 @@ public class editPatients extends javax.swing.JFrame {
     }//GEN-LAST:event_editpatientcontactActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Main close = new Main  ();
+        Main close = new Main();
         close.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -514,11 +512,8 @@ public class editPatients extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         if (editpatientstudID.getText().trim().isEmpty() && editpatientfirst.getText().trim().isEmpty() && editpatientlast.getText().trim().isEmpty() && editpatientmiddle.getText().trim().isEmpty()
                 && editpatientage.getText().trim().isEmpty() && editpatientcontact.getText().trim().isEmpty() && editpatienttime.getText().trim().isEmpty()
-                && editpatientbed.getText().trim().isEmpty()&& editpatientsick.getText().trim().isEmpty()&& editpatientguardian.getText().trim().isEmpty()
-                ) 
-        //di pa naayos yung pag walang nilagay sa calender mag eerror hindi magawa
-            //tinamad na
-            
+                && editpatientbed.getText().trim().isEmpty() && editpatientsick.getText().trim().isEmpty() && editpatientguardian.getText().trim().isEmpty()) //di pa naayos yung pag walang nilagay sa calender mag eerror hindi magawa
+        //tinamad na
         {
             ERemptystudid.setText("Student ID is empty");
             ERemptyfirst.setText("first name is empty");
@@ -530,71 +525,67 @@ public class editPatients extends javax.swing.JFrame {
             ERemptybed.setText("bed number is empty");
             ERemptysick.setText("sickness is empty");
             ERemptyguardian.setText("Guardian contact number is empty");
-         
 
-            } else if (editpatientstudID.getText().trim().isEmpty()) {
-               ERemptystudid.setText("record number  is empty");
-            } else if (editpatientfirst.getText().trim().isEmpty()) {
-               ERemptyfirst.setText("first name is empty");
-            } else if (editpatientlast.getText().trim().isEmpty()) {
-                ERemptylast.setText("last name is empty");
-            } else if (editpatientmiddle.getText().trim().isEmpty()) {
-                 ERemptymiddle.setText("middle name is empty");
-             } else if (editpatientage.getText().trim().isEmpty()) {
-                 ERemptyage.setText("Age is empty");
-             } else if (editpatientcontact.getText().trim().isEmpty()) {
-                 ERemptycontact.setText("contact number is empty");
-             } else if (editpatienttime.getText().trim().isEmpty()) {
-                 ERemptytime.setText("time admit is empty");
-             } else if (editpatientbed.getText().trim().isEmpty()) {
-                 ERemptybed.setText("bed number is empty");
-             } else if (editpatientsick.getText().trim().isEmpty()) {
-                 ERemptysick.setText("sickness is empty");
-             } else if (editpatientguardian.getText().trim().isEmpty()) {
-                 ERemptyguardian.setText("Guardian contact number is empty");
-            }else{
-                 
-        String sql=null;
-        PreparedStatement pst=null;
+        } else if (editpatientstudID.getText().trim().isEmpty()) {
+            ERemptystudid.setText("record number  is empty");
+        } else if (editpatientfirst.getText().trim().isEmpty()) {
+            ERemptyfirst.setText("first name is empty");
+        } else if (editpatientlast.getText().trim().isEmpty()) {
+            ERemptylast.setText("last name is empty");
+        } else if (editpatientmiddle.getText().trim().isEmpty()) {
+            ERemptymiddle.setText("middle name is empty");
+        } else if (editpatientage.getText().trim().isEmpty()) {
+            ERemptyage.setText("Age is empty");
+        } else if (editpatientcontact.getText().trim().isEmpty()) {
+            ERemptycontact.setText("contact number is empty");
+        } else if (editpatienttime.getText().trim().isEmpty()) {
+            ERemptytime.setText("time admit is empty");
+        } else if (editpatientbed.getText().trim().isEmpty()) {
+            ERemptybed.setText("bed number is empty");
+        } else if (editpatientsick.getText().trim().isEmpty()) {
+            ERemptysick.setText("sickness is empty");
+        } else if (editpatientguardian.getText().trim().isEmpty()) {
+            ERemptyguardian.setText("Guardian contact number is empty");
+        } else {
 
-         try{
-       // kulang pa sa tmp yung sa where para maedit kahit yung first column
-             
-            sql = "update clinicmanagement.patients  set  firstname=?, lastname=? ,middlename=?,age=? ,gender=? , date=? ,contactnumber=? ,time=? ,bednumber=?, sick=? ,guardiannumber=? where studentid=?";
-            pst = conn.prepareStatement(sql);
-            
-                    
-              
-               pst.setString(1, editpatientfirst.getText());
-               pst.setString(2, editpatientlast.getText());
-               pst.setString(3, editpatientmiddle.getText());
-               pst.setInt(4, Integer.parseInt(editpatientage.getText()));
-               pst.setString(5,   editpatientgender.getSelectedItem().toString());
-               pst.setString(6, ((JTextField)editpatientdate.getDateEditor().getUiComponent()).getText());
-               pst.setInt(7, Integer.parseInt(editpatientcontact.getText()));
-               pst.setInt(8, Integer.parseInt(editpatienttime.getText()));
-               pst.setInt(9, Integer.parseInt(editpatientbed.getText()));
-               pst.setString(10, editpatientsick.getText()); 
-               pst.setInt(11, Integer.parseInt(editpatientguardian.getText()));
-//               pst.setInt(0, Integer.parseInt(editpatientstudID.getText()));
-               pst.executeUpdate();
+            String sql = null;
+            PreparedStatement pst = null;
 
-           
-              JOptionPane.showMessageDialog(null,"Successfully Edit","Success",JOptionPane.INFORMATION_MESSAGE);
-               new Main().update();
+            try {
+                // kulang pa sa tmp yung sa where para maedit kahit yung first column
+
+                sql = "update clinicmanagement.patients  set studentid=?,   firstname=?, lastname=? ,middlename=?,age=? ,gender=? , date=? ,contactnumber=? ,time=? ,bednumber=?, sick=? ,guardiannumber=? studentid=' " + tmp + " ' ";
+                pst = conn.prepareStatement(sql);
+
+                pst.setInt(1, Integer.parseInt(editpatientstudID.getText()));
+                pst.setString(2, editpatientfirst.getText());
+                pst.setString(3, editpatientlast.getText());
+                pst.setString(4, editpatientmiddle.getText());
+                pst.setInt(5, Integer.parseInt(editpatientage.getText()));
+                pst.setString(6, editpatientgender.getSelectedItem().toString());
+                pst.setString(7, ((JTextField) editpatientdate.getDateEditor().getUiComponent()).getText());
+                 pst.setString(8, editpatientcontact.getText());
+//                pst.setInt(8, Integer.parseInt(editpatientcontact.getText()));
+                pst.setInt(9, Integer.parseInt(editpatienttime.getText()));
+                pst.setInt(10, Integer.parseInt(editpatientbed.getText()));
+                pst.setString(11, editpatientsick.getText());
+                pst.setString(12, editpatientguardian.getText());
+//                pst.setInt(12, Integer.parseInt(editpatientguardian.getText()));
+
+                pst.executeUpdate();
+
+                JOptionPane.showMessageDialog(null, "Successfully Edit", "Success", JOptionPane.INFORMATION_MESSAGE);
+                new Main().update();
                 pst.close();
                 rs.close();
                 setVisible(false);
                 new Main().setVisible(true);
-                
-               
-       }
-       catch(Exception e)
-       {
-        JOptionPane.showMessageDialog(null, "studentID is already use");
-       }     
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "studentID is already use");
             }
-    
+        }
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void editpatientgenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editpatientgenderActionPerformed

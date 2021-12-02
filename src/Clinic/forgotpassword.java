@@ -27,6 +27,9 @@ public class forgotpassword extends javax.swing.JFrame {
         initComponents();
         conn = connection.ConnecrDb();
         this.setLocationRelativeTo(null);
+        
+        //for modal
+//        setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
 
     }
 

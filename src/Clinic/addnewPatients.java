@@ -8,6 +8,7 @@ package Clinic;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,7 +37,7 @@ public class addnewPatients extends javax.swing.JFrame {
         conn = connection.ConnecrDb();
         ANPstudId.requestFocus();
     }
-
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -60,7 +61,6 @@ public class addnewPatients extends javax.swing.JFrame {
         ANPstudId = new javax.swing.JTextField();
         ANPlast = new javax.swing.JTextField();
         ANPmiddle = new javax.swing.JTextField();
-        ANPage = new javax.swing.JTextField();
         ANPsick = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -198,6 +198,9 @@ public class addnewPatients extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 ANPfirstKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                ANPfirstKeyReleased(evt);
+            }
         });
         jPanel2.add(ANPfirst, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 190, 30));
 
@@ -212,6 +215,9 @@ public class addnewPatients extends javax.swing.JFrame {
         ANPstudId.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 ANPstudIdKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                ANPstudIdKeyReleased(evt);
             }
         });
         jPanel2.add(ANPstudId, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 190, 30));
@@ -228,6 +234,12 @@ public class addnewPatients extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 ANPlastKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                ANPlastKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ANPlastKeyTyped(evt);
+            }
         });
         jPanel2.add(ANPlast, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 190, 30));
 
@@ -243,12 +255,22 @@ public class addnewPatients extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 ANPmiddleKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                ANPmiddleKeyReleased(evt);
+            }
         });
         jPanel2.add(ANPmiddle, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 190, 30));
 
         ANPage.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         ANPage.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         ANPage.setPreferredSize(new java.awt.Dimension(60, 20));
+        ANPage.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                ANPageInputMethodTextChanged(evt);
+            }
+        });
         ANPage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ANPageActionPerformed(evt);
@@ -257,6 +279,12 @@ public class addnewPatients extends javax.swing.JFrame {
         ANPage.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 ANPageKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                ANPageKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ANPageKeyTyped(evt);
             }
         });
         jPanel2.add(ANPage, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 190, 30));
@@ -272,6 +300,9 @@ public class addnewPatients extends javax.swing.JFrame {
         ANPsick.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 ANPsickKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                ANPsickKeyReleased(evt);
             }
         });
         jPanel2.add(ANPsick, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 230, 210, 30));
@@ -306,6 +337,9 @@ public class addnewPatients extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 ANPbednumberKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ANPbednumberKeyTyped(evt);
+            }
         });
         jPanel2.add(ANPbednumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 180, 210, 30));
 
@@ -320,6 +354,12 @@ public class addnewPatients extends javax.swing.JFrame {
         ANPguardian.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 ANPguardianKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                ANPguardianKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ANPguardianKeyTyped(evt);
             }
         });
         jPanel2.add(ANPguardian, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 280, 140, 30));
@@ -354,6 +394,9 @@ public class addnewPatients extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 ANPtimeKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ANPtimeKeyTyped(evt);
+            }
         });
         jPanel2.add(ANPtime, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, 210, 30));
 
@@ -368,6 +411,12 @@ public class addnewPatients extends javax.swing.JFrame {
         ANPcontactnumber.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 ANPcontactnumberKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                ANPcontactnumberKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ANPcontactnumberKeyTyped(evt);
             }
         });
         jPanel2.add(ANPcontactnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, 210, 30));
@@ -569,13 +618,13 @@ public class addnewPatients extends javax.swing.JFrame {
                 pst.setInt(5, Integer.parseInt(ANPage.getText()));
                 pst.setString(6, ANPgender.getSelectedItem().toString());
                 pst.setString(7, ((JTextField) ANPdate.getDateEditor().getUiComponent()).getText());
-                  pst.setString(8, ANPcontactnumber.getText());
-//                pst.setInt(8, Integer.parseInt(ANPcontactnumber.getText()));
+                pst.setString(8, ANPcontactnumber.getText());
+//              pst.setInt(8, Integer.parseInt(ANPcontactnumber.getText()));
                 pst.setInt(9, Integer.parseInt(ANPtime.getText()));
                 pst.setInt(10, Integer.parseInt(ANPbednumber.getText()));
                 pst.setString(11, ANPsick.getText());
                 pst.setString(12, ANPguardian.getText());
-//                pst.setInt(12, Integer.parseInt(ANPguardian.getText()));
+//              pst.setInt(12, Integer.parseInt(ANPguardian.getText()));
 
                 pst.execute();
 
@@ -642,6 +691,292 @@ public class addnewPatients extends javax.swing.JFrame {
         ANPguardianempty.setText("");
     }//GEN-LAST:event_ANPguardianKeyPressed
 
+    private void ANPstudIdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPstudIdKeyReleased
+       if(evt.getKeyCode() == KeyEvent.VK_0 ){
+    }
+    else if(evt.getKeyCode() == KeyEvent.VK_1 ){
+    }
+    else if(evt.getKeyCode() == KeyEvent.VK_2 ){
+    }
+    else if(evt.getKeyCode() == KeyEvent.VK_3 ){
+    }
+    else if(evt.getKeyCode() == KeyEvent.VK_4 ){
+    }
+    else if(evt.getKeyCode() == KeyEvent.VK_5 ){
+    }
+    else if(evt.getKeyCode() == KeyEvent.VK_6 ){
+    }
+    else if(evt.getKeyCode() == KeyEvent.VK_7 ){
+    }
+    else if(evt.getKeyCode() == KeyEvent.VK_8 ){
+    }
+    else if(evt.getKeyCode() == KeyEvent.VK_9 ){
+        }
+      
+       else if(evt.getKeyCode() == KeyEvent.VK_MINUS){
+    }
+       else if(evt.getKeyCode() == KeyEvent.VK_PERIOD){
+   // }   else if(evt.getKeyCode() == KeyEvent.VK_SPACE ){
+    
+    
+    }   else if(evt.getKeyCode() == KeyEvent.VK_ENTER ){
+  
+    }else if(evt.getKeyCode() == KeyEvent.VK_BACK_SPACE ){
+        
+    }
+    else{
+    JOptionPane.showMessageDialog(null, "Invalid Character.");
+       ANPstudId.setText("");
+    }
+                                      
+
+    }//GEN-LAST:event_ANPstudIdKeyReleased
+
+    private void ANPfirstKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPfirstKeyReleased
+        
+            if(evt.getKeyCode() == KeyEvent.VK_A ){
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_B ){
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_C ){
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_D ){
+    }   
+            else if(evt.getKeyCode() == KeyEvent.VK_E ){
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_F ){
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_G ){
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_H ){
+    }   
+            else if(evt.getKeyCode() == KeyEvent.VK_I ){
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_J ){
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_K ){
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_L ){
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_M ){
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_N){
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_O ){
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_P ){
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_Q ){
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_R ){
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_S ){
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_T ){
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_U ){
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_V ){
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_W ){
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_X ){
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_Y ){
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_Z ){
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK ){
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_SHIFT ){
+    }           
+            else if(evt.getKeyCode() == KeyEvent.VK_MINUS){
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_PERIOD){     
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_SPACE){
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_BACK_SPACE ){
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_ENTER ){
+    }
+            else if(evt.getKeyCode() == KeyEvent.VK_MINUS){
+    }
+      
+      
+            else{
+            JOptionPane.showMessageDialog(null, "Invalid Character.");
+               ANPfirst.setText("");
+                }
+                                  
+    }//GEN-LAST:event_ANPfirstKeyReleased
+
+    private void ANPlastKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPlastKeyReleased
+      // FOR ALPHABETIC ONLY NOT SURE IF IT IS WORKING
+     char c = evt.getKeyChar();
+
+    if(Character.isLetter(c) ||Character.isWhitespace(c) ||Character.isISOControl(c)||Character.isUpperCase(c)){
+    }else if(evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK ){
+    }
+    else if(evt.getKeyCode() == KeyEvent.VK_SHIFT ){    
+      ANPlast.setEditable(true);
+    }else {
+         JOptionPane.showMessageDialog(null, "Invalid Character.");
+        ANPlast.setText("");
+    }
+    }//GEN-LAST:event_ANPlastKeyReleased
+
+    private void ANPlastKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPlastKeyTyped
+         
+    }//GEN-LAST:event_ANPlastKeyTyped
+
+    private void ANPmiddleKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPmiddleKeyReleased
+       // FOR ALPHABETIC ONLY NOT SURE IF IT IS WORKING
+     char c = evt.getKeyChar();
+
+    if(Character.isLetter(c) ||Character.isWhitespace(c) ||Character.isISOControl(c)||Character.isUpperCase(c)){
+    }
+    else if(evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK ){
+    }
+    else if(evt.getKeyCode() == KeyEvent.VK_SHIFT ){    
+      ANPmiddle.setEditable(true);
+    }else {
+         JOptionPane.showMessageDialog(null, "Invalid Character.");
+        ANPmiddle.setText("");
+    }
+    }//GEN-LAST:event_ANPmiddleKeyReleased
+
+    private void ANPageKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPageKeyReleased
+     
+     
+    }//GEN-LAST:event_ANPageKeyReleased
+
+    private void ANPageKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPageKeyTyped
+//    final char c = evt.getKeyChar();
+//
+//    // You need access to the current input to known if you are on the 
+//    // first character or not. 
+//    // Here I assume it exists as a private member variable. 
+//    final boolean isFirstChar = this.currentInput.isEmpty();
+//
+//    final boolean isValidEvent = (Character.isDigit(c) && !(isFirstChar && c == '0')) || 
+//        (c == KeyEvent.VK_BACK_SPACE) || 
+//        (c == KeyEvent.VK_DELETE);
+//
+//    if (isValidEvent) {
+//        evt.consume();
+//    }                             
+//  char c = evt.getKeyChar();
+//
+//      if(!(Character.isDigit(c) || (Character.charCount(0)=='0' || c==KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE)){
+//          getToolkit().beep();
+//          evt.consume();
+//          
+//      }
+    }//GEN-LAST:event_ANPageKeyTyped
+
+    private void ANPageInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_ANPageInputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ANPageInputMethodTextChanged
+
+    private void ANPcontactnumberKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPcontactnumberKeyReleased
+        String contact = ANPcontactnumber.getText();
+        int length = contact.length();
+        char c =evt.getKeyChar();
+        if(evt.getKeyChar()>='0' && evt.getKeyChar()<='9'){
+            if(length<11){
+                ANPcontactnumber.setEditable(true);
+            }else{
+                ANPcontactnumber.setEditable(false);
+            }
+             
+        
+        }else{
+            if(evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode()==KeyEvent.VK_DELETE ){
+                ANPcontactnumber.setEditable(true);
+            }else{
+                ANPcontactnumber.setEditable(false);              
+        }
+        }
+            
+    }//GEN-LAST:event_ANPcontactnumberKeyReleased
+
+    private void ANPcontactnumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPcontactnumberKeyTyped
+      
+        char q = evt.getKeyChar();
+        if(!(Character.isDigit(q) || (q==KeyEvent.VK_BACK_SPACE) || q==KeyEvent.VK_DELETE)){
+        getToolkit().beep();
+        evt.consume();
+          
+             }
+    }//GEN-LAST:event_ANPcontactnumberKeyTyped
+
+    private void ANPtimeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPtimeKeyTyped
+        char c = evt.getKeyChar();
+
+     if(!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE)){
+         getToolkit().beep();
+         evt.consume();
+         
+     
+    }                      
+    }//GEN-LAST:event_ANPtimeKeyTyped
+
+    private void ANPbednumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPbednumberKeyTyped
+        char c = evt.getKeyChar();
+
+     if(!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE)){
+         getToolkit().beep();
+         evt.consume();
+   
+    }                      
+    }//GEN-LAST:event_ANPbednumberKeyTyped
+
+    private void ANPsickKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPsickKeyReleased
+        char c = evt.getKeyChar();
+
+    if(Character.isLetter(c) ||Character.isWhitespace(c) ||Character.isISOControl(c)||Character.isUpperCase(c)){
+    }
+    else if(evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK ){
+    }
+    else if(evt.getKeyCode() == KeyEvent.VK_SHIFT ){    
+      ANPsick.setEditable(true);
+    }else {
+         JOptionPane.showMessageDialog(null, "Invalid Character.");
+        ANPsick.setText("");
+    }
+    }//GEN-LAST:event_ANPsickKeyReleased
+
+    private void ANPguardianKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPguardianKeyTyped
+        char q = evt.getKeyChar();
+        if(!(Character.isDigit(q) || (q==KeyEvent.VK_BACK_SPACE) || q==KeyEvent.VK_DELETE)){
+        getToolkit().beep();
+        evt.consume();
+          
+             }
+    }//GEN-LAST:event_ANPguardianKeyTyped
+
+    private void ANPguardianKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPguardianKeyReleased
+       String contact = ANPguardian.getText();
+        int length = contact.length();
+        char c =evt.getKeyChar();
+        if(evt.getKeyChar()>='0' && evt.getKeyChar()<='9'){
+            if(length<11){
+                ANPguardian.setEditable(true);
+            }else{
+                ANPguardian.setEditable(false);
+            }
+             
+        
+        }else{
+            if(evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode()==KeyEvent.VK_DELETE ){
+                ANPguardian.setEditable(true);
+            }else{
+                ANPguardian.setEditable(false);              
+        }
+        }
+    }//GEN-LAST:event_ANPguardianKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -679,7 +1014,7 @@ public class addnewPatients extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ANPadd;
-    private javax.swing.JTextField ANPage;
+    public static final javax.swing.JTextField ANPage = new javax.swing.JTextField();
     private javax.swing.JLabel ANPageempty;
     private javax.swing.JLabel ANPbedempty;
     private javax.swing.JTextField ANPbednumber;

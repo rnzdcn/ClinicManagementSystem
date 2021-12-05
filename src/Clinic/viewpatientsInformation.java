@@ -163,7 +163,7 @@ public class viewpatientsInformation extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewSTUDID.png"))); // NOI18N
-        jLabel5.setText("Student ID");
+        jLabel5.setText("Student ID:");
         jLabel5.setOpaque(true);
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 130, 30));
 
@@ -172,7 +172,7 @@ public class viewpatientsInformation extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewFIRST.png"))); // NOI18N
-        jLabel6.setText("First Name");
+        jLabel6.setText("First Name:");
         jLabel6.setOpaque(true);
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 130, 30));
 
@@ -181,7 +181,7 @@ public class viewpatientsInformation extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewLAST.png"))); // NOI18N
-        jLabel7.setText("Last Name");
+        jLabel7.setText("Last Name:");
         jLabel7.setOpaque(true);
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 130, 30));
 
@@ -190,7 +190,7 @@ public class viewpatientsInformation extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewMIDDLE.png"))); // NOI18N
-        jLabel8.setText("Middle Name");
+        jLabel8.setText("Middle Name:");
         jLabel8.setOpaque(true);
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 130, 30));
 
@@ -199,7 +199,7 @@ public class viewpatientsInformation extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewGENDER.png"))); // NOI18N
-        jLabel10.setText("Gender");
+        jLabel10.setText("Gender:");
         jLabel10.setOpaque(true);
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 130, 30));
 
@@ -208,7 +208,7 @@ public class viewpatientsInformation extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewAGE.png"))); // NOI18N
-        jLabel11.setText("Age");
+        jLabel11.setText("Age:");
         jLabel11.setOpaque(true);
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 130, 30));
 
@@ -217,7 +217,7 @@ public class viewpatientsInformation extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewSICK.png"))); // NOI18N
-        jLabel12.setText("Sick/Illness");
+        jLabel12.setText("Sick/Illness:");
         jLabel12.setOpaque(true);
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 130, 30));
 
@@ -226,7 +226,7 @@ public class viewpatientsInformation extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewBED.png"))); // NOI18N
-        jLabel13.setText("Bed Number");
+        jLabel13.setText("Bed Number:");
         jLabel13.setOpaque(true);
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, 130, 30));
 
@@ -235,7 +235,7 @@ public class viewpatientsInformation extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewGUARDIAN.png"))); // NOI18N
-        jLabel9.setText("Guardian Contact Number");
+        jLabel9.setText("Guardian Contact Number:");
         jLabel9.setOpaque(true);
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, 210, 30));
 
@@ -244,7 +244,7 @@ public class viewpatientsInformation extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewTIME.png"))); // NOI18N
-        jLabel14.setText("Time Admit");
+        jLabel14.setText("Time Admit:");
         jLabel14.setOpaque(true);
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, 130, 30));
 
@@ -253,7 +253,7 @@ public class viewpatientsInformation extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewCONTACT.png"))); // NOI18N
-        jLabel15.setText("Contact Number");
+        jLabel15.setText("Contact Number:");
         jLabel15.setOpaque(true);
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 140, 30));
 
@@ -262,7 +262,7 @@ public class viewpatientsInformation extends javax.swing.JFrame {
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewCALENDAR.png"))); // NOI18N
-        jLabel16.setText("Date ");
+        jLabel16.setText("Date:");
         jLabel16.setOpaque(true);
         jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 130, 30));
 
@@ -270,7 +270,6 @@ public class viewpatientsInformation extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/printer.png"))); // NOI18N
         jButton3.setText("Print");
-        jButton3.setPreferredSize(new java.awt.Dimension(89, 33));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);

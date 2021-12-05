@@ -120,7 +120,7 @@ public class viewMedicine extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel5.setText("Medicine Name");
+        jLabel5.setText("Medicine Name:");
         jLabel5.setOpaque(true);
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 130, 30));
 
@@ -129,7 +129,7 @@ public class viewMedicine extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addMedicineIMG/addnewmedicineQuantity.png"))); // NOI18N
-        jLabel6.setText("Quantity");
+        jLabel6.setText("Quantity:");
         jLabel6.setOpaque(true);
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 130, 30));
 
@@ -138,7 +138,7 @@ public class viewMedicine extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addMedicineIMG/addnewmedicineDateR.png"))); // NOI18N
-        jLabel7.setText("Date Recieved");
+        jLabel7.setText("Date Recieved:");
         jLabel7.setOpaque(true);
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 130, 30));
 
@@ -147,7 +147,7 @@ public class viewMedicine extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addMedicineIMG/addnewmedicineEDate.png"))); // NOI18N
-        jLabel8.setText("Expiration Date");
+        jLabel8.setText("Expiration Date:");
         jLabel8.setOpaque(true);
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 130, 30));
 
@@ -156,7 +156,7 @@ public class viewMedicine extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addMedicineIMG/addnewmedicineStatus.png"))); // NOI18N
-        jLabel11.setText("Status");
+        jLabel11.setText("Status:");
         jLabel11.setOpaque(true);
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 130, 30));
 

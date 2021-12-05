@@ -332,7 +332,11 @@ public class Inventory extends javax.swing.JFrame {
     }//GEN-LAST:event_IsearchActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-         updateTable();
+         DefaultTableModel table = (DefaultTableModel) Itable.getModel();
+   
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
+        Itable.setRowSorter(tr);
+      
         Isearch.setText("");
                             
                                  

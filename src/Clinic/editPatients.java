@@ -6,6 +6,7 @@
 package Clinic;
 
 import static Clinic.viewpatientsInformation.tmp;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -39,30 +40,30 @@ public class editPatients extends javax.swing.JFrame {
             pst.setString(1, tmp);
             rs = pst.executeQuery();
             if (rs.next()) {
-                String edit1 = rs.getString("studentid");
-                editpatientstudID.setText(edit1);
+                int edit1 = Integer.parseInt (rs.getString("studentid"));
+                editstudID.setText(Integer.toString(edit1));
                 String edit2 = rs.getString("firstname");
                 editpatientfirst.setText(edit2);
                 String edit3 = rs.getString("lastname");
                 editpatientlast.setText(edit3);
                 String edit4 = rs.getString("middlename");
                 editpatientmiddle.setText(edit4);
-                String edit5 = rs.getString("age");
-                editpatientage.setText(edit5);
+                int edit5 = Integer.parseInt (rs.getString("age"));
+                editpatientage.setText(Integer.toString(edit5));
                 String edit6 = rs.getString("gender");
                 editpatientgender.setSelectedItem(edit6);
                 Date edit7 = rs.getDate("date");
                 editpatientdate.setDate(edit7);
-                String edit8 = rs.getString("contactnumber");
-                editpatientcontact.setText(edit8);
-                String edit9 = rs.getString("time");
-                editpatienttime.setText(edit9);
-                String edit10 = rs.getString("bednumber");
-                editpatientbed.setText(edit10);
+                int edit8 = Integer.parseInt (rs.getString("contactnumber"));
+                editpatientcontact.setText(Integer.toString(edit8));
+                int edit9 = Integer.parseInt (rs.getString("time"));
+                editpatienttime.setText(Integer.toString(edit9));
+                int edit10 = Integer.parseInt (rs.getString("bednumber"));
+                editpatientbed.setText(Integer.toString(edit10));
                 String edit11 = rs.getString("sick");
                 editpatientsick.setText(edit11);
-                String edit12 = rs.getString("guardiannumber");
-                editpatientguardian.setText(edit12);
+                int edit12 = Integer.parseInt (rs.getString("guardiannumber"));
+                editpatientguardian.setText(Integer.toString(edit12));
 
             }
         } catch (Exception e) {
@@ -102,7 +103,7 @@ public class editPatients extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         editpatientfirst = new javax.swing.JTextField();
-        editpatientstudID = new javax.swing.JTextField();
+        editstudID = new javax.swing.JTextField();
         editpatientlast = new javax.swing.JTextField();
         editpatientmiddle = new javax.swing.JTextField();
         editpatientage = new javax.swing.JTextField();
@@ -219,23 +220,29 @@ public class editPatients extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 editpatientfirstKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                editpatientfirstKeyReleased(evt);
+            }
         });
         jPanel2.add(editpatientfirst, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 190, 30));
 
-        editpatientstudID.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        editpatientstudID.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        editpatientstudID.setPreferredSize(new java.awt.Dimension(60, 20));
-        editpatientstudID.addActionListener(new java.awt.event.ActionListener() {
+        editstudID.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        editstudID.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        editstudID.setPreferredSize(new java.awt.Dimension(60, 20));
+        editstudID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editpatientstudIDActionPerformed(evt);
+                editstudIDActionPerformed(evt);
             }
         });
-        editpatientstudID.addKeyListener(new java.awt.event.KeyAdapter() {
+        editstudID.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                editpatientstudIDKeyPressed(evt);
+                editstudIDKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                editstudIDKeyTyped(evt);
             }
         });
-        jPanel2.add(editpatientstudID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 190, 30));
+        jPanel2.add(editstudID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 190, 30));
 
         editpatientlast.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         editpatientlast.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -248,6 +255,9 @@ public class editPatients extends javax.swing.JFrame {
         editpatientlast.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 editpatientlastKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                editpatientlastKeyReleased(evt);
             }
         });
         jPanel2.add(editpatientlast, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 190, 30));
@@ -263,6 +273,9 @@ public class editPatients extends javax.swing.JFrame {
         editpatientmiddle.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 editpatientmiddleKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                editpatientmiddleKeyReleased(evt);
             }
         });
         jPanel2.add(editpatientmiddle, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 190, 30));
@@ -293,6 +306,9 @@ public class editPatients extends javax.swing.JFrame {
         editpatientsick.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 editpatientsickKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                editpatientsickKeyReleased(evt);
             }
         });
         jPanel2.add(editpatientsick, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 230, 210, 30));
@@ -327,6 +343,9 @@ public class editPatients extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 editpatientbedKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                editpatientbedKeyTyped(evt);
+            }
         });
         jPanel2.add(editpatientbed, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 180, 210, 30));
 
@@ -341,6 +360,12 @@ public class editPatients extends javax.swing.JFrame {
         editpatientguardian.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 editpatientguardianKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                editpatientguardianKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                editpatientguardianKeyTyped(evt);
             }
         });
         jPanel2.add(editpatientguardian, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 280, 140, 30));
@@ -375,6 +400,9 @@ public class editPatients extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 editpatienttimeKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                editpatienttimeKeyTyped(evt);
+            }
         });
         jPanel2.add(editpatienttime, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, 210, 30));
 
@@ -389,6 +417,12 @@ public class editPatients extends javax.swing.JFrame {
         editpatientcontact.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 editpatientcontactKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                editpatientcontactKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                editpatientcontactKeyTyped(evt);
             }
         });
         jPanel2.add(editpatientcontact, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, 210, 30));
@@ -467,9 +501,9 @@ public class editPatients extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_editpatientfirstActionPerformed
 
-    private void editpatientstudIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editpatientstudIDActionPerformed
+    private void editstudIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editstudIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_editpatientstudIDActionPerformed
+    }//GEN-LAST:event_editstudIDActionPerformed
 
     private void editpatientlastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editpatientlastActionPerformed
         // TODO add your handling code here:
@@ -510,7 +544,7 @@ public class editPatients extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        if (editpatientstudID.getText().trim().isEmpty() && editpatientfirst.getText().trim().isEmpty() && editpatientlast.getText().trim().isEmpty() && editpatientmiddle.getText().trim().isEmpty()
+        if (editstudID.getText().trim().isEmpty() && editpatientfirst.getText().trim().isEmpty() && editpatientlast.getText().trim().isEmpty() && editpatientmiddle.getText().trim().isEmpty()
                 && editpatientage.getText().trim().isEmpty() && editpatientcontact.getText().trim().isEmpty() && editpatienttime.getText().trim().isEmpty()
                 && editpatientbed.getText().trim().isEmpty() && editpatientsick.getText().trim().isEmpty() && editpatientguardian.getText().trim().isEmpty()) //di pa naayos yung pag walang nilagay sa calender mag eerror hindi magawa
         //tinamad na
@@ -526,7 +560,7 @@ public class editPatients extends javax.swing.JFrame {
             ERemptysick.setText("sickness is empty");
             ERemptyguardian.setText("Guardian contact number is empty");
 
-        } else if (editpatientstudID.getText().trim().isEmpty()) {
+        } else if (editstudID.getText().trim().isEmpty()) {
             ERemptystudid.setText("record number  is empty");
         } else if (editpatientfirst.getText().trim().isEmpty()) {
             ERemptyfirst.setText("first name is empty");
@@ -554,10 +588,10 @@ public class editPatients extends javax.swing.JFrame {
             try {
                 // kulang pa sa tmp yung sa where para maedit kahit yung first column
 
-                sql = "update clinicmanagement.patients  set studentid=?,   firstname=?, lastname=? ,middlename=?,age=? ,gender=? , date=? ,contactnumber=? ,time=? ,bednumber=?, sick=? ,guardiannumber=? studentid=' " + tmp + " ' ";
+                sql = "update clinicmanagement.patients  set studentid=?,   firstname=?, lastname=?,middlename=?,age=? ,gender=? , date=? ,contactnumber=? ,time=? ,bednumber=?, sick=? ,guardiannumber=? where studentid=' " + tmp + " ' ";
                 pst = conn.prepareStatement(sql);
 
-                pst.setInt(1, Integer.parseInt(editpatientstudID.getText()));
+                pst.setInt(1, Integer.parseInt(editstudID.getText()));
                 pst.setString(2, editpatientfirst.getText());
                 pst.setString(3, editpatientlast.getText());
                 pst.setString(4, editpatientmiddle.getText());
@@ -592,9 +626,9 @@ public class editPatients extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_editpatientgenderActionPerformed
 
-    private void editpatientstudIDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editpatientstudIDKeyPressed
+    private void editstudIDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editstudIDKeyPressed
         ERemptystudid.setText("");
-    }//GEN-LAST:event_editpatientstudIDKeyPressed
+    }//GEN-LAST:event_editstudIDKeyPressed
 
     private void editpatientfirstKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editpatientfirstKeyPressed
         ERemptyfirst.setText("");
@@ -631,6 +665,152 @@ public class editPatients extends javax.swing.JFrame {
     private void editpatientguardianKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editpatientguardianKeyPressed
         ERemptyguardian.setText("");
     }//GEN-LAST:event_editpatientguardianKeyPressed
+
+    private void editstudIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editstudIDKeyTyped
+       char c = evt.getKeyChar();
+
+     if(!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE || c==KeyEvent.VK_MINUS)){
+         getToolkit().beep();
+         evt.consume();
+         
+     
+    }                      
+    }//GEN-LAST:event_editstudIDKeyTyped
+
+    private void editpatientfirstKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editpatientfirstKeyReleased
+        char c = evt.getKeyChar();
+
+    if(Character.isLetter(c) ||Character.isWhitespace(c) ||Character.isISOControl(c)||Character.isUpperCase(c)){
+    }else if(evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK ){
+    }
+    else if(evt.getKeyCode() == KeyEvent.VK_SHIFT ){    
+      editpatientfirst.setEditable(true);
+    }else {
+         JOptionPane.showMessageDialog(null, "Invalid Character.");
+        editpatientfirst.setText("");
+    }
+    }//GEN-LAST:event_editpatientfirstKeyReleased
+
+    private void editpatientlastKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editpatientlastKeyReleased
+        char c = evt.getKeyChar();
+
+    if(Character.isLetter(c) ||Character.isWhitespace(c) ||Character.isISOControl(c)||Character.isUpperCase(c)){
+    }else if(evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK ){
+    }
+    else if(evt.getKeyCode() == KeyEvent.VK_SHIFT ){    
+      editpatientlast.setEditable(true);
+    }else {
+         JOptionPane.showMessageDialog(null, "Invalid Character.");
+        editpatientlast.setText("");
+    }
+    }//GEN-LAST:event_editpatientlastKeyReleased
+
+    private void editpatientmiddleKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editpatientmiddleKeyReleased
+         char c = evt.getKeyChar();
+
+    if(Character.isLetter(c) ||Character.isWhitespace(c) ||Character.isISOControl(c)||Character.isUpperCase(c)){
+    }else if(evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK ){
+    }
+    else if(evt.getKeyCode() == KeyEvent.VK_SHIFT ){    
+      editpatientmiddle.setEditable(true);
+    }else {
+         JOptionPane.showMessageDialog(null, "Invalid Character.");
+        editpatientmiddle.setText("");
+    }
+    }//GEN-LAST:event_editpatientmiddleKeyReleased
+
+    private void editpatientsickKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editpatientsickKeyReleased
+        char c = evt.getKeyChar();
+
+    if(Character.isLetter(c) ||Character.isWhitespace(c) ||Character.isISOControl(c)||Character.isUpperCase(c)){
+    }else if(evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK ){
+    }
+    else if(evt.getKeyCode() == KeyEvent.VK_SHIFT ){    
+      editpatientsick.setEditable(true);
+    }else {
+         JOptionPane.showMessageDialog(null, "Invalid Character.");
+        editpatientsick.setText("");
+    }
+    }//GEN-LAST:event_editpatientsickKeyReleased
+
+    private void editpatientcontactKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editpatientcontactKeyReleased
+        String contact = editpatientcontact.getText();
+        int length = contact.length();
+        char c =evt.getKeyChar();
+        if(evt.getKeyChar()>='0' && evt.getKeyChar()<='9'){
+            if(length<11){
+                editpatientcontact.setEditable(true);
+            }else{
+                editpatientcontact.setEditable(false);
+            }
+             
+        
+        }else{
+            if(evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode()==KeyEvent.VK_DELETE ){
+                editpatientcontact.setEditable(true);
+            }else{
+                editpatientcontact.setEditable(false);              
+        }
+        }
+    }//GEN-LAST:event_editpatientcontactKeyReleased
+
+    private void editpatientguardianKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editpatientguardianKeyReleased
+        String contact = editpatientguardian.getText();
+        int length = contact.length();
+        char c =evt.getKeyChar();
+        if(evt.getKeyChar()>='0' && evt.getKeyChar()<='9'){
+            if(length<11){
+                editpatientguardian.setEditable(true);
+            }else{
+                editpatientguardian.setEditable(false);
+            }
+             
+        
+        }else{
+            if(evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode()==KeyEvent.VK_DELETE ){
+                editpatientguardian.setEditable(true);
+            }else{
+                editpatientguardian.setEditable(false);              
+        }
+        }
+    }//GEN-LAST:event_editpatientguardianKeyReleased
+
+    private void editpatientcontactKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editpatientcontactKeyTyped
+        char q = evt.getKeyChar();
+        if(!(Character.isDigit(q) || (q==KeyEvent.VK_BACK_SPACE) || q==KeyEvent.VK_DELETE)){
+        getToolkit().beep();
+        evt.consume();
+          
+             }
+    }//GEN-LAST:event_editpatientcontactKeyTyped
+
+    private void editpatientguardianKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editpatientguardianKeyTyped
+        char q = evt.getKeyChar();
+        if(!(Character.isDigit(q) || (q==KeyEvent.VK_BACK_SPACE) || q==KeyEvent.VK_DELETE)){
+        getToolkit().beep();
+        evt.consume();
+          
+             }
+    }//GEN-LAST:event_editpatientguardianKeyTyped
+
+    private void editpatienttimeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editpatienttimeKeyTyped
+       char c = evt.getKeyChar();
+
+     if(!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE)){
+         getToolkit().beep();
+         evt.consume();      
+    }                     
+    }//GEN-LAST:event_editpatienttimeKeyTyped
+
+    private void editpatientbedKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editpatientbedKeyTyped
+       char c = evt.getKeyChar();
+
+     if(!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE)){
+         getToolkit().beep();
+         evt.consume();
+         
+    }                     
+    }//GEN-LAST:event_editpatientbedKeyTyped
 
     /**
      * @param args the command line arguments
@@ -689,8 +869,8 @@ public class editPatients extends javax.swing.JFrame {
     private javax.swing.JTextField editpatientlast;
     private javax.swing.JTextField editpatientmiddle;
     private javax.swing.JTextField editpatientsick;
-    private javax.swing.JTextField editpatientstudID;
     private javax.swing.JTextField editpatienttime;
+    private javax.swing.JTextField editstudID;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;

@@ -6,6 +6,7 @@
 package Clinic;
 
 import static Clinic.editPatients.tmp;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -36,16 +37,16 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
             pst.setString(1,tmp);
             rs = pst.executeQuery();
             if(rs.next()){
-                String edit1 = rs.getString("studentid");
-                USstudID.setText(edit1);
+                int edit1 = Integer.parseInt (rs.getString("studentid"));
+                USstudID.setText(Integer.toString(edit1));
                 String edit2 = rs.getString("firstname");
                 USfirst.setText(edit2);
                 String edit3 = rs.getString("lastname");
                 USlast.setText(edit3);
                 Date edit4 = rs.getDate("date");
                 USdate.setDate(edit4);
-                String edit5 = rs.getString("time");
-                UStime.setText(edit5);
+                int edit5 = Integer.parseInt (rs.getString("time"));
+                UStime.setText(Integer.toString(edit5));
                 String edit6 = rs.getString("medicine");
                 USmedicine.setText(edit6);                     
                 String edit7 = rs.getString("description");
@@ -162,6 +163,11 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
                 UStimeActionPerformed(evt);
             }
         });
+        UStime.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                UStimeKeyTyped(evt);
+            }
+        });
         jPanel2.add(UStime, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 190, 30));
 
         jLabel6.setBackground(new java.awt.Color(10, 46, 54));
@@ -178,6 +184,11 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
         USfirst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 USfirstActionPerformed(evt);
+            }
+        });
+        USfirst.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                USfirstKeyReleased(evt);
             }
         });
         jPanel2.add(USfirst, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 190, 30));
@@ -214,6 +225,11 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
                 USstudIDActionPerformed(evt);
             }
         });
+        USstudID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                USstudIDKeyTyped(evt);
+            }
+        });
         jPanel2.add(USstudID, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 190, 30));
 
         USlast.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
@@ -224,6 +240,11 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
                 USlastActionPerformed(evt);
             }
         });
+        USlast.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                USlastKeyReleased(evt);
+            }
+        });
         jPanel2.add(USlast, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 190, 30));
 
         USmedicine.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
@@ -232,6 +253,11 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
         USmedicine.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 USmedicineActionPerformed(evt);
+            }
+        });
+        USmedicine.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                USmedicineKeyReleased(evt);
             }
         });
         jPanel2.add(USmedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, 190, 30));
@@ -301,6 +327,11 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
 
         USlastempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
         USlastempty.setForeground(new java.awt.Color(237, 74, 65));
+        USlastempty.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                USlastemptyKeyReleased(evt);
+            }
+        });
         jPanel2.add(USlastempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 190, 20));
 
         USdateempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
@@ -412,6 +443,76 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
         c.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton27ActionPerformed
+
+    private void USstudIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_USstudIDKeyTyped
+         char c = evt.getKeyChar();
+
+     if(!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE || c==KeyEvent.VK_MINUS)){
+         getToolkit().beep();
+        JOptionPane.showMessageDialog(null, "Please type only student number");
+         evt.consume();
+         
+     
+    }                      
+    }//GEN-LAST:event_USstudIDKeyTyped
+
+    private void USfirstKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_USfirstKeyReleased
+       char c = evt.getKeyChar();
+
+    if(Character.isLetter(c) ||(c==KeyEvent.VK_BACK_SPACE) ||(c==KeyEvent.VK_SPACE) || c==KeyEvent.VK_DELETE || c==KeyEvent.VK_ENTER || c==KeyEvent.VK_MINUS){
+    }else if(evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK ){
+    }
+    else if(evt.getKeyCode() == KeyEvent.VK_SHIFT ){    
+       USfirst.setEditable(true);
+    }else {
+         JOptionPane.showMessageDialog(null, "Invalid Character.");
+        USfirst.setText("");
+    }
+    }//GEN-LAST:event_USfirstKeyReleased
+
+    private void USlastKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_USlastKeyReleased
+       char c = evt.getKeyChar();
+
+    if(Character.isLetter(c) ||(c==KeyEvent.VK_BACK_SPACE) ||(c==KeyEvent.VK_SPACE) || c==KeyEvent.VK_DELETE || c==KeyEvent.VK_ENTER || c==KeyEvent.VK_MINUS){
+    }else if(evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK ){
+    }
+    else if(evt.getKeyCode() == KeyEvent.VK_SHIFT ){    
+       USlast.setEditable(true);
+    }else {
+         JOptionPane.showMessageDialog(null, "Invalid Character.");
+        USlast.setText("");
+    }
+    }//GEN-LAST:event_USlastKeyReleased
+
+    private void USlastemptyKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_USlastemptyKeyReleased
+    
+    }//GEN-LAST:event_USlastemptyKeyReleased
+
+    private void UStimeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UStimeKeyTyped
+         char c = evt.getKeyChar();
+
+     if(!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE || c==KeyEvent.VK_MINUS)){
+         getToolkit().beep();
+        JOptionPane.showMessageDialog(null, "Please type only student number");
+         evt.consume();
+         
+     
+    }                      
+    }//GEN-LAST:event_UStimeKeyTyped
+
+    private void USmedicineKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_USmedicineKeyReleased
+       char c = evt.getKeyChar();
+
+    if(Character.isLetter(c) ||(c==KeyEvent.VK_BACK_SPACE) ||(c==KeyEvent.VK_SPACE) || c==KeyEvent.VK_DELETE || c==KeyEvent.VK_ENTER || c==KeyEvent.VK_MINUS){
+    }else if(evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK ){
+    }
+    else if(evt.getKeyCode() == KeyEvent.VK_SHIFT ){    
+       USmedicine.setEditable(true);
+    }else {
+         JOptionPane.showMessageDialog(null, "Invalid Character.");
+        USmedicine.setText("");
+    }
+    }//GEN-LAST:event_USmedicineKeyReleased
 
     /**
      * @param args the command line arguments

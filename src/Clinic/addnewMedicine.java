@@ -5,6 +5,7 @@
  */
 package Clinic;
 
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -138,6 +139,9 @@ public class addnewMedicine extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 AMquantityKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                AMquantityKeyTyped(evt);
+            }
         });
         jPanel2.add(AMquantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 190, 30));
 
@@ -266,6 +270,9 @@ public class addnewMedicine extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 AMmedicineKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                AMmedicineKeyReleased(evt);
+            }
         });
         jPanel2.add(AMmedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 190, 30));
 
@@ -383,6 +390,32 @@ public class addnewMedicine extends javax.swing.JFrame {
     private void AMmedicineKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AMmedicineKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_AMmedicineKeyPressed
+
+    private void AMmedicineKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AMmedicineKeyReleased
+         char c = evt.getKeyChar();
+
+    if(Character.isLetter(c) ||(c==KeyEvent.VK_BACK_SPACE) ||(c==KeyEvent.VK_SPACE) || c==KeyEvent.VK_DELETE || c==KeyEvent.VK_ENTER || c==KeyEvent.VK_MINUS){
+    }else if(evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK ){
+    }
+    else if(evt.getKeyCode() == KeyEvent.VK_SHIFT ){    
+       AMmedicine.setEditable(true);
+    }else {
+         JOptionPane.showMessageDialog(null, "Invalid Character.");
+        AMmedicine.setText("");
+    }
+    }//GEN-LAST:event_AMmedicineKeyReleased
+
+    private void AMquantityKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AMquantityKeyTyped
+       char c = evt.getKeyChar();
+
+     if(!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE )){
+         getToolkit().beep();
+        JOptionPane.showMessageDialog(null, "Please enter quantity");
+         evt.consume();
+         
+     
+    }           
+    }//GEN-LAST:event_AMquantityKeyTyped
 
     /**
      * @param args the command line arguments

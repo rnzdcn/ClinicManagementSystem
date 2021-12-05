@@ -5,12 +5,14 @@
  */
 package Clinic;
 
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -21,18 +23,88 @@ public class StudentMedicineADD extends javax.swing.JFrame {
     ResultSet rs = null;
     PreparedStatement pst = null;
     Statement st=null;
+    int id;
     private Object arg0;
     /**
      * Creates new form StudentMedicineADD
      */
     public StudentMedicineADD() {
         initComponents();
-        
-        conn = connection.ConnecrDb();  ASstudID.requestFocus();
+       
+        conn = connection.ConnecrDb();
+        ASstudID.requestFocus();
         this.setLocationRelativeTo(null);
+        updateTable();
+        id();
+       updateTable1();
 
     }
+     public void updateTable1() {
+        try {
+            String sql1 = "select id,medicinename,quantity,status  from clinicmanagement.inventory";
+            pst = conn.prepareStatement(sql1);
+            rs = pst.executeQuery();
+            LMtable.setModel(DbUtils.resultSetToTableModel(rs));
 
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        } finally {
+            try {
+                rs.close();
+                pst.close();
+            } catch (Exception e) {
+            }
+        }
+    }
+
+    public void update1() {
+        updateTable();
+    }
+    
+    public void id(){
+        try
+        {
+         String sql = "select max(studreportno) from clinicmanagement.studentmedicine";
+         st = conn.createStatement();
+         rs = st.executeQuery(sql);
+         if(rs.next())
+         {
+             id=rs.getInt(1);
+             id++;
+             ASreportnum.setText(Integer.toString(id));
+         }
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(this, e);
+    }
+        
+    }
+    public void updateTable() {
+        try {
+            String sql = "select * from clinicmanagement.inventory";
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            LMtable.setModel(DbUtils.resultSetToTableModel(rs));
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            
+        } 
+         
+            finally {
+            try {
+                rs.close();
+                pst.close();
+            } catch (Exception e) {
+            }
+        }
+    }
+    
+    public void update() {
+        updateTable();
+
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,6 +143,15 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         ASmedicineempty = new javax.swing.JLabel();
         ASlastempty = new javax.swing.JLabel();
         ASdate = new com.toedter.calendar.JDateChooser();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        ASreportnum = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        available = new javax.swing.JTextField();
+        ASquantityempty = new javax.swing.JLabel();
+        ASquantity = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         jLabel9.setBackground(new java.awt.Color(204, 255, 255));
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -117,7 +198,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewSTUDID.png"))); // NOI18N
         jLabel5.setText("Student ID");
         jLabel5.setOpaque(true);
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 130, 30));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 130, 30));
 
         AStime.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         AStime.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -131,8 +212,11 @@ public class StudentMedicineADD extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 AStimeKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                AStimeKeyTyped(evt);
+            }
         });
-        jPanel2.add(AStime, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 190, 30));
+        jPanel2.add(AStime, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 190, 30));
 
         jLabel6.setBackground(new java.awt.Color(10, 46, 54));
         jLabel6.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -141,7 +225,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewFIRST.png"))); // NOI18N
         jLabel6.setText("First Name");
         jLabel6.setOpaque(true);
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 130, 30));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 130, 30));
 
         ASfirst.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         ASfirst.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -155,8 +239,11 @@ public class StudentMedicineADD extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 ASfirstKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                ASfirstKeyReleased(evt);
+            }
         });
-        jPanel2.add(ASfirst, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 190, 30));
+        jPanel2.add(ASfirst, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 190, 30));
 
         jLabel7.setBackground(new java.awt.Color(10, 46, 54));
         jLabel7.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -165,7 +252,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewLAST.png"))); // NOI18N
         jLabel7.setText("Last Name");
         jLabel7.setOpaque(true);
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 130, 30));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 130, 30));
 
         jLabel14.setBackground(new java.awt.Color(10, 46, 54));
         jLabel14.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -174,7 +261,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewTIME.png"))); // NOI18N
         jLabel14.setText("Time ");
         jLabel14.setOpaque(true);
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 130, 30));
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 130, 30));
 
         jLabel16.setBackground(new java.awt.Color(10, 46, 54));
         jLabel16.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -183,7 +270,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewCALENDAR.png"))); // NOI18N
         jLabel16.setText("Date ");
         jLabel16.setOpaque(true);
-        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 130, 30));
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 130, 30));
 
         ASstudID.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         ASstudID.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -197,8 +284,11 @@ public class StudentMedicineADD extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 ASstudIDKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ASstudIDKeyTyped(evt);
+            }
         });
-        jPanel2.add(ASstudID, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 190, 30));
+        jPanel2.add(ASstudID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 190, 30));
 
         ASlast.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         ASlast.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -212,8 +302,11 @@ public class StudentMedicineADD extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 ASlastKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                ASlastKeyReleased(evt);
+            }
         });
-        jPanel2.add(ASlast, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 190, 30));
+        jPanel2.add(ASlast, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 190, 30));
 
         ASmedicine.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         ASmedicine.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -227,8 +320,11 @@ public class StudentMedicineADD extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 ASmedicineKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                ASmedicineKeyReleased(evt);
+            }
         });
-        jPanel2.add(ASmedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, 190, 30));
+        jPanel2.add(ASmedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, 190, 30));
 
         jLabel8.setBackground(new java.awt.Color(10, 46, 54));
         jLabel8.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -237,7 +333,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addMedicineIMG/addnewMedicinename.png"))); // NOI18N
         jLabel8.setText("Medicine Name");
         jLabel8.setOpaque(true);
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, 130, 30));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 240, 130, 30));
 
         ASadd.setBackground(new java.awt.Color(87, 191, 109));
         ASadd.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -250,7 +346,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
                 ASaddActionPerformed(evt);
             }
         });
-        jPanel2.add(ASadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, 120, 40));
+        jPanel2.add(ASadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 410, 120, 40));
 
         jLabel10.setBackground(new java.awt.Color(10, 46, 54));
         jLabel10.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -259,7 +355,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewSTUDID.png"))); // NOI18N
         jLabel10.setText("Description");
         jLabel10.setOpaque(true);
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 130, 30));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, 130, 30));
 
         ASdescription.setColumns(5);
         ASdescription.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
@@ -271,7 +367,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(ASdescription);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, 190, -1));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, 190, 80));
 
         AScancel.setBackground(new java.awt.Color(237, 74, 65));
         AScancel.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -285,40 +381,141 @@ public class StudentMedicineADD extends javax.swing.JFrame {
                 AScancelActionPerformed(evt);
             }
         });
-        jPanel2.add(AScancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 120, 40));
+        jPanel2.add(AScancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 410, 120, 40));
 
         ASdateempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
         ASdateempty.setForeground(new java.awt.Color(237, 74, 65));
-        jPanel2.add(ASdateempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 190, 20));
+        jPanel2.add(ASdateempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, 190, 20));
 
         ASstudIDempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
         ASstudIDempty.setForeground(new java.awt.Color(237, 74, 65));
-        jPanel2.add(ASstudIDempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 190, 20));
+        jPanel2.add(ASstudIDempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 190, 20));
 
         ASfirstempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
         ASfirstempty.setForeground(new java.awt.Color(237, 74, 65));
-        jPanel2.add(ASfirstempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 190, 20));
+        jPanel2.add(ASfirstempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 190, 20));
 
         AStimeempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
         AStimeempty.setForeground(new java.awt.Color(237, 74, 65));
-        jPanel2.add(AStimeempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 190, 20));
+        jPanel2.add(AStimeempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 420, 190, 20));
 
         ASdescriptionempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
         ASdescriptionempty.setForeground(new java.awt.Color(237, 74, 65));
-        jPanel2.add(ASdescriptionempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, 190, 20));
+        jPanel2.add(ASdescriptionempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 380, 190, 20));
 
         ASmedicineempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
         ASmedicineempty.setForeground(new java.awt.Color(237, 74, 65));
-        jPanel2.add(ASmedicineempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, 190, 20));
+        jPanel2.add(ASmedicineempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, 190, 20));
 
         ASlastempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
         ASlastempty.setForeground(new java.awt.Color(237, 74, 65));
-        jPanel2.add(ASlastempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 190, 20));
+        jPanel2.add(ASlastempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 190, 20));
 
         ASdate.setDateFormatString("yyyy-MM-d");
-        jPanel2.add(ASdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 190, 30));
+        jPanel2.add(ASdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 190, 30));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 750, 400));
+        LMtable.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        LMtable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Medicine Name", "Status", "Title 3", "Title 4"
+            }
+        ));
+        LMtable.setRowHeight(14);
+        LMtable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LMtableMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(LMtable);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 750, 70));
+
+        jLabel3.setBackground(new java.awt.Color(87, 191, 109));
+        jLabel3.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/managepatients.png"))); // NOI18N
+        jLabel3.setText("LIST OF MEDICINE");
+        jLabel3.setOpaque(true);
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 750, 30));
+
+        jLabel11.setBackground(new java.awt.Color(10, 46, 54));
+        jLabel11.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewSTUDID.png"))); // NOI18N
+        jLabel11.setText("Report #");
+        jLabel11.setOpaque(true);
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 130, 30));
+
+        ASreportnum.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        ASreportnum.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        ASreportnum.setPreferredSize(new java.awt.Dimension(60, 20));
+        ASreportnum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ASreportnumActionPerformed(evt);
+            }
+        });
+        ASreportnum.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ASreportnumKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ASreportnumKeyTyped(evt);
+            }
+        });
+        jPanel2.add(ASreportnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 190, 30));
+
+        jLabel12.setBackground(new java.awt.Color(10, 46, 54));
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addMedicineIMG/addnewmedicineQuantity.png"))); // NOI18N
+        jLabel12.setText("Quantity");
+        jLabel12.setOpaque(true);
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, 130, 30));
+
+        available.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        available.setPreferredSize(new java.awt.Dimension(60, 20));
+        available.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                availableActionPerformed(evt);
+            }
+        });
+        available.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                availableKeyPressed(evt);
+            }
+        });
+        jPanel2.add(available, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 140, 190, 30));
+        jPanel2.add(ASquantityempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, 190, 10));
+
+        ASquantity.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        ASquantity.setPreferredSize(new java.awt.Dimension(60, 20));
+        ASquantity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ASquantityActionPerformed(evt);
+            }
+        });
+        ASquantity.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ASquantityKeyPressed(evt);
+            }
+        });
+        jPanel2.add(ASquantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 190, 30));
+
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/availablequantity.png"))); // NOI18N
+        jLabel2.setText("Available Quantity");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 130, 30));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 750, 470));
 
         pack();
         setLocationRelativeTo(null);
@@ -345,8 +542,11 @@ public class StudentMedicineADD extends javax.swing.JFrame {
     }//GEN-LAST:event_ASmedicineActionPerformed
 
     private void ASaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ASaddActionPerformed
-      if (ASstudID.getText().trim().isEmpty() && ASfirst.getText().trim().isEmpty() && ASlast.getText().trim().isEmpty() 
-       && AStime.getText().trim().isEmpty() && ASmedicine.getText().trim().isEmpty() && ASdescription.getText().trim().isEmpty()) 
+       float availables = Float.parseFloat(available.getText());
+        
+       if (ASstudID.getText().trim().isEmpty() && ASfirst.getText().trim().isEmpty() && ASlast.getText().trim().isEmpty() 
+       && AStime.getText().trim().isEmpty() && ASmedicine.getText().trim().isEmpty() && ASdescription.getText().trim().isEmpty()
+               && ASquantity.getText().trim().isEmpty()) 
 //      && AStime.getDate().toString().isEmpty()
        {
             ASstudIDempty.setText("Student ID is empty");
@@ -356,6 +556,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
             AStimeempty.setText("time number is empty");
             ASmedicineempty.setText("medicine admit is empty");
             ASdescriptionempty.setText("description number is empty");
+            ASquantityempty.setText("Quantity  is empty");
             
              } else if (ASstudID.getText().trim().isEmpty()) {
                ASstudIDempty.setText("student number  is empty");
@@ -371,19 +572,25 @@ public class StudentMedicineADD extends javax.swing.JFrame {
                  ASmedicineempty.setText("medicine is empty");
              } else if (ASdescription.getText().trim().isEmpty()) {
                  ASdescriptionempty.setText("description is empty");
+             } else if (ASquantity.getText().trim().isEmpty()) {
+                 ASquantity.setText("Quantity is empty");
+             }   else if (Float.parseFloat(ASquantity.getText()) > availables) {
+            JOptionPane.showMessageDialog(rootPane, "Out of stocks!");    
             }else{
-             String sql = "Insert into clinicmanagement.studentmedicine (studentid, firstname, lastname, date, time, medicine, description) values (?,?,?,?,?,?,?)";
+             String sql = "Insert into clinicmanagement.studentmedicine (studreportno, studentid, firstname, lastname, date, time, medicine, description,quantity) values (?,?,?,?,?,?,?,?,?)";
         try{
               pst = conn.prepareStatement(sql);
+              Float a = Float.parseFloat(ASquantity.getText());
        
-                    
-               pst.setInt(1, Integer.parseInt(ASstudID.getText()));
-               pst.setString(2, ASfirst.getText());
-               pst.setString(3, ASlast.getText());
-               pst.setString(4, ((JTextField)ASdate.getDateEditor().getUiComponent()).getText());
-               pst.setInt(5, Integer.parseInt(AStime.getText()));
-               pst.setString(6, ASmedicine.getText());
-               pst.setString(7, ASdescription.getText());
+               pst.setInt(1, Integer.parseInt(ASreportnum.getText()));     
+               pst.setInt(2, Integer.parseInt(ASstudID.getText()));
+               pst.setString(3, ASfirst.getText());
+               pst.setString(4, ASlast.getText());
+               pst.setString(5, ((JTextField)ASdate.getDateEditor().getUiComponent()).getText());
+               pst.setInt(6, Integer.parseInt(AStime.getText()));
+               pst.setString(7, ASmedicine.getText());
+               pst.setString(8, ASdescription.getText());
+               pst.setFloat(9, a);
                pst.execute();
 
            
@@ -392,13 +599,52 @@ public class StudentMedicineADD extends javax.swing.JFrame {
                setVisible(false);
                 
                
+                }
+                catch(Exception e)
+                {
+               JOptionPane.showMessageDialog(null, "Invalid Input");
        }
-       catch(Exception e)
-       {
-    JOptionPane.showMessageDialog(null, "studentID is already use");
-       }     
-             }
-    
+        
+        //quantity stock
+        PreparedStatement ps;
+               String quantity_Out = ASquantity.getText();
+               String id_Product_In = ASmedicine.getText();
+        String update_In = "update clinicmanagement.inventory set quantity=quantity-"+quantity_Out+" where medicinename='"+id_Product_In+"';";
+            try {
+                ps = conn.prepareStatement(update_In);       
+                ps.executeUpdate(update_In);
+                updateTable();
+                 } catch (Exception e) {
+
+            }
+            
+            //quantity zero not available
+              String quantityzero = "update clinicmanagement.inventory set status= 'Not available' where quantity<=0";
+            try {
+                ps = conn.prepareStatement(quantityzero);
+                  ps.executeUpdate(quantityzero);
+                  updateTable();
+
+              // JOptionPane.showMessageDialog(rootPane, "Stock Out Successfully!");
+
+            } catch (Exception e) {
+
+            }
+             String deletedzero = "delete from clinicmanagement.inventory where quantity=0 output deleted.* into clinicmanagement.zeroquantity ";
+            try {
+                ps = conn.prepareStatement(deletedzero);
+                  ps.executeUpdate(deletedzero);
+                  updateTable();
+
+              //  JOptionPane.showMessageDialog(rootPane, "Stock Out Successfully!");
+
+            } catch (Exception e) {
+
+            }JOptionPane.showMessageDialog(null, "Successfully Added");
+                new StudentMedicine().setVisible(true);
+                setVisible(false);  
+            }
+      
          
            
     }//GEN-LAST:event_ASaddActionPerformed
@@ -422,6 +668,18 @@ public class StudentMedicineADD extends javax.swing.JFrame {
     }//GEN-LAST:event_ASfirstKeyPressed
 
     private void ASlastKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ASlastKeyPressed
+    char c = evt.getKeyChar();
+
+    if (Character.isLetter(c) || Character.isWhitespace(c)  || Character.isISOControl(c) || (c==KeyEvent.VK_CAPS_LOCK || (c==KeyEvent.VK_SHIFT))){
+        ASlast.setEditable(true);
+        
+    }else
+    {
+        ASlast.setEditable(false);
+        getToolkit().beep();
+        
+            }
+        
         ASlastempty.setText("");
     }//GEN-LAST:event_ASlastKeyPressed
 
@@ -436,6 +694,122 @@ public class StudentMedicineADD extends javax.swing.JFrame {
     private void ASdescriptionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ASdescriptionKeyPressed
         ASdescriptionempty.setText("");
     }//GEN-LAST:event_ASdescriptionKeyPressed
+
+    private void ASstudIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ASstudIDKeyTyped
+        char c = evt.getKeyChar();
+
+     if(!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE || c==KeyEvent.VK_MINUS)){
+         getToolkit().beep();
+        JOptionPane.showMessageDialog(null, "Please type only student number");
+         evt.consume();
+         
+     
+    }                      
+    }//GEN-LAST:event_ASstudIDKeyTyped
+
+    private void ASfirstKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ASfirstKeyReleased
+      char c = evt.getKeyChar();
+
+    if(Character.isLetter(c) ||(c==KeyEvent.VK_BACK_SPACE) ||(c==KeyEvent.VK_SPACE) || c==KeyEvent.VK_DELETE || c==KeyEvent.VK_ENTER || c==KeyEvent.VK_MINUS){
+    }else if(evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK ){
+    }
+    else if(evt.getKeyCode() == KeyEvent.VK_SHIFT ){    
+       ASfirst.setEditable(true);
+    }else {
+         JOptionPane.showMessageDialog(null, "Invalid Character.");
+        ASfirst.setText("");
+    }
+    }//GEN-LAST:event_ASfirstKeyReleased
+
+    private void ASlastKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ASlastKeyReleased
+      
+    }//GEN-LAST:event_ASlastKeyReleased
+
+    private void AStimeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AStimeKeyTyped
+        char c = evt.getKeyChar();
+
+     if(!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE)){
+         getToolkit().beep();
+         evt.consume();      
+          JOptionPane.showMessageDialog(null, "Please type only time ");
+    }          
+    }//GEN-LAST:event_AStimeKeyTyped
+
+    private void ASmedicineKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ASmedicineKeyReleased
+        char c = evt.getKeyChar();
+
+    if(Character.isLetter(c) ||(c==KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE || c==KeyEvent.VK_ENTER || c==KeyEvent.VK_MINUS){
+    }else if(evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK ){
+    }
+    else if(evt.getKeyCode() == KeyEvent.VK_SHIFT ){    
+       ASmedicine.setEditable(true);
+    }else {
+         JOptionPane.showMessageDialog(null, "Invalid Character.");
+        ASmedicine.setText("");
+    }
+    }//GEN-LAST:event_ASmedicineKeyReleased
+
+    private void ASreportnumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ASreportnumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ASreportnumActionPerformed
+
+    private void ASreportnumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ASreportnumKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ASreportnumKeyPressed
+
+    private void ASreportnumKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ASreportnumKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ASreportnumKeyTyped
+
+    private void availableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_availableActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_availableActionPerformed
+
+    private void availableKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_availableKeyPressed
+        ASquantityempty.setText("");
+    }//GEN-LAST:event_availableKeyPressed
+
+    private void ASquantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ASquantityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ASquantityActionPerformed
+
+    private void ASquantityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ASquantityKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ASquantityKeyPressed
+
+    private void LMtableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LMtableMouseClicked
+       try 
+        {
+             int qnty=0;
+            int row = LMtable.getSelectedRow();
+            String Table_click = (LMtable.getModel().getValueAt(row, 0).toString());
+            String sql = "select * from clinicmanagement.inventory where id='"+Table_click+"' ";
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            if(rs.next())
+            {
+                String add1 = rs.getString("medicinename");
+                ASmedicine.setText(add1);
+                 int add2 = Integer.parseInt(rs.getString("quantity"));
+                available.setText(Integer.toString(add2));
+                }
+        }
+        catch (Exception e) 
+        {
+            JOptionPane.showMessageDialog(null, e);
+        }
+         
+        finally
+        {
+            try {
+                rs.close();
+                pst.close();
+            } 
+            catch (Exception e) 
+            {
+            }
+        }
+    }//GEN-LAST:event_LMtableMouseClicked
 
     /**
      * @param args the command line arguments
@@ -485,15 +859,24 @@ public class StudentMedicineADD extends javax.swing.JFrame {
     private javax.swing.JLabel ASlastempty;
     private javax.swing.JTextField ASmedicine;
     private javax.swing.JLabel ASmedicineempty;
+    private javax.swing.JTextField ASquantity;
+    private javax.swing.JLabel ASquantityempty;
+    private javax.swing.JTextField ASreportnum;
     private javax.swing.JTextField ASstudID;
     private javax.swing.JLabel ASstudIDempty;
     private javax.swing.JTextField AStime;
     private javax.swing.JLabel AStimeempty;
+    public static final javax.swing.JTable LMtable = new javax.swing.JTable();
+    private javax.swing.JTextField available;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -502,5 +885,6 @@ public class StudentMedicineADD extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

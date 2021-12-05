@@ -6,6 +6,7 @@
 package Clinic;
 
 import static Clinic.editPatients.tmp;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -143,6 +144,9 @@ public class updateMedicine extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 UMmedicineKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                UMmedicineKeyReleased(evt);
+            }
         });
         jPanel2.add(UMmedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 190, 30));
 
@@ -157,6 +161,9 @@ public class updateMedicine extends javax.swing.JFrame {
         UMquantity.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 UMquantityKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                UMquantityKeyTyped(evt);
             }
         });
         jPanel2.add(UMquantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 190, 30));
@@ -288,7 +295,9 @@ public class updateMedicine extends javax.swing.JFrame {
     }//GEN-LAST:event_UMquantityActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+          Inventory viewP = new Inventory();
+         viewP.setVisible(true);
+         setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -376,6 +385,32 @@ public class updateMedicine extends javax.swing.JFrame {
     private void UMidmedicineKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UMidmedicineKeyPressed
         UMmedicineempty.setText("");
     }//GEN-LAST:event_UMidmedicineKeyPressed
+
+    private void UMmedicineKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UMmedicineKeyReleased
+         char c = evt.getKeyChar();
+
+    if(Character.isLetter(c) ||(c==KeyEvent.VK_BACK_SPACE) ||(c==KeyEvent.VK_SPACE) || c==KeyEvent.VK_DELETE || c==KeyEvent.VK_ENTER || c==KeyEvent.VK_MINUS){
+    }else if(evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK ){
+    }
+    else if(evt.getKeyCode() == KeyEvent.VK_SHIFT ){    
+       UMmedicine.setEditable(true);
+    }else {
+         JOptionPane.showMessageDialog(null, "Invalid Character.");
+        UMmedicine.setText("");
+    }
+    }//GEN-LAST:event_UMmedicineKeyReleased
+
+    private void UMquantityKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UMquantityKeyTyped
+         char c = evt.getKeyChar();
+
+     if(!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE )){
+         getToolkit().beep();
+        JOptionPane.showMessageDialog(null, "Please enter quantity");
+         evt.consume();
+         
+     
+    }           
+    }//GEN-LAST:event_UMquantityKeyTyped
 
     /**
      * @param args the command line arguments

@@ -378,7 +378,7 @@ public class StudentMedicine extends javax.swing.JFrame {
             String tmp = (SMtable.getValueAt(selectedRow, 0).toString());
             int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this record?", "Delete Record", JOptionPane.YES_NO_OPTION);
             if (option == JOptionPane.YES_OPTION) {
-                String sql = "Delete from clinicmanagement.patients where studentid = ?";
+                String sql = "Delete from clinicmanagement.studentmedicine where studreportno = ?";
                 pst = conn.prepareStatement(sql);
                 pst.setString(1, tmp);
                 pst.execute();
@@ -445,8 +445,12 @@ public class StudentMedicine extends javax.swing.JFrame {
     }//GEN-LAST:event_LMsearchActionPerformed
 
     private void LMrefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LMrefreshActionPerformed
-        updateTable();
-        LMsearch.setText("");                  
+        DefaultTableModel table = (DefaultTableModel) LMtable.getModel();
+   
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
+        LMtable.setRowSorter(tr);
+      
+        LMsearch.setText("");                 
     }//GEN-LAST:event_LMrefreshActionPerformed
 
     private void SMpatientrecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SMpatientrecordActionPerformed
@@ -454,7 +458,11 @@ public class StudentMedicine extends javax.swing.JFrame {
     }//GEN-LAST:event_SMpatientrecordActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        updateTable();
+         DefaultTableModel table = (DefaultTableModel) SMtable.getModel();
+   
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
+        SMtable.setRowSorter(tr);
+      
         SMpatientrecord.setText("");
     }//GEN-LAST:event_jButton11ActionPerformed
 
@@ -467,7 +475,7 @@ public class StudentMedicine extends javax.swing.JFrame {
     }//GEN-LAST:event_SMpatientrecordKeyReleased
 
     private void LMsearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LMsearchKeyReleased
-       DefaultTableModel table = (DefaultTableModel) LMtable.getModel();
+        DefaultTableModel table = (DefaultTableModel) LMtable.getModel();
         String sea = LMsearch.getText();
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
         LMtable.setRowSorter(tr);

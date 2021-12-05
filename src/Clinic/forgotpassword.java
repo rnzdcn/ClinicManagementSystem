@@ -313,7 +313,7 @@ public class forgotpassword extends javax.swing.JFrame {
         } else if (FPsecuritycode.getText().trim().isEmpty()) {
             FPsecurityempty.setText("answer is empty");
         } else {
-             String user = FPusername.getText();
+            String user = FPusername.getText();
             String asl = FPsecuritycode.getText();
             String asllQuery =  "select * from clinicmanagement.admin where username='" + user + "' and code='" + asl + "'";
             try {

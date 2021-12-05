@@ -8,15 +8,21 @@ package Clinic;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 
 /**
  *
@@ -36,8 +42,25 @@ public class addnewPatients extends javax.swing.JFrame {
 
         conn = connection.ConnecrDb();
         ANPstudId.requestFocus();
+        showTime();
+        currentDate();
     }
-   
+     void showTime() {
+        new Timer(0, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Date d = new Date();
+                SimpleDateFormat f = new SimpleDateFormat("hh:mm:ss a");
+                ANPtime.setText(f.format(d));
+            }
+        }).start();
+    }
+     public void currentDate( ){
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-d");
+        Date d = new Date();
+        ANPdates.setText(dateFormat.format(d));
+        System.out.println(ANPdates.getText());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -86,6 +109,7 @@ public class addnewPatients extends javax.swing.JFrame {
         ANPtimeempty = new javax.swing.JLabel();
         ANPbedempty = new javax.swing.JLabel();
         ANPsickempty = new javax.swing.JLabel();
+        ANPdates = new javax.swing.JTextField();
 
         jLabel4.setBackground(new java.awt.Color(204, 255, 255));
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -382,6 +406,7 @@ public class addnewPatients extends javax.swing.JFrame {
         jLabel14.setOpaque(true);
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, 130, 30));
 
+        ANPtime.setEditable(false);
         ANPtime.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         ANPtime.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         ANPtime.setPreferredSize(new java.awt.Dimension(60, 20));
@@ -521,6 +546,9 @@ public class addnewPatients extends javax.swing.JFrame {
         ANPsickempty.setForeground(new java.awt.Color(237, 74, 65));
         jPanel2.add(ANPsickempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 260, 210, 20));
 
+        ANPdates.setEditable(false);
+        jPanel2.add(ANPdates, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 0, 210, 30));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 750, 400));
 
         pack();
@@ -617,10 +645,12 @@ public class addnewPatients extends javax.swing.JFrame {
                 pst.setString(4, ANPmiddle.getText());
                 pst.setInt(5, Integer.parseInt(ANPage.getText()));
                 pst.setString(6, ANPgender.getSelectedItem().toString());
-                pst.setString(7, ((JTextField) ANPdate.getDateEditor().getUiComponent()).getText());
+        //      pst.setString(7, ((JTextField) ANPdate.getDateEditor().getUiComponent()).getText());
+                pst.setString(7, ANPdates.getText());
                 pst.setString(8, ANPcontactnumber.getText());
 //              pst.setInt(8, Integer.parseInt(ANPcontactnumber.getText()));
-                pst.setInt(9, Integer.parseInt(ANPtime.getText()));
+//              pst.setInt(9, Integer.parseInt(ANPtime.getText()));
+                pst.setString(9, ANPtime.getText());
                 pst.setInt(10, Integer.parseInt(ANPbednumber.getText()));
                 pst.setString(11, ANPsick.getText());
                 pst.setString(12, ANPguardian.getText());
@@ -1021,6 +1051,7 @@ public class addnewPatients extends javax.swing.JFrame {
     private javax.swing.JLabel ANPcontactempty;
     private javax.swing.JTextField ANPcontactnumber;
     private com.toedter.calendar.JDateChooser ANPdate;
+    private javax.swing.JTextField ANPdates;
     private javax.swing.JTextField ANPfirst;
     private javax.swing.JLabel ANPfirstempty;
     private javax.swing.JComboBox ANPgender;

@@ -6,14 +6,18 @@
 package Clinic;
 
 import static Clinic.viewpatientsInformation.tmp;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 
 /**
  *
@@ -25,7 +29,7 @@ public class editPatients extends javax.swing.JFrame {
     ResultSet rs = null;
     PreparedStatement pst = null;
     static String tmp;
-
+    
     /**
      * Creates new form editPatients
      */
@@ -34,7 +38,7 @@ public class editPatients extends javax.swing.JFrame {
         conn = connection.ConnecrDb();
         this.setLocationRelativeTo(null);
         String sql5 = "select * from clinicmanagement.patients where studentid =?";
-
+        
         try {
             pst = conn.prepareStatement(sql5);
             pst.setString(1, tmp);
@@ -54,16 +58,16 @@ public class editPatients extends javax.swing.JFrame {
                 editpatientgender.setSelectedItem(edit6);
                 Date edit7 = rs.getDate("date");
                 editpatientdate.setDate(edit7);
-                int edit8 = Integer.parseInt (rs.getString("contactnumber"));
-                editpatientcontact.setText(Integer.toString(edit8));
-                int edit9 = Integer.parseInt (rs.getString("time"));
-                editpatienttime.setText(Integer.toString(edit9));
+                String edit8= rs.getString("contactnumber");
+                editpatientcontact.setText(edit8);
+                String edit9 = rs.getString("time");
+                editpatienttime.setText(edit9);
                 int edit10 = Integer.parseInt (rs.getString("bednumber"));
                 editpatientbed.setText(Integer.toString(edit10));
                 String edit11 = rs.getString("sick");
                 editpatientsick.setText(edit11);
-                int edit12 = Integer.parseInt (rs.getString("guardiannumber"));
-                editpatientguardian.setText(Integer.toString(edit12));
+                String edit12= rs.getString("guardiannumber");
+                editpatientguardian.setText(edit12);
 
             }
         } catch (Exception e) {
@@ -79,7 +83,7 @@ public class editPatients extends javax.swing.JFrame {
         }
 
     }
-
+    
     public static void setRow(String row) {
         tmp = row;
     }
@@ -588,7 +592,7 @@ public class editPatients extends javax.swing.JFrame {
             try {
                 // kulang pa sa tmp yung sa where para maedit kahit yung first column
 
-                sql = "update clinicmanagement.patients  set studentid=?,   firstname=?, lastname=?,middlename=?,age=? ,gender=? , date=? ,contactnumber=? ,time=? ,bednumber=?, sick=? ,guardiannumber=? where studentid=' " + tmp + " ' ";
+                sql = "update clinicmanagement.patients  set studentid=?, firstname=?, lastname=?,middlename=?,age=? ,gender=? , date=? ,contactnumber=? ,time=? ,bednumber=?, sick=? ,guardiannumber=? where studentid='"+tmp+"'";
                 pst = conn.prepareStatement(sql);
 
                 pst.setInt(1, Integer.parseInt(editstudID.getText()));
@@ -598,13 +602,14 @@ public class editPatients extends javax.swing.JFrame {
                 pst.setInt(5, Integer.parseInt(editpatientage.getText()));
                 pst.setString(6, editpatientgender.getSelectedItem().toString());
                 pst.setString(7, ((JTextField) editpatientdate.getDateEditor().getUiComponent()).getText());
-                 pst.setString(8, editpatientcontact.getText());
-//                pst.setInt(8, Integer.parseInt(editpatientcontact.getText()));
-                pst.setInt(9, Integer.parseInt(editpatienttime.getText()));
+                pst.setString(8, editpatientcontact.getText());
+ //             pst.setInt(8, Integer.parseInt(editpatientcontact.getText()));
+ //             pst.setInt(9, Integer.parseInt(editpatienttime.getText()));
+                pst.setString(9, editpatienttime.getText());
                 pst.setInt(10, Integer.parseInt(editpatientbed.getText()));
                 pst.setString(11, editpatientsick.getText());
                 pst.setString(12, editpatientguardian.getText());
-//                pst.setInt(12, Integer.parseInt(editpatientguardian.getText()));
+//              pst.setInt(12, Integer.parseInt(editpatientguardian.getText()));
 
                 pst.executeUpdate();
 

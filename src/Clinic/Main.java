@@ -58,7 +58,9 @@ public class Main extends javax.swing.JFrame {
     }
      public void updateTable() {
         try {
-            String sql = "select * from clinicmanagement.patients";
+           // String sql = "select * from clinicmanagement.patients";
+             String sql = "select studentid as 'Student ID', firstname as 'Firstname', lastname as 'Lastname', middlename as 'Middle name', age as 'Age', gender as 'Gender', date as 'Date', contactnumber as 'Contact No.', "
+                    + "time as 'Time Admit', bednumber as 'Bed No.', sick as 'Sick', guardiannumber as 'Guardian Contact No.' from clinicmanagement.patients";
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
             maintable.setModel(DbUtils.resultSetToTableModel(rs));

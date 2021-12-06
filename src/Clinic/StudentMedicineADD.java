@@ -654,7 +654,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void AScancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AScancelActionPerformed
-        Menu c = new Menu();
+        StudentMedicine c = new StudentMedicine();
         c.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_AScancelActionPerformed

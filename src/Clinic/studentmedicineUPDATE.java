@@ -31,7 +31,7 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
         initComponents();
         conn = connection.ConnecrDb();
         this.setLocationRelativeTo(null);
-        String sqlUS = "select * from clinicmanagement.studentmedicine where studentid =?";
+        String sqlUS = "select * from clinicmanagement.studentmedicine where studreportno=?";
         try{
             pst = conn.prepareStatement(sqlUS);
             pst.setString(1,tmp);
@@ -51,7 +51,10 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
                 USmedicine.setText(edit6);                     
                 String edit7 = rs.getString("description");
                 USdescription.setText(edit7);
-               
+                int edit8 = Integer.parseInt (rs.getString("quantity"));
+                USquantity.setText(Integer.toString(edit8));
+                int edit9 = Integer.parseInt (rs.getString("studreportno"));
+                USreportnum.setText(Integer.toString(edit9));
             }
        }
         catch(Exception e){
@@ -114,6 +117,12 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
         USdateempty = new javax.swing.JLabel();
         UStimeempty = new javax.swing.JLabel();
         USmedicineempty = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        USreportnum = new javax.swing.JTextField();
+        USquantity = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        ASquantityempty = new javax.swing.JLabel();
+        ASmedicineempty = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -153,7 +162,7 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewSTUDID.png"))); // NOI18N
         jLabel5.setText("Student ID");
         jLabel5.setOpaque(true);
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 130, 30));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 130, 30));
 
         UStime.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         UStime.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -168,7 +177,7 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
                 UStimeKeyTyped(evt);
             }
         });
-        jPanel2.add(UStime, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 190, 30));
+        jPanel2.add(UStime, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 190, 30));
 
         jLabel6.setBackground(new java.awt.Color(10, 46, 54));
         jLabel6.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -176,7 +185,7 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewFIRST.png"))); // NOI18N
         jLabel6.setText("First Name");
         jLabel6.setOpaque(true);
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 130, 30));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 130, 30));
 
         USfirst.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         USfirst.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -191,7 +200,7 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
                 USfirstKeyReleased(evt);
             }
         });
-        jPanel2.add(USfirst, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 190, 30));
+        jPanel2.add(USfirst, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 190, 30));
 
         jLabel7.setBackground(new java.awt.Color(10, 46, 54));
         jLabel7.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -199,7 +208,7 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewLAST.png"))); // NOI18N
         jLabel7.setText("Last Name");
         jLabel7.setOpaque(true);
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 130, 30));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 130, 30));
 
         jLabel14.setBackground(new java.awt.Color(10, 46, 54));
         jLabel14.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -207,7 +216,7 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewTIME.png"))); // NOI18N
         jLabel14.setText("Time ");
         jLabel14.setOpaque(true);
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 130, 30));
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 130, 30));
 
         jLabel16.setBackground(new java.awt.Color(10, 46, 54));
         jLabel16.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -215,7 +224,7 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewCALENDAR.png"))); // NOI18N
         jLabel16.setText("Date ");
         jLabel16.setOpaque(true);
-        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 130, 30));
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 130, 30));
 
         USstudID.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         USstudID.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -230,7 +239,7 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
                 USstudIDKeyTyped(evt);
             }
         });
-        jPanel2.add(USstudID, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 190, 30));
+        jPanel2.add(USstudID, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 190, 30));
 
         USlast.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         USlast.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -245,7 +254,7 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
                 USlastKeyReleased(evt);
             }
         });
-        jPanel2.add(USlast, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 190, 30));
+        jPanel2.add(USlast, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 190, 30));
 
         USmedicine.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         USmedicine.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -260,7 +269,7 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
                 USmedicineKeyReleased(evt);
             }
         });
-        jPanel2.add(USmedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, 190, 30));
+        jPanel2.add(USmedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, 190, 30));
 
         jLabel8.setBackground(new java.awt.Color(10, 46, 54));
         jLabel8.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -268,7 +277,7 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addMedicineIMG/addnewMedicinename.png"))); // NOI18N
         jLabel8.setText("Medicine Name");
         jLabel8.setOpaque(true);
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, 130, 30));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 130, 30));
 
         jButton4.setBackground(new java.awt.Color(87, 191, 109));
         jButton4.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -289,7 +298,7 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewSTUDID.png"))); // NOI18N
         jLabel10.setText("Description");
         jLabel10.setOpaque(true);
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 130, 30));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 130, 30));
 
         USdescription.setColumns(5);
         USdescription.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
@@ -297,7 +306,7 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
         USdescription.setRows(5);
         jScrollPane1.setViewportView(USdescription);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, 190, -1));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, 190, -1));
 
         jButton27.setBackground(new java.awt.Color(237, 74, 65));
         jButton27.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -314,16 +323,16 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
         jPanel2.add(jButton27, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 120, 40));
 
         USdate.setDateFormatString("yyyy-MM-d");
-        jPanel2.add(USdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 190, 30));
-        jPanel2.add(USdescriptionempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, 190, 10));
+        jPanel2.add(USdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 190, 30));
+        jPanel2.add(USdescriptionempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, 190, 10));
 
         USstudIDempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
         USstudIDempty.setForeground(new java.awt.Color(237, 74, 65));
-        jPanel2.add(USstudIDempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 190, 20));
+        jPanel2.add(USstudIDempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 190, 20));
 
         USfirstempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
         USfirstempty.setForeground(new java.awt.Color(237, 74, 65));
-        jPanel2.add(USfirstempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 190, 20));
+        jPanel2.add(USfirstempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 190, 20));
 
         USlastempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
         USlastempty.setForeground(new java.awt.Color(237, 74, 65));
@@ -332,19 +341,74 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
                 USlastemptyKeyReleased(evt);
             }
         });
-        jPanel2.add(USlastempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 190, 20));
+        jPanel2.add(USlastempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 190, 20));
 
         USdateempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
         USdateempty.setForeground(new java.awt.Color(237, 74, 65));
-        jPanel2.add(USdateempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 190, 20));
+        jPanel2.add(USdateempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 190, 20));
 
         UStimeempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
         UStimeempty.setForeground(new java.awt.Color(237, 74, 65));
-        jPanel2.add(UStimeempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 190, 20));
+        jPanel2.add(UStimeempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 50, 190, 20));
 
         USmedicineempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
         USmedicineempty.setForeground(new java.awt.Color(237, 74, 65));
-        jPanel2.add(USmedicineempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, 190, 20));
+        jPanel2.add(USmedicineempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 100, 190, 20));
+
+        jLabel11.setBackground(new java.awt.Color(10, 46, 54));
+        jLabel11.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewSTUDID.png"))); // NOI18N
+        jLabel11.setText("Report #");
+        jLabel11.setOpaque(true);
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 130, 30));
+
+        USreportnum.setEditable(false);
+        USreportnum.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        USreportnum.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        USreportnum.setPreferredSize(new java.awt.Dimension(60, 20));
+        USreportnum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                USreportnumActionPerformed(evt);
+            }
+        });
+        USreportnum.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                USreportnumKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                USreportnumKeyTyped(evt);
+            }
+        });
+        jPanel2.add(USreportnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 190, 30));
+
+        USquantity.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        USquantity.setPreferredSize(new java.awt.Dimension(60, 20));
+        USquantity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                USquantityActionPerformed(evt);
+            }
+        });
+        USquantity.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                USquantityKeyPressed(evt);
+            }
+        });
+        jPanel2.add(USquantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 120, 190, 30));
+
+        jLabel12.setBackground(new java.awt.Color(10, 46, 54));
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addMedicineIMG/addnewmedicineQuantity.png"))); // NOI18N
+        jLabel12.setText("Quantity");
+        jLabel12.setOpaque(true);
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 130, 30));
+        jPanel2.add(ASquantityempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 240, 190, 10));
+
+        ASmedicineempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
+        ASmedicineempty.setForeground(new java.awt.Color(237, 74, 65));
+        jPanel2.add(ASmedicineempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, 190, 20));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 750, 400));
 
@@ -377,48 +441,51 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
     }//GEN-LAST:event_USmedicineActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-       if (USstudID.getText().trim().isEmpty() && USfirst.getText().trim().isEmpty() && USlast.getText().trim().isEmpty() 
+      if (USstudID.getText().trim().isEmpty() && USfirst.getText().trim().isEmpty() && USlast.getText().trim().isEmpty() 
          && UStime.getText().trim().isEmpty() && USmedicine.getText().trim().isEmpty() && USdescription.getText().trim().isEmpty()) 
 //        && AStime.getDate().toString().isEmpty()
-       {
+            {
             USstudIDempty.setText("Student ID is empty");
             USfirstempty.setText("first name is empty");
             USlastempty.setText("last name is empty");
-           USdateempty.setText("date is empty");
+            USdateempty.setText("date is empty");
             UStimeempty.setText("time number is empty");
             USmedicineempty.setText("medicine admit is empty");
             USdescriptionempty.setText("description number is empty");
             
-             } else if (USstudID.getText().trim().isEmpty()) {
+            } else if (USstudID.getText().trim().isEmpty()) {
                USstudIDempty.setText("student number  is empty");
             } else if (USfirst.getText().trim().isEmpty()) {
                USstudIDempty.setText("first name is empty");
             } else if (USlast.getText().trim().isEmpty()) {
-                USlastempty.setText("last name is empty");
-         } else if (USdate.getDate().toString().isEmpty()) {
-              USdateempty.setText("middle name is empty");
-             } else if (UStime.getText().trim().isEmpty()) {
-                 UStimeempty.setText("tine is empty");
-             } else if (USmedicine.getText().trim().isEmpty()) {
-                 USmedicineempty.setText("medicine is empty");
-             } else if (USdescription.getText().trim().isEmpty()) {
-                 USdescriptionempty.setText("description admit is empty");
+               USlastempty.setText("last name is empty");
+            } else if (USdate.getDate().toString().isEmpty()) {
+               USdateempty.setText("middle name is empty");
+            } else if (UStime.getText().trim().isEmpty()) {
+               UStimeempty.setText("tine is empty");
+            } else if (USmedicine.getText().trim().isEmpty()) {
+               USmedicineempty.setText("medicine is empty");
+            } else if (USdescription.getText().trim().isEmpty()) {
+               USdescriptionempty.setText("description admit is empty");
             }else{
             String sql=null;
         PreparedStatement pst=null;
 
          try{
              //di pa nababago yung sa first column edit pero tmp lang ilalagay
-            sql = "update clinicmanagement.studentmedicine  set  studentid=?, firstname=?, lastname=? ,date=?,time=? ,medicine=? , description=? where studentid=' "+tmp+" ' ";
+            sql = "update clinicmanagement.studentmedicine  set  studentid=?, firstname=?, lastname=? ,date=?,time=? ,medicine=? , description=?, quantity=? where studreportno=?";
             pst = conn.prepareStatement(sql);
-       
-                 pst.setInt(1, Integer.parseInt(USstudID.getText()));     
+                
+               
+               pst.setInt(1, Integer.parseInt(USstudID.getText()));     
                pst.setString(2, USfirst.getText());
                pst.setString(3, USlast.getText());
                pst.setString(4, ((JTextField)USdate.getDateEditor().getUiComponent()).getText());
                pst.setInt(5, Integer.parseInt(UStime.getText()));
                pst.setString(6, USmedicine.getText()); 
-               pst.setString(7, USdescription.getText()); 
+               pst.setString(7, USdescription.getText());
+               pst.setInt(8, Integer.parseInt(USquantity.getText()));
+               pst.setInt(9, Integer.parseInt(USreportnum.getText()));
              
                pst.executeUpdate();
            
@@ -484,10 +551,6 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_USlastKeyReleased
 
-    private void USlastemptyKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_USlastemptyKeyReleased
-    
-    }//GEN-LAST:event_USlastemptyKeyReleased
-
     private void UStimeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UStimeKeyTyped
          char c = evt.getKeyChar();
 
@@ -513,6 +576,30 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
         USmedicine.setText("");
     }
     }//GEN-LAST:event_USmedicineKeyReleased
+
+    private void USquantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_USquantityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_USquantityActionPerformed
+
+    private void USquantityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_USquantityKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_USquantityKeyPressed
+
+    private void USreportnumKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_USreportnumKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_USreportnumKeyTyped
+
+    private void USreportnumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_USreportnumKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_USreportnumKeyPressed
+
+    private void USreportnumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_USreportnumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_USreportnumActionPerformed
+
+    private void USlastemptyKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_USlastemptyKeyReleased
+
+    }//GEN-LAST:event_USlastemptyKeyReleased
 
     /**
      * @param args the command line arguments
@@ -550,6 +637,8 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ASmedicineempty;
+    private javax.swing.JLabel ASquantityempty;
     private com.toedter.calendar.JDateChooser USdate;
     private javax.swing.JLabel USdateempty;
     private javax.swing.JTextArea USdescription;
@@ -560,6 +649,8 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
     private javax.swing.JLabel USlastempty;
     private javax.swing.JTextField USmedicine;
     private javax.swing.JLabel USmedicineempty;
+    private javax.swing.JTextField USquantity;
+    private javax.swing.JTextField USreportnum;
     private javax.swing.JTextField USstudID;
     private javax.swing.JLabel USstudIDempty;
     private javax.swing.JTextField UStime;
@@ -569,6 +660,8 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel5;

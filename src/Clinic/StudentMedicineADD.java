@@ -5,10 +5,12 @@
  */
 package Clinic;
 
+import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -148,10 +150,11 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         ASreportnum = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        available = new javax.swing.JTextField();
+        ASavailable = new javax.swing.JTextField();
         ASquantityempty = new javax.swing.JLabel();
         ASquantity = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        availableempty = new javax.swing.JLabel();
 
         jLabel9.setBackground(new java.awt.Color(204, 255, 255));
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -480,20 +483,23 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         jLabel12.setOpaque(true);
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, 130, 30));
 
-        available.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        available.setPreferredSize(new java.awt.Dimension(60, 20));
-        available.addActionListener(new java.awt.event.ActionListener() {
+        ASavailable.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        ASavailable.setPreferredSize(new java.awt.Dimension(60, 20));
+        ASavailable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                availableActionPerformed(evt);
+                ASavailableActionPerformed(evt);
             }
         });
-        available.addKeyListener(new java.awt.event.KeyAdapter() {
+        ASavailable.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                availableKeyPressed(evt);
+                ASavailableKeyPressed(evt);
             }
         });
-        jPanel2.add(available, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 140, 190, 30));
-        jPanel2.add(ASquantityempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, 190, 10));
+        jPanel2.add(ASavailable, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 140, 190, 30));
+
+        ASquantityempty.setFont(new java.awt.Font("Tahoma", 2, 10)); // NOI18N
+        ASquantityempty.setForeground(new java.awt.Color(237, 74, 65));
+        jPanel2.add(ASquantityempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, 190, 20));
 
         ASquantity.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         ASquantity.setPreferredSize(new java.awt.Dimension(60, 20));
@@ -514,6 +520,10 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/availablequantity.png"))); // NOI18N
         jLabel2.setText("Available Quantity");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 130, 30));
+
+        availableempty.setFont(new java.awt.Font("Tahoma", 2, 10)); // NOI18N
+        availableempty.setForeground(new java.awt.Color(237, 74, 65));
+        jPanel2.add(availableempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 190, 20));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 750, 470));
 
@@ -542,41 +552,58 @@ public class StudentMedicineADD extends javax.swing.JFrame {
     }//GEN-LAST:event_ASmedicineActionPerformed
 
     private void ASaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ASaddActionPerformed
-       float availables = Float.parseFloat(available.getText());
-        
-       if (ASstudID.getText().trim().isEmpty() && ASfirst.getText().trim().isEmpty() && ASlast.getText().trim().isEmpty() 
+        //error ni run na  empty lahat dahil sa float availables
+     Float availables = Float.parseFloat(ASavailable.getText());
+            if(availables.toString().trim().isEmpty() ){         
+           
+       if 
+        ( ASstudID.getText().trim().isEmpty() && ASfirst.getText().trim().isEmpty() && ASlast.getText().trim().isEmpty() 
        && AStime.getText().trim().isEmpty() && ASmedicine.getText().trim().isEmpty() && ASdescription.getText().trim().isEmpty()
-               && ASquantity.getText().trim().isEmpty()) 
+       && ASquantity.getText().trim().isEmpty()&& ASavailable.getText().trim().isEmpty()&& ((JTextField)ASdate.getDateEditor().getUiComponent()).getText().isEmpty())      
+           
 //      && AStime.getDate().toString().isEmpty()
-       {
+       { 
+            JOptionPane.showMessageDialog(null, "Enter all details before proceeding");
             ASstudIDempty.setText("Student ID is empty");
             ASfirstempty.setText("first name is empty");
             ASlastempty.setText("last name is empty");
-            //ASdateempty.setText("date is empty");
+            ASdateempty.setText("date is empty");
             AStimeempty.setText("time number is empty");
-            ASmedicineempty.setText("medicine admit is empty");
+            ASmedicineempty.setText("medicine name is empty");
             ASdescriptionempty.setText("description number is empty");
             ASquantityempty.setText("Quantity  is empty");
+            availableempty.setText("Available stock is empty");
             
-             } else if (ASstudID.getText().trim().isEmpty()) {
+            } else if (ASstudID.getText().trim().isEmpty()) {
                ASstudIDempty.setText("student number  is empty");
             } else if (ASfirst.getText().trim().isEmpty()) {
                ASfirstempty.setText("firstname is empty");
             } else if (ASlast.getText().trim().isEmpty()) {
                 ASlastempty.setText("lastname is empty");
+            } else if (((JTextField)ASdate.getDateEditor().getUiComponent()).getText().isEmpty()) {
+                 ASdateempty.setText("Date recieved is empty");
 //            } else if (ASdate.getDate().toString().isEmpty()) {
 //                 ASdateempty.setText("middle name is empty");
-             } else if (AStime.getText().trim().isEmpty()) {
+            } else if (AStime.getText().trim().isEmpty()) {
                  AStimeempty.setText("time is empty");
-             } else if (ASmedicine.getText().trim().isEmpty()) {
+            } else if (ASmedicine.getText().trim().isEmpty()) {
                  ASmedicineempty.setText("medicine is empty");
-             } else if (ASdescription.getText().trim().isEmpty()) {
+            } else if (ASdescription.getText().trim().isEmpty()) {
                  ASdescriptionempty.setText("description is empty");
-             } else if (ASquantity.getText().trim().isEmpty()) {
-                 ASquantity.setText("Quantity is empty");
-             }   else if (Float.parseFloat(ASquantity.getText()) > availables) {
-            JOptionPane.showMessageDialog(rootPane, "Out of stocks!");    
+            } else if (ASquantity.getText().trim().isEmpty()) {
+                 ASquantityempty.setText("Quantity is empty");
+            } else if (ASavailable.getText().trim().isEmpty()) {
+                 availableempty.setText("available is empty");
+//         } else if (availables < 0) {
+//           JOptionPane.showMessageDialog(rootPane, "Out of stocks!");           
+            } else if (Float.parseFloat(ASquantity.getText()) > availables) {
+            JOptionPane.showMessageDialog(rootPane, "Insufficient stocks! unable to add!");
+           
+            
+         
+
             }else{
+                
              String sql = "Insert into clinicmanagement.studentmedicine (studreportno, studentid, firstname, lastname, date, time, medicine, description,quantity) values (?,?,?,?,?,?,?,?,?)";
         try{
               pst = conn.prepareStatement(sql);
@@ -600,7 +627,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
                 
                
                 }
-                catch(Exception e)
+                catch(SQLException | NumberFormatException | HeadlessException e)
                 {
                JOptionPane.showMessageDialog(null, "Invalid Input");
        }
@@ -643,10 +670,10 @@ public class StudentMedicineADD extends javax.swing.JFrame {
             }JOptionPane.showMessageDialog(null, "Successfully Added");
                 new StudentMedicine().setVisible(true);
                 setVisible(false);  
+            
             }
-      
+        }
          
-           
     }//GEN-LAST:event_ASaddActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -761,13 +788,13 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ASreportnumKeyTyped
 
-    private void availableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_availableActionPerformed
+    private void ASavailableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ASavailableActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_availableActionPerformed
+    }//GEN-LAST:event_ASavailableActionPerformed
 
-    private void availableKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_availableKeyPressed
+    private void ASavailableKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ASavailableKeyPressed
         ASquantityempty.setText("");
-    }//GEN-LAST:event_availableKeyPressed
+    }//GEN-LAST:event_ASavailableKeyPressed
 
     private void ASquantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ASquantityActionPerformed
         // TODO add your handling code here:
@@ -791,7 +818,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
                 String add1 = rs.getString("medicinename");
                 ASmedicine.setText(add1);
                  int add2 = Integer.parseInt(rs.getString("quantity"));
-                available.setText(Integer.toString(add2));
+                ASavailable.setText(Integer.toString(add2));
                 }
         }
         catch (Exception e) 
@@ -848,6 +875,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ASadd;
+    private javax.swing.JTextField ASavailable;
     private javax.swing.JButton AScancel;
     private com.toedter.calendar.JDateChooser ASdate;
     private javax.swing.JLabel ASdateempty;
@@ -867,7 +895,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
     private javax.swing.JTextField AStime;
     private javax.swing.JLabel AStimeempty;
     public static final javax.swing.JTable LMtable = new javax.swing.JTable();
-    private javax.swing.JTextField available;
+    private javax.swing.JLabel availableempty;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

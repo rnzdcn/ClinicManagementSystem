@@ -334,6 +334,7 @@ public class updateAdmin extends javax.swing.JDialog {
     private void EAeditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EAeditActionPerformed
         if (EAfirst.getText().trim().isEmpty() && EAlast.getText().trim().isEmpty() && EAuser.getText().trim().isEmpty()   &&  EApassword.getText().trim().isEmpty() && EAconfirm.getText().trim().isEmpty() 
               && EAcode.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Enter all details before proceeding");
             EAfirstempty.setText("fistname is empty");
             EAlastempty.setText("lastname is empty");
             EAuserempty.setText("username is empty");

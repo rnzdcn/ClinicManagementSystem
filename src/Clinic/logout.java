@@ -98,11 +98,13 @@ public class logout extends javax.swing.JFrame {
         signup l = new signup();
         l.setVisible(true);
         setVisible(false);
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         new Main().setVisible(true);
-            setVisible(false);
+        Main l = new Main();
+        l.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

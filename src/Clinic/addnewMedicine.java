@@ -239,7 +239,7 @@ public class addnewMedicine extends javax.swing.JFrame {
 
         AMstatusempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
         AMstatusempty.setForeground(new java.awt.Color(237, 74, 65));
-        jPanel2.add(AMstatusempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 250, 190, 20));
+        jPanel2.add(AMstatusempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, 190, 20));
 
         AMmedicineempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
         AMmedicineempty.setForeground(new java.awt.Color(237, 74, 65));
@@ -253,7 +253,10 @@ public class addnewMedicine extends javax.swing.JFrame {
         AMquantityempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
         AMquantityempty.setForeground(new java.awt.Color(237, 74, 65));
         jPanel2.add(AMquantityempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, 190, 20));
-        jPanel2.add(AMdateEempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, 190, 10));
+
+        AMdateEempty.setFont(new java.awt.Font("Tahoma", 2, 10)); // NOI18N
+        AMdateEempty.setForeground(new java.awt.Color(237, 74, 65));
+        jPanel2.add(AMdateEempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 250, 190, 20));
 
         AMdateRempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
         AMdateRempty.setForeground(new java.awt.Color(237, 74, 65));
@@ -299,15 +302,16 @@ public class addnewMedicine extends javax.swing.JFrame {
     }//GEN-LAST:event_AMquantityActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        if (AMidmedicine.getText().trim().isEmpty() && AMquantity.getText().trim().isEmpty()) 
+        if (AMmedicine.getText().trim().isEmpty() && AMquantity.getText().trim().isEmpty()) 
 //error di makuha yung sa getdate   && AMdateR.getText().trim().isEmpty() && AMdateE.getText().trim().isEmpty()&& AMstatus.getSelectedItem().toString().isEmpty()) 
             
        {
+            JOptionPane.showMessageDialog(null, "Enter all details before proceeding");
             AMmedicineempty.setText("Medicine is empty");
             AMquantityempty.setText("Quanity name is empty");
-//            AMdateRempty.setText("Date Recieved is empty");
-//           AMdateEempty.setText("Date Expired is empty");
-//           AMstatusempty.setText("select status is empty");
+            AMdateRempty.setText("Date Recieved is empty");
+           AMdateEempty.setText("Date Expired is empty");
+       //    AMstatusempty.setText("select status is empty");
 
             
              } else if (AMidmedicine.getText().trim().isEmpty()) {
@@ -388,7 +392,7 @@ public class addnewMedicine extends javax.swing.JFrame {
     }//GEN-LAST:event_AMmedicineActionPerformed
 
     private void AMmedicineKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AMmedicineKeyPressed
-        // TODO add your handling code here:
+       AMmedicineempty.setText("");
     }//GEN-LAST:event_AMmedicineKeyPressed
 
     private void AMmedicineKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AMmedicineKeyReleased

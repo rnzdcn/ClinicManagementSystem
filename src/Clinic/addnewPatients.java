@@ -28,7 +28,7 @@ import javax.swing.Timer;
  *
  * @author jomari
  */
-public class addnewPatients extends javax.swing.JFrame {
+public final class addnewPatients extends javax.swing.JFrame {
 
     Connection conn = null;
     ResultSet rs = null;
@@ -44,6 +44,8 @@ public class addnewPatients extends javax.swing.JFrame {
         ANPstudId.requestFocus();
         showTime();
         currentDate();
+        current();
+       
     }
      void showTime() {
         new Timer(0, new ActionListener() {
@@ -55,12 +57,18 @@ public class addnewPatients extends javax.swing.JFrame {
             }
         }).start();
     }
-     public void currentDate( ){
+     public void  currentDate(){
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-d");
         Date d = new Date();
         ANPdates.setText(dateFormat.format(d));
-        System.out.println(ANPdates.getText());
+       
     }
+     public void current(){
+         String t="123456789";
+
+     final char currentinput = t.charAt(0);
+     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -600,16 +608,19 @@ public class addnewPatients extends javax.swing.JFrame {
         // number kahit text lang dapat ang dapat tinatamad pa ako
 
         if (ANPstudId.getText().trim().isEmpty() && ANPfirst.getText().trim().isEmpty() && ANPlast.getText().trim().isEmpty() && ANPmiddle.getText().trim().isEmpty()
-                && ANPage.getText().trim().isEmpty() && ANPcontactnumber.getText().trim().isEmpty() && ANPtime.getText().trim().isEmpty()
-                && ANPbednumber.getText().trim().isEmpty() && ANPsick.getText().trim().isEmpty() && ANPguardian.getText().trim().isEmpty()) //di pa naayos tinamad na
+            && ANPage.getText().trim().isEmpty() && ANPcontactnumber.getText().trim().isEmpty() 
+            && ANPbednumber.getText().trim().isEmpty() && ANPsick.getText().trim().isEmpty() && ANPguardian.getText().trim().isEmpty()) 
+            //&& ANPtime.getText().trim().isEmpty()
+            //di pa naayos tinamad na
         {
+            JOptionPane.showMessageDialog(null, "Enter all details before proceeding");
             ANPstudentIDempty.setText("Student ID is empty");
             ANPfirstempty.setText("first name is empty");
             ANPlastempty.setText("last name is empty");
             ANPmiddleempty.setText("middle name is empty");
             ANPageempty.setText("Age is empty");
             ANPcontactempty.setText("contact number is empty");
-            ANPtimeempty.setText("time admit is empty");
+           // ANPtimeempty.setText("time admit is empty");
             ANPbedempty.setText("bed number is empty");
             ANPsickempty.setText("sickness is empty");
             ANPguardianempty.setText("Guardian contact number is empty");
@@ -626,8 +637,8 @@ public class addnewPatients extends javax.swing.JFrame {
             ANPageempty.setText("Age is empty");
         } else if (ANPcontactnumber.getText().trim().isEmpty()) {
             ANPcontactempty.setText("contact number is empty");
-        } else if (ANPtime.getText().trim().isEmpty()) {
-            ANPtimeempty.setText("time admit is empty");
+       // } else if (ANPtime.getText().trim().isEmpty()) {
+        //    ANPtimeempty.setText("time admit is empty");
         } else if (ANPbednumber.getText().trim().isEmpty()) {
             ANPbedempty.setText("bed number is empty");
         } else if (ANPsick.getText().trim().isEmpty()) {
@@ -882,12 +893,15 @@ public class addnewPatients extends javax.swing.JFrame {
     }//GEN-LAST:event_ANPageKeyReleased
 
     private void ANPageKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPageKeyTyped
-//    final char c = evt.getKeyChar();
-//
+    
+//        //currentinput error
+//        String t="123456789";
+//     final char current = t.charAt(0);
 //    // You need access to the current input to known if you are on the 
 //    // first character or not. 
 //    // Here I assume it exists as a private member variable. 
-//    final boolean isFirstChar = this.currentInput.isEmpty();
+//    final char c = evt.getKeyChar();
+//    final boolean isFirstChar = this.current.isEmpty();
 //
 //    final boolean isValidEvent = (Character.isDigit(c) && !(isFirstChar && c == '0')) || 
 //        (c == KeyEvent.VK_BACK_SPACE) || 

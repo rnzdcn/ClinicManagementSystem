@@ -180,6 +180,9 @@ public class register extends javax.swing.JDialog {
             }
         });
         CRfirstname.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CRfirstnameKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 CRfirstnameKeyReleased(evt);
             }
@@ -194,6 +197,9 @@ public class register extends javax.swing.JDialog {
             }
         });
         CRlastname.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CRlastnameKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 CRlastnameKeyReleased(evt);
             }
@@ -207,11 +213,19 @@ public class register extends javax.swing.JDialog {
                 CRusernameActionPerformed(evt);
             }
         });
+        CRusername.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CRusernameKeyPressed(evt);
+            }
+        });
         jPanel1.add(CRusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 190, 30));
 
         CRpassword.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         CRpassword.setPreferredSize(new java.awt.Dimension(60, 20));
         CRpassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CRpasswordKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 CRpasswordKeyReleased(evt);
             }
@@ -221,6 +235,9 @@ public class register extends javax.swing.JDialog {
         CRconfirmpassword.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         CRconfirmpassword.setPreferredSize(new java.awt.Dimension(60, 20));
         CRconfirmpassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CRconfirmpasswordKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 CRconfirmpasswordKeyReleased(evt);
             }
@@ -229,6 +246,11 @@ public class register extends javax.swing.JDialog {
 
         CRcode.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         CRcode.setPreferredSize(new java.awt.Dimension(60, 20));
+        CRcode.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CRcodeKeyPressed(evt);
+            }
+        });
         jPanel1.add(CRcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, 190, 30));
 
         CRuserempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
@@ -284,6 +306,9 @@ public class register extends javax.swing.JDialog {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
      if (CRfirstname.getText().trim().isEmpty() && CRlastname.getText().trim().isEmpty() && CRusername.getText().trim().isEmpty()   &&  CRpassword.getText().trim().isEmpty() && CRconfirmpassword.getText().trim().isEmpty() && CRcode
              .getText().trim().isEmpty()) {
+                    
+         
+            JOptionPane.showMessageDialog(null, "Enter all details before proceeding");
             CRfirstempty.setText("fistname is empty");
             CRlastempty.setText("lastname is empty");
              CRuserempty.setText("username is empty");
@@ -548,6 +573,30 @@ public class register extends javax.swing.JDialog {
                   // TODO add your handling code here:
     }                 
     }//GEN-LAST:event_CRlastnameKeyReleased
+
+    private void CRfirstnameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CRfirstnameKeyPressed
+        CRfirstempty.setText("");
+    }//GEN-LAST:event_CRfirstnameKeyPressed
+
+    private void CRlastnameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CRlastnameKeyPressed
+       CRlastempty.setText("");
+    }//GEN-LAST:event_CRlastnameKeyPressed
+
+    private void CRusernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CRusernameKeyPressed
+        CRuserempty.setText("");
+    }//GEN-LAST:event_CRusernameKeyPressed
+
+    private void CRpasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CRpasswordKeyPressed
+        CRpassempty.setText("");
+    }//GEN-LAST:event_CRpasswordKeyPressed
+
+    private void CRconfirmpasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CRconfirmpasswordKeyPressed
+       CRconfirmempty.setText("");
+    }//GEN-LAST:event_CRconfirmpasswordKeyPressed
+
+    private void CRcodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CRcodeKeyPressed
+       CRcodeempty.setText("");
+    }//GEN-LAST:event_CRcodeKeyPressed
 
     /**
      * @param args the command line arguments

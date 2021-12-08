@@ -26,7 +26,8 @@ public class StudentMedicineADD extends javax.swing.JFrame {
     PreparedStatement pst = null;
     Statement st=null;
     int id;
-    private Object arg0;
+    private Object arg0 = null;
+    
     /**
      * Creates new form StudentMedicineADD
      */
@@ -39,6 +40,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         updateTable();
         id();
        updateTable1();
+       
 
     }
      public void updateTable1() {
@@ -518,7 +520,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/availablequantity.png"))); // NOI18N
-        jLabel2.setText("Available Quantity");
+        jLabel2.setText("Available Stocks");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 130, 30));
 
         availableempty.setFont(new java.awt.Font("Tahoma", 2, 10)); // NOI18N
@@ -550,30 +552,35 @@ public class StudentMedicineADD extends javax.swing.JFrame {
     private void ASmedicineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ASmedicineActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ASmedicineActionPerformed
-
+    
     private void ASaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ASaddActionPerformed
         //error ni run na  empty lahat dahil sa float availables
-     Float availables = Float.parseFloat(ASavailable.getText());
-            if(availables.toString().trim().isEmpty() ){         
-           
+        
+        
+       
+       try{
+         //  String avail = ASavailable.getText();
+        Float availables = Float.parseFloat(ASavailable.getText());
        if 
-        ( ASstudID.getText().trim().isEmpty() && ASfirst.getText().trim().isEmpty() && ASlast.getText().trim().isEmpty() 
+               
+        ( ASstudID.getText().trim().isEmpty() || ASfirst.getText().trim().isEmpty() && ASlast.getText().trim().isEmpty() 
        && AStime.getText().trim().isEmpty() && ASmedicine.getText().trim().isEmpty() && ASdescription.getText().trim().isEmpty()
-       && ASquantity.getText().trim().isEmpty()&& ASavailable.getText().trim().isEmpty()&& ((JTextField)ASdate.getDateEditor().getUiComponent()).getText().isEmpty())      
-           
-//      && AStime.getDate().toString().isEmpty()
+       && ASquantity.getText().trim().isEmpty()&& ASavailable.getText().trim().isEmpty()&& ((JTextField)ASdate.getDateEditor().getUiComponent()).getText().isEmpty())               
+                    
+        //&& AStime.getDate().toString().isEmpty()
        { 
+           
             JOptionPane.showMessageDialog(null, "Enter all details before proceeding");
             ASstudIDempty.setText("Student ID is empty");
             ASfirstempty.setText("first name is empty");
             ASlastempty.setText("last name is empty");
             ASdateempty.setText("date is empty");
             AStimeempty.setText("time number is empty");
-            ASmedicineempty.setText("medicine name is empty");
+//          ASmedicineempty.setText("medicine name is empty");
             ASdescriptionempty.setText("description number is empty");
             ASquantityempty.setText("Quantity  is empty");
-            availableempty.setText("Available stock is empty");
-            
+//          availableempty.setText("Available stock is empty");
+           
             } else if (ASstudID.getText().trim().isEmpty()) {
                ASstudIDempty.setText("student number  is empty");
             } else if (ASfirst.getText().trim().isEmpty()) {
@@ -594,8 +601,8 @@ public class StudentMedicineADD extends javax.swing.JFrame {
                  ASquantityempty.setText("Quantity is empty");
             } else if (ASavailable.getText().trim().isEmpty()) {
                  availableempty.setText("available is empty");
-//         } else if (availables < 0) {
-//           JOptionPane.showMessageDialog(rootPane, "Out of stocks!");           
+//            } else if (availables < 0) {
+//             JOptionPane.showMessageDialog(rootPane, "Out of stocks!");           
             } else if (Float.parseFloat(ASquantity.getText()) > availables) {
             JOptionPane.showMessageDialog(rootPane, "Insufficient stocks! unable to add!");
            
@@ -628,6 +635,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
                
                 }
                 catch(SQLException | NumberFormatException | HeadlessException e)
+                    
                 {
                JOptionPane.showMessageDialog(null, "Invalid Input");
        }
@@ -672,10 +680,13 @@ public class StudentMedicineADD extends javax.swing.JFrame {
                 setVisible(false);  
             
             }
+        
+        } catch (NumberFormatException | HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "Please select medicine in the table");
         }
-         
+                   
     }//GEN-LAST:event_ASaddActionPerformed
-
+    
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -729,7 +740,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
          getToolkit().beep();
         JOptionPane.showMessageDialog(null, "Please type only student number");
          evt.consume();
-         
+
      
     }                      
     }//GEN-LAST:event_ASstudIDKeyTyped

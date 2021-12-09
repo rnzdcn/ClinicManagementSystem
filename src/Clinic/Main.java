@@ -389,9 +389,10 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_searchKeyReleased
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        logout c = new logout();
-        c.setVisible(true);
-        setVisible(false);          
+       logout l = new logout();
+        l.setVisible(true);
+        setVisible(false);
+               
         
        
         

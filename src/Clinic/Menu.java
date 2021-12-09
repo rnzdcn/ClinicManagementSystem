@@ -448,10 +448,18 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_MtotalmedicineMouseDragged
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        logout c = new logout();
-        c.setVisible(true);
-        setVisible(false);
-
+//        logout c = new logout();
+//        c.setVisible(true);
+//        setVisible(false);
+        
+        
+        //different approach to logout
+        int response = JOptionPane.showConfirmDialog(this, "Are you sure you want to Exit?","Confirm",
+                JOptionPane.YES_NO_OPTION ,JOptionPane.QUESTION_MESSAGE);
+        if(response==JOptionPane.YES_OPTION){
+            new signup().setVisible(true);
+            dispose();
+        }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     /**

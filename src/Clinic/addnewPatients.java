@@ -18,6 +18,8 @@ import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -889,6 +891,16 @@ public final class addnewPatients extends javax.swing.JFrame {
 
     private void ANPageKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPageKeyReleased
      
+     //2digits that dont start with 0,-,+   
+     String PATTERN="^(?!0)[0-9]{0,2}$";
+     Pattern patt=Pattern.compile(PATTERN);
+     Matcher match=patt.matcher(ANPage.getText());
+     if(!match.matches()){
+         JOptionPane.showMessageDialog(null, "Invalid Input");
+         ANPage.setText("");
+     }else{
+         
+     }
      
     }//GEN-LAST:event_ANPageKeyReleased
 
@@ -925,13 +937,16 @@ public final class addnewPatients extends javax.swing.JFrame {
 
     private void ANPcontactnumberKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPcontactnumberKeyReleased
         String contact = ANPcontactnumber.getText();
-        int length = contact.length();
-        char c =evt.getKeyChar();
+        int s = contact.length();
+        //start 0
+        char a=contact.charAt(0);
+        //char c =evt.getKeyChar();
         if(evt.getKeyChar()>='0' && evt.getKeyChar()<='9'){
-            if(length<11){
+            if(s<12&&(a=='0')){
                 ANPcontactnumber.setEditable(true);
             }else{
-                ANPcontactnumber.setEditable(false);
+                JOptionPane.showMessageDialog(null,"Invalid Mobile Number");   
+                ANPcontactnumber.setText("");
             }
              
         

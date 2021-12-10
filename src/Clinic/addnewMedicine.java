@@ -5,11 +5,15 @@
  */
 package Clinic;
 
+
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -138,6 +142,9 @@ public class addnewMedicine extends javax.swing.JFrame {
         AMquantity.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 AMquantityKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                AMquantityKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 AMquantityKeyTyped(evt);
@@ -302,8 +309,8 @@ public class addnewMedicine extends javax.swing.JFrame {
     }//GEN-LAST:event_AMquantityActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        if (AMmedicine.getText().trim().isEmpty() && AMquantity.getText().trim().isEmpty()) 
-//error di makuha yung sa getdate   && AMdateR.getText().trim().isEmpty() && AMdateE.getText().trim().isEmpty()&& AMstatus.getSelectedItem().toString().isEmpty()) 
+     if (AMmedicine.getText().trim().isEmpty() && AMquantity.getText().trim().isEmpty()) 
+    //error di makuha yung sa getdate   && AMdateR.getText().trim().isEmpty() && AMdateE.getText().trim().isEmpty()&& AMstatus.getSelectedItem().toString().isEmpty()) 
             
        {
             JOptionPane.showMessageDialog(null, "Enter all details before proceeding");
@@ -410,16 +417,44 @@ public class addnewMedicine extends javax.swing.JFrame {
     }//GEN-LAST:event_AMmedicineKeyReleased
 
     private void AMquantityKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AMquantityKeyTyped
-       char c = evt.getKeyChar();
-
-     if(!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) || c==KeyEvent.VK_DELETE )){
-         getToolkit().beep();
-        JOptionPane.showMessageDialog(null, "Please enter quantity");
-         evt.consume();
-         
-     
-    }           
+    
     }//GEN-LAST:event_AMquantityKeyTyped
+
+    private void AMquantityKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AMquantityKeyReleased
+         //2digits that dont start with 0,-,+   
+     String PATTERN="^(?!0)[0-9]{0,6}$";
+     Pattern patt=Pattern.compile(PATTERN);
+     Matcher match=patt.matcher(AMquantity.getText());
+     if(!match.matches()){
+       
+         JOptionPane.showMessageDialog(null, "Invalid Input");
+         AMquantityempty.setText("Only 6 digits can input and Dont input letters");
+         AMquantity.setText("");
+        
+     }else{
+          
+         
+         
+     }
+//        String mobileno=AMquantity.getText();
+//        if(mobileno.matches("^[0-9]*$") && mobileno.length()==11)
+//        {
+//          
+//            AMquantity.setBackground(Color.green);
+//            JOptionPane.showMessageDialog(null ,"Please input 11 digit number only");
+//            AMquantity.setText("");
+// 
+//        }else {
+//              
+//        AMquantity.setBackground(new Color(255,102,102));
+//        
+//
+//        
+//       
+//        }
+//     
+                           
+    }//GEN-LAST:event_AMquantityKeyReleased
 
     /**
      * @param args the command line arguments

@@ -12,6 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import net.proteanit.sql.DbUtils;
@@ -514,6 +516,9 @@ public class StudentMedicineADD extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 ASquantityKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                ASquantityKeyReleased(evt);
+            }
         });
         jPanel2.add(ASquantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 190, 30));
 
@@ -578,7 +583,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
             AStimeempty.setText("time number is empty");
 //          ASmedicineempty.setText("medicine name is empty");
             ASdescriptionempty.setText("description number is empty");
-            ASquantityempty.setText("Quantity  is empty");
+            ASquantityempty.setText("quantity input is empty");
 //          availableempty.setText("Available stock is empty");
            
             } else if (ASstudID.getText().trim().isEmpty()) {
@@ -848,6 +853,20 @@ public class StudentMedicineADD extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_LMtableMouseClicked
+
+    private void ASquantityKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ASquantityKeyReleased
+       String PATTERN="^(?!0)[0-9]{0,6}$";
+     Pattern patt=Pattern.compile(PATTERN);
+     Matcher match=patt.matcher(ASquantity.getText());
+     if(!match.matches()){
+         JOptionPane.showMessageDialog(null, "Invalid Input");
+         ASquantityempty.setText("Dont input letters quantity stocks 6numbers only");
+         ASquantity.setText("");
+     }else{
+         
+         
+     }
+    }//GEN-LAST:event_ASquantityKeyReleased
 
     /**
      * @param args the command line arguments

@@ -15,14 +15,20 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.LayoutManager;
 import java.awt.RenderingHints;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.BorderFactory;
 import static javax.swing.JFrame.setDefaultLookAndFeelDecorated;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 import javax.swing.border.AbstractBorder;
 import javax.swing.border.Border;
 import net.proteanit.sql.DbUtils;
@@ -54,7 +60,11 @@ public class Menu extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         setDefaultLookAndFeelDecorated(true);
         
-   
+         currentDate();
+         showTime();
+       
+    
+     
         //codes sa pie chart
 //        try{
 //          String f = "select * from clinicmanagement.inventory where status='Available'";
@@ -181,7 +191,22 @@ public class Menu extends javax.swing.JFrame {
         }
 
     }
-        
+        void showTime() {
+        new Timer(0, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Date d = new Date();
+                SimpleDateFormat f = new SimpleDateFormat("hh:mm:ss a");
+                Mtime.setText(f.format(d));
+            }
+        }).start();
+    }
+     public void  currentDate(){
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-d");
+        Date d = new Date();
+        Mcalendar.setText(dateFormat.format(d));
+       
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -206,6 +231,8 @@ public class Menu extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        Mtime = new javax.swing.JLabel();
+        Mcalendar = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
@@ -217,6 +244,7 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(10, 46, 54));
+        jPanel2.setForeground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -381,6 +409,16 @@ public class Menu extends javax.swing.JFrame {
         userName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/user_icon.png"))); // NOI18N
         jPanel2.add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 20, 230, -1));
 
+        Mtime.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Mtime.setForeground(new java.awt.Color(255, 255, 255));
+        Mtime.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/MenuTime.png"))); // NOI18N
+        jPanel2.add(Mtime, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 110, 180, 30));
+
+        Mcalendar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Mcalendar.setForeground(new java.awt.Color(255, 255, 255));
+        Mcalendar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/Menucalendar.png"))); // NOI18N
+        jPanel2.add(Mcalendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 70, 180, 30));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1280, 600));
 
         jPanel1.setBackground(new java.awt.Color(87, 191, 109));
@@ -499,7 +537,9 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label1;
+    private javax.swing.JLabel Mcalendar;
     private javax.swing.JLabel Mnumberofpatients;
+    private javax.swing.JLabel Mtime;
     private javax.swing.JLabel Mtotalmedicine;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

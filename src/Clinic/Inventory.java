@@ -35,7 +35,9 @@ public class Inventory extends javax.swing.JFrame {
     }
      
      public void updateTable() {
-        try {
+ 
+         try {
+            
             String sql = "select * from clinicmanagement.inventory";
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
@@ -50,8 +52,8 @@ public class Inventory extends javax.swing.JFrame {
             } catch (Exception e) {
             }
         }
-    }
-
+     }
+   
     public void update() {
         updateTable();
 

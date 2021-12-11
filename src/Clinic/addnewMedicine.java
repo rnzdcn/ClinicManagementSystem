@@ -12,6 +12,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -309,7 +312,9 @@ public class addnewMedicine extends javax.swing.JFrame {
     }//GEN-LAST:event_AMquantityActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-     if (AMmedicine.getText().trim().isEmpty() && AMquantity.getText().trim().isEmpty()) 
+     
+      
+        if (AMmedicine.getText().trim().isEmpty() && AMquantity.getText().trim().isEmpty()) 
     //error di makuha yung sa getdate   && AMdateR.getText().trim().isEmpty() && AMdateE.getText().trim().isEmpty()&& AMstatus.getSelectedItem().toString().isEmpty()) 
             
        {
@@ -317,20 +322,20 @@ public class addnewMedicine extends javax.swing.JFrame {
             AMmedicineempty.setText("Medicine is empty");
             AMquantityempty.setText("Quanity name is empty");
             AMdateRempty.setText("Date Recieved is empty");
-           AMdateEempty.setText("Date Expired is empty");
-       //    AMstatusempty.setText("select status is empty");
+            AMdateEempty.setText("Date Expired is empty");
+       //   AMstatusempty.setText("select status is empty");
 
             
-             } else if (AMidmedicine.getText().trim().isEmpty()) {
+            } else if (AMidmedicine.getText().trim().isEmpty()) {
                AMmedicineempty.setText("Medicine is empty");
             } else if (AMquantity.getText().trim().isEmpty()) {
-               AMquantityempty.setText("Quantity is empty");
-//           } else if (AMdateR.getJCalendar().toString().isEmpty()) {
-//              AMdateRempty.setText("Date recieved is empty");
-//            } else if (AMdateE.getText().trim().isEmpty()) {
-//                AMdateEempty.setText("Date Expired name is empty");
-//           } else if (AMstatus.getSelectedItem().toString().isEmpty()) {
-//               AMstatusempty.setText("status is empty");
+               AMquantityempty.setText("Quantity is empty");   
+//          } else if (AMdateR.getJCalendar().toString().isEmpty()) {
+//             AMdateRempty.setText("Date recieved is empty");
+//          } else if (AMdateE.getText().trim().isEmpty()) {
+//             AMdateEempty.setText("Date Expired name is empty");
+//          } else if (AMstatus.getSelectedItem().toString().isEmpty()) {
+//              AMstatusempty.setText("status is empty");
             }else{
              String sql = "Insert into clinicmanagement.inventory (id,medicinename, quantity, daterecieved, expirationdate, status) values (?,?,?,?,?,?)";
              try{
@@ -350,11 +355,11 @@ public class addnewMedicine extends javax.swing.JFrame {
                setVisible(false);
                 
                
-       }
-       catch(Exception e)
-       {
-    JOptionPane.showMessageDialog(null, "Medicine Name is already use");
-       }     
+             }
+              catch(Exception e)
+             {
+              JOptionPane.showMessageDialog(null, "Medicine Name is already use");
+             }     
              }
     
     }//GEN-LAST:event_jButton4ActionPerformed

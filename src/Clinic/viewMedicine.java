@@ -42,7 +42,8 @@ public class viewMedicine extends javax.swing.JFrame {
                 VMstatus.setText(view5);
                 String view6 = rs.getString("id");
                 VMidmedicine.setText(view6);
-
+                String view7 = rs.getString("description");
+                VMdescription.setText(view7);    
 
               
             }
@@ -93,6 +94,9 @@ public class viewMedicine extends javax.swing.JFrame {
         VMquantity = new javax.swing.JLabel();
         VMdateR = new javax.swing.JLabel();
         VMdateE = new javax.swing.JLabel();
+        VMdescription = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        AMdescriptionempty = new javax.swing.JLabel();
         VMstatus = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -179,7 +183,7 @@ public class viewMedicine extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, 130, 40));
+        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 130, 40));
 
         VMidmedicine.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         VMidmedicine.setForeground(new java.awt.Color(255, 255, 255));
@@ -206,12 +210,30 @@ public class viewMedicine extends javax.swing.JFrame {
         VMdateE.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jPanel2.add(VMdateE, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 190, 30));
 
+        VMdescription.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        VMdescription.setForeground(new java.awt.Color(255, 255, 255));
+        VMdescription.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jPanel2.add(VMdescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, 190, 30));
+
+        jLabel10.setBackground(new java.awt.Color(10, 46, 54));
+        jLabel10.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewSTUDID.png"))); // NOI18N
+        jLabel10.setText("Description");
+        jLabel10.setOpaque(true);
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 130, 30));
+
+        AMdescriptionempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
+        AMdescriptionempty.setForeground(new java.awt.Color(237, 74, 65));
+        jPanel2.add(AMdescriptionempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 350, 190, 20));
+
         VMstatus.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         VMstatus.setForeground(new java.awt.Color(255, 255, 255));
         VMstatus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jPanel2.add(VMstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 190, 30));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 750, 400));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 750, 430));
 
         pack();
         setLocationRelativeTo(null);
@@ -259,14 +281,17 @@ public class viewMedicine extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AMdescriptionempty;
     private javax.swing.JLabel VMdateE;
     private javax.swing.JLabel VMdateR;
+    private javax.swing.JLabel VMdescription;
     private javax.swing.JLabel VMidmedicine;
     private javax.swing.JLabel VMmedicine;
     private javax.swing.JLabel VMquantity;
     private javax.swing.JLabel VMstatus;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

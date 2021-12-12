@@ -670,6 +670,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
             } catch (Exception e) {
 
             }
+            
              String deletedzero = "delete from clinicmanagement.inventory where quantity=0 output deleted.* into clinicmanagement.zeroquantity ";
             try {
                 ps = conn.prepareStatement(deletedzero);

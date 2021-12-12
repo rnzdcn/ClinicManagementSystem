@@ -232,7 +232,6 @@ public class Menu extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         Mtime = new javax.swing.JLabel();
-        Mcalendar = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
@@ -537,7 +536,7 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label1;
-    private javax.swing.JLabel Mcalendar;
+    public static final javax.swing.JLabel Mcalendar = new javax.swing.JLabel();
     private javax.swing.JLabel Mnumberofpatients;
     private javax.swing.JLabel Mtime;
     private javax.swing.JLabel Mtotalmedicine;

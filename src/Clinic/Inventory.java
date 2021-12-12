@@ -5,11 +5,15 @@
  */
 package Clinic;
 
+import static Clinic.Menu.Mcalendar;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.DateFormat;
 import java.text.MessageFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
@@ -30,10 +34,12 @@ public class Inventory extends javax.swing.JFrame {
         conn = connection.ConnecrDb();
 //        this.setLocationRelativeTo(null);
         updateTable();
+        equaldate();
         
         //mali pa to
     }
      
+
      public void updateTable() {
  
          try {
@@ -45,7 +51,9 @@ public class Inventory extends javax.swing.JFrame {
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
-        } finally {
+        }
+         
+         finally {
             try {
                 rs.close();
                 pst.close();
@@ -57,6 +65,20 @@ public class Inventory extends javax.swing.JFrame {
     public void update() {
         updateTable();
 
+    }
+    public void equaldate (){
+       
+        String dateR = "update clinicmanagement.inventory set status= 'Not available' where expirationdate >= CURDATE()";
+            try {
+                pst = conn.prepareStatement(dateR);
+                  pst.executeUpdate(dateR);
+                  updateTable();
+                  
+              // JOptionPane.showMessageDialog(rootPane, "Stock Out Successfully!");
+
+            } catch (Exception e) {
+
+            }
     }
 
 
@@ -87,7 +109,6 @@ public class Inventory extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1280, 700));
         setUndecorated(true);
         setSize(new java.awt.Dimension(1280, 700));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

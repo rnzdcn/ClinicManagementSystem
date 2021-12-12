@@ -12,13 +12,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
 
 /**
  *
@@ -39,6 +41,9 @@ public class addnewMedicine extends javax.swing.JFrame {
         conn = connection.ConnecrDb();  AMidmedicine.requestFocus();
         this.setLocationRelativeTo(null);
         id();
+        //disable past dates
+        AMdateE.getCalendar();
+        AMdateE.setMinSelectableDate(new Date());
 
     }
     
@@ -210,6 +215,7 @@ public class addnewMedicine extends javax.swing.JFrame {
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 380, 120, 40));
 
         AMdateE.setDateFormatString("yyyy-MM-d");
+        AMdateE.setMinSelectableDate(new java.util.Date(-62135794713000L));
         AMdateE.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 AMdateEKeyPressed(evt);
@@ -218,6 +224,12 @@ public class addnewMedicine extends javax.swing.JFrame {
         jPanel2.add(AMdateE, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 190, 30));
 
         AMdateR.setDateFormatString("yyyy-MM-d");
+        AMdateR.setMinSelectableDate(new java.util.Date(-62135794713000L));
+        AMdateR.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                AMdateRMouseMoved(evt);
+            }
+        });
         AMdateR.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 AMdateRMouseClicked(evt);
@@ -226,6 +238,9 @@ public class addnewMedicine extends javax.swing.JFrame {
         AMdateR.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 AMdateRKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                AMdateRKeyReleased(evt);
             }
         });
         jPanel2.add(AMdateR, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 190, 30));
@@ -338,7 +353,7 @@ public class addnewMedicine extends javax.swing.JFrame {
     }//GEN-LAST:event_AMdateRKeyPressed
 
     private void AMdateRMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AMdateRMouseClicked
-        AMdateRempty.setText("");
+        
     }//GEN-LAST:event_AMdateRMouseClicked
 
     private void AMdateEKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AMdateEKeyPressed
@@ -353,9 +368,16 @@ public class addnewMedicine extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
-        if (AMmedicine.getText().trim().isEmpty() && AMquantity.getText().trim().isEmpty())
-        //error di makuha yung sa getdate   && AMdateR.getText().trim().isEmpty() && AMdateE.getText().trim().isEmpty()&& AMstatus.getSelectedItem().toString().isEmpty())
+      //current date only    AMdateE.setDate(java.sql.Date.valueOf(java.time.LocalDate.now())); 
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-d");
+        
+  
+        Date dateR = AMdateR.getDate();
+        Date dateE = AMdateE.getDate();
+        
+        if (AMmedicine.getText().trim().isEmpty() && AMquantity.getText().trim().isEmpty() &&
+             AMdescription.getText().trim().isEmpty() && ((JTextField)AMdateR.getDateEditor().getUiComponent()).getText().isEmpty() 
+             && ((JTextField)AMdateE.getDateEditor().getUiComponent()).getText().isEmpty())
 
         {
             JOptionPane.showMessageDialog(null, "Enter all details before proceeding");
@@ -363,18 +385,27 @@ public class addnewMedicine extends javax.swing.JFrame {
             AMquantityempty.setText("Quanity name is empty");
             AMdateRempty.setText("Date Recieved is empty");
             AMdateEempty.setText("Date Expired is empty");
-            //   AMstatusempty.setText("select status is empty");
+           //2nd option to empty dates
+           // JOptionPane.showMessageDialog(null, "Date Recieved is empty");
+           // JOptionPane.showMessageDialog(null, "Date Expired is empty");
+            AMdescriptionempty.setText("select status is empty");
 
         } else if (AMidmedicine.getText().trim().isEmpty()) {
             AMmedicineempty.setText("Medicine is empty");
         } else if (AMquantity.getText().trim().isEmpty()) {
-            AMquantityempty.setText("Quantity is empty");
-            //          } else if (AMdateR.getJCalendar().toString().isEmpty()) {
-            //             AMdateRempty.setText("Date recieved is empty");
-            //          } else if (AMdateE.getText().trim().isEmpty()) {
-            //             AMdateEempty.setText("Date Expired name is empty");
-            //          } else if (AMstatus.getSelectedItem().toString().isEmpty()) {
-            //              AMstatusempty.setText("status is empty");
+            AMquantityempty.setText("Quantity is empty");      
+        } else if (((JTextField)AMdateR.getDateEditor().getUiComponent()).getText().isEmpty()) {
+            AMdateRempty.setText("Date recieved is empty");
+            // JOptionPane.showMessageDialog(null, "Date Recieved is empty");
+        } else if (((JTextField)AMdateE.getDateEditor().getUiComponent()).getText().isEmpty()) {
+            AMdateEempty.setText("Date Expired name is empty");
+           // JOptionPane.showMessageDialog(null, "Date Expired is empty");
+        } else if (AMdescription.getText().trim().isEmpty()) {
+            AMdescriptionempty.setText("status is empty");
+        } else if (sdf.format(dateR).equals(sdf.format(dateE))) {
+            JOptionPane.showMessageDialog(null, "Date input is Same");
+         
+            
         }else{
             String sql = "Insert into clinicmanagement.inventory (id,medicinename, quantity, daterecieved, expirationdate, description ,status) values (?,?,?,?,?,?,?)";
             try{
@@ -396,10 +427,10 @@ public class addnewMedicine extends javax.swing.JFrame {
             }
             catch(Exception e)
             {
-                JOptionPane.showMessageDialog(null, "Medicine Name is already use");
+                JOptionPane.showMessageDialog(null, "Input all required fields");
             }
-        }
-
+       }
+      
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void AMquantityKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AMquantityKeyTyped
@@ -459,6 +490,14 @@ public class addnewMedicine extends javax.swing.JFrame {
     private void AMdescriptionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AMdescriptionKeyPressed
         AMdescriptionempty.setText("");
     }//GEN-LAST:event_AMdescriptionKeyPressed
+    
+    private void AMdateRKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AMdateRKeyReleased
+    
+    }//GEN-LAST:event_AMdateRKeyReleased
+
+    private void AMdateRMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AMdateRMouseMoved
+        
+    }//GEN-LAST:event_AMdateRMouseMoved
 
     /**
      * @param args the command line arguments

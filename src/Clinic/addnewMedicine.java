@@ -371,7 +371,7 @@ public class addnewMedicine extends javax.swing.JFrame {
       //current date only    AMdateE.setDate(java.sql.Date.valueOf(java.time.LocalDate.now())); 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-d");
         
-  
+       
         Date dateR = AMdateR.getDate();
         Date dateE = AMdateE.getDate();
         
@@ -404,6 +404,8 @@ public class addnewMedicine extends javax.swing.JFrame {
             AMdescriptionempty.setText("status is empty");
         } else if (sdf.format(dateR).equals(sdf.format(dateE))) {
             JOptionPane.showMessageDialog(null, "Date input is Same");
+        } else if (dateR.after(dateE)) {
+            JOptionPane.showMessageDialog(null, "Date Recieved is ahead of Date Expired");
          
             
         }else{
@@ -412,7 +414,7 @@ public class addnewMedicine extends javax.swing.JFrame {
                 pst = conn.prepareStatement(sql);
 
                 pst.setInt(1, Integer.parseInt(AMidmedicine.getText()));
-                pst.setString(2, AMidmedicine.getText());
+                pst.setString(2, AMmedicine.getText());
                 pst.setInt(3, Integer.parseInt(AMquantity.getText()));
                 pst.setString(4, ((JTextField)AMdateR.getDateEditor().getUiComponent()).getText());
                 pst.setString(5, ((JTextField)AMdateE.getDateEditor().getUiComponent()).getText());

@@ -43,6 +43,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         id();
        updateTable1();
        
+       
 
     }
      public void updateTable1() {
@@ -111,6 +112,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         updateTable();
 
     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -822,12 +824,22 @@ public class StudentMedicineADD extends javax.swing.JFrame {
     }//GEN-LAST:event_ASquantityKeyPressed
 
     private void LMtableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LMtableMouseClicked
-       try 
+//         String update_In = "Select * from clinicmanagement.inventory where quantity='0' and status='Available";
+//              JOptionPane.showMessageDialog(null, "Select");
+//            try {
+//                pst = conn.prepareStatement(update_In);       
+//                pst.executeUpdate(update_In);
+//                updateTable();
+//                 } catch (Exception e) {
+//
+//            }
+        try 
         {
-             int qnty=0;
+            int qnty=0;
+            
             int row = LMtable.getSelectedRow();
-            String Table_click = (LMtable.getModel().getValueAt(row, 0).toString());
-            String sql = "select * from clinicmanagement.inventory where id='"+Table_click+"' ";
+            String Table_click = (LMtable.getModel().getValueAt(row, 0).toString());  
+            String sql = "select *  from clinicmanagement.inventory  where id='"+Table_click+"' and status='Available' ";
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
             if(rs.next())
@@ -836,23 +848,29 @@ public class StudentMedicineADD extends javax.swing.JFrame {
                 ASmedicine.setText(add1);
                  int add2 = Integer.parseInt(rs.getString("quantity"));
                 ASavailable.setText(Integer.toString(add2));
+                JOptionPane.showMessageDialog(null, "You select medicine:"+"  " +  add1);
                 }
-        }
-        catch (Exception e) 
-        {
+            else{
+                
+              JOptionPane.showMessageDialog(null, "Not Available Medicine");                
+            }
+            }
+             catch (Exception e) 
+             {
             JOptionPane.showMessageDialog(null, e);
-        }
-         
-        finally
-        {
+             }
+            finally
+             {
             try {
                 rs.close();
                 pst.close();
             } 
             catch (Exception e) 
             {
+                
             }
-        }
+             }
+        
     }//GEN-LAST:event_LMtableMouseClicked
 
     private void ASquantityKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ASquantityKeyReleased

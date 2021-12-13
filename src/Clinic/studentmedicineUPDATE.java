@@ -45,8 +45,8 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
                 USlast.setText(edit3);
                 Date edit4 = rs.getDate("date");
                 USdate.setDate(edit4);
-                int edit5 = Integer.parseInt (rs.getString("time"));
-                UStime.setText(Integer.toString(edit5));
+                String edit5 = rs.getString("time");
+                UStime.setText(edit5);
                 String edit6 = rs.getString("medicine");
                 USmedicine.setText(edit6);                     
                 String edit7 = rs.getString("description");
@@ -173,6 +173,9 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
             }
         });
         UStime.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                UStimeKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 UStimeKeyTyped(evt);
             }
@@ -196,8 +199,14 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
             }
         });
         USfirst.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                USfirstKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 USfirstKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                USfirstKeyTyped(evt);
             }
         });
         jPanel2.add(USfirst, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 190, 30));
@@ -235,6 +244,9 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
             }
         });
         USstudID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                USstudIDKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 USstudIDKeyTyped(evt);
             }
@@ -250,12 +262,19 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
             }
         });
         USlast.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                USlastKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 USlastKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                USlastKeyTyped(evt);
             }
         });
         jPanel2.add(USlast, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 190, 30));
 
+        USmedicine.setEditable(false);
         USmedicine.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         USmedicine.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         USmedicine.setPreferredSize(new java.awt.Dimension(60, 20));
@@ -304,6 +323,14 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
         USdescription.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         USdescription.setLineWrap(true);
         USdescription.setRows(5);
+        USdescription.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                USdescriptionKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                USdescriptionKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(USdescription);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, 190, -1));
@@ -323,8 +350,16 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
         jPanel2.add(jButton27, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 120, 40));
 
         USdate.setDateFormatString("yyyy-MM-d");
+        USdate.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                USdateKeyPressed(evt);
+            }
+        });
         jPanel2.add(USdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 190, 30));
-        jPanel2.add(USdescriptionempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, 190, 10));
+
+        USdescriptionempty.setFont(new java.awt.Font("Tahoma", 2, 10)); // NOI18N
+        USdescriptionempty.setForeground(new java.awt.Color(237, 74, 65));
+        jPanel2.add(USdescriptionempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, 190, 20));
 
         USstudIDempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
         USstudIDempty.setForeground(new java.awt.Color(237, 74, 65));
@@ -383,6 +418,7 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
         });
         jPanel2.add(USreportnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 190, 30));
 
+        USquantity.setEditable(false);
         USquantity.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         USquantity.setPreferredSize(new java.awt.Dimension(60, 20));
         USquantity.addActionListener(new java.awt.event.ActionListener() {
@@ -442,7 +478,8 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
       if (USstudID.getText().trim().isEmpty() && USfirst.getText().trim().isEmpty() && USlast.getText().trim().isEmpty() 
-         && UStime.getText().trim().isEmpty() && USmedicine.getText().trim().isEmpty() && USdescription.getText().trim().isEmpty()) 
+         && UStime.getText().trim().isEmpty() && USmedicine.getText().trim().isEmpty() && USdescription.getText().trim().isEmpty()
+              && ((JTextField)USdate.getDateEditor().getUiComponent()).getText().isEmpty()) 
 //        && AStime.getDate().toString().isEmpty()
             {
             USstudIDempty.setText("Student ID is empty");
@@ -450,17 +487,16 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
             USlastempty.setText("last name is empty");
             USdateempty.setText("date is empty");
             UStimeempty.setText("time number is empty");
-            USmedicineempty.setText("medicine admit is empty");
             USdescriptionempty.setText("description number is empty");
             
             } else if (USstudID.getText().trim().isEmpty()) {
                USstudIDempty.setText("student number  is empty");
             } else if (USfirst.getText().trim().isEmpty()) {
-               USstudIDempty.setText("first name is empty");
+               USfirstempty.setText("first name is empty");
             } else if (USlast.getText().trim().isEmpty()) {
                USlastempty.setText("last name is empty");
-            } else if (USdate.getDate().toString().isEmpty()) {
-               USdateempty.setText("middle name is empty");
+            } else if (((JTextField)USdate.getDateEditor().getUiComponent()).getText().isEmpty()) {
+               USdateempty.setText("Date recieved is empty");      
             } else if (UStime.getText().trim().isEmpty()) {
                UStimeempty.setText("tine is empty");
             } else if (USmedicine.getText().trim().isEmpty()) {
@@ -481,7 +517,7 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
                pst.setString(2, USfirst.getText());
                pst.setString(3, USlast.getText());
                pst.setString(4, ((JTextField)USdate.getDateEditor().getUiComponent()).getText());
-               pst.setInt(5, Integer.parseInt(UStime.getText()));
+               pst.setString(5, UStime.getText());
                pst.setString(6, USmedicine.getText()); 
                pst.setString(7, USdescription.getText());
                pst.setInt(8, Integer.parseInt(USquantity.getText()));
@@ -500,7 +536,7 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
               }
                 catch(Exception e)
               {
-                 JOptionPane.showMessageDialog(null, "studentID is already use");
+                 JOptionPane.showMessageDialog(null, "Invalid Input");
                 }     
                 }
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -524,31 +560,11 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
     }//GEN-LAST:event_USstudIDKeyTyped
 
     private void USfirstKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_USfirstKeyReleased
-       char c = evt.getKeyChar();
-
-    if(Character.isLetter(c) ||(c==KeyEvent.VK_BACK_SPACE) ||(c==KeyEvent.VK_SPACE) || c==KeyEvent.VK_DELETE || c==KeyEvent.VK_ENTER || c==KeyEvent.VK_MINUS){
-    }else if(evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK ){
-    }
-    else if(evt.getKeyCode() == KeyEvent.VK_SHIFT ){    
-       USfirst.setEditable(true);
-    }else {
-         JOptionPane.showMessageDialog(null, "Invalid Character.");
-        USfirst.setText("");
-    }
+       
     }//GEN-LAST:event_USfirstKeyReleased
 
     private void USlastKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_USlastKeyReleased
-       char c = evt.getKeyChar();
-
-    if(Character.isLetter(c) ||(c==KeyEvent.VK_BACK_SPACE) ||(c==KeyEvent.VK_SPACE) || c==KeyEvent.VK_DELETE || c==KeyEvent.VK_ENTER || c==KeyEvent.VK_MINUS){
-    }else if(evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK ){
-    }
-    else if(evt.getKeyCode() == KeyEvent.VK_SHIFT ){    
-       USlast.setEditable(true);
-    }else {
-         JOptionPane.showMessageDialog(null, "Invalid Character.");
-        USlast.setText("");
-    }
+       
     }//GEN-LAST:event_USlastKeyReleased
 
     private void UStimeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UStimeKeyTyped
@@ -600,6 +616,54 @@ public class studentmedicineUPDATE extends javax.swing.JFrame {
     private void USlastemptyKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_USlastemptyKeyReleased
 
     }//GEN-LAST:event_USlastemptyKeyReleased
+
+    private void USstudIDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_USstudIDKeyPressed
+      USstudIDempty.setText("");
+    }//GEN-LAST:event_USstudIDKeyPressed
+
+    private void USfirstKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_USfirstKeyPressed
+      USfirstempty.setText("");
+    }//GEN-LAST:event_USfirstKeyPressed
+
+    private void USlastKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_USlastKeyPressed
+      USlastempty.setText("");
+    }//GEN-LAST:event_USlastKeyPressed
+
+    private void UStimeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UStimeKeyPressed
+      UStimeempty.setText("");
+    }//GEN-LAST:event_UStimeKeyPressed
+
+    private void USdateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_USdateKeyPressed
+       USdateempty.setText("");
+    }//GEN-LAST:event_USdateKeyPressed
+
+    private void USdescriptionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_USdescriptionKeyPressed
+       USdescriptionempty.setText("");
+    }//GEN-LAST:event_USdescriptionKeyPressed
+
+    private void USdescriptionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_USdescriptionKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_USdescriptionKeyReleased
+
+    private void USfirstKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_USfirstKeyTyped
+        //Letter only 
+        if (!Character.isAlphabetic(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar())) {
+        evt.consume();
+        JOptionPane.showMessageDialog(null, "Please Input only Letter");
+    } else if (USfirst.getText().trim().length() == 0 && Character.isLowerCase(evt.getKeyChar())) {
+            evt.setKeyChar(Character.toUpperCase(evt.getKeyChar()));
+    }
+    }//GEN-LAST:event_USfirstKeyTyped
+
+    private void USlastKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_USlastKeyTyped
+        //Letter only 
+        if (!Character.isAlphabetic(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar())) {
+        evt.consume();
+        JOptionPane.showMessageDialog(null, "Please Input only Letter");
+    } else if (USlast.getText().trim().length() == 0 && Character.isLowerCase(evt.getKeyChar())) {
+            evt.setKeyChar(Character.toUpperCase(evt.getKeyChar()));
+    }
+    }//GEN-LAST:event_USlastKeyTyped
 
     /**
      * @param args the command line arguments

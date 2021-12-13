@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -31,6 +32,8 @@ public class updateMedicine extends javax.swing.JFrame {
     public updateMedicine() {
         initComponents();
         conn = connection.ConnecrDb();
+        UMdateE.getCalendar();
+        UMdateE.setMinSelectableDate(new java.util.Date());
         this.setLocationRelativeTo(null);
         String sql2 = "select * from clinicmanagement.inventory where id =?";
         try{
@@ -150,6 +153,9 @@ public class updateMedicine extends javax.swing.JFrame {
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 UMmedicineKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                UMmedicineKeyTyped(evt);
             }
         });
         jPanel2.add(UMmedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 190, 30));
@@ -317,21 +323,28 @@ public class updateMedicine extends javax.swing.JFrame {
     }//GEN-LAST:event_UMidmedicineActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-d");
+        
+       
+        java.util.Date dateR = UMdateR.getDate();
+        java.util.Date dateE = UMdateE.getDate();
+        
         if (UMmedicine.getText().trim().isEmpty() && UMquantity.getText().trim().isEmpty()&& UMdescription.getText().trim().isEmpty())
         //error di makuha yung sa getdate   && AMdateR.getText().trim().isEmpty() && AMdateE.getText().trim().isEmpty()&& AMstatus.getSelectedItem().toString().isEmpty())
 
         {
+            JOptionPane.showMessageDialog(null, "Enter all details before proceeding");
             UMmedicineempty.setText("Medicine is empty");
-            UMquantityempty.setText("Quanity name is empty");
+            UMquantityempty.setText("Quanity is empty");
             //            AMdateRempty.setText("Date Recieved is empty");
             //           AMdateEempty.setText("Date Expired is empty");
-            //           AMstatusempty.setText("select status is empty");
+            UMdescriptionempty.setText("Description is empty");
 
         } else if (UMmedicine.getText().trim().isEmpty()) {
             UMmedicineempty.setText("Medicine is empty");
         } else if (UMquantity.getText().trim().isEmpty()) {
             UMquantityempty.setText("Quantity is empty");
-         } else if (UMdescription.getText().trim().isEmpty()) {
+        } else if (UMdescription.getText().trim().isEmpty()) {
             UMdescriptionempty.setText("Description is empty");    
             //           } else if (AMdateR.getJCalendar().toString().isEmpty()) {
             //              AMdateRempty.setText("Date recieved is empty");
@@ -339,6 +352,11 @@ public class updateMedicine extends javax.swing.JFrame {
             //                AMdateEempty.setText("Date Expired name is empty");
             //           } else if (AMstatus.getSelectedItem().toString().isEmpty()) {
             //               AMstatusempty.setText("status is empty");
+        } else if (sdf.format(dateR).equals(sdf.format(dateE))) {
+            JOptionPane.showMessageDialog(null, "Date input is Same");
+        } else if (dateR.after(dateE)) {
+            JOptionPane.showMessageDialog(null, "Date Recieved is ahead of Date Expired");
+             
         }else{
             String sql=null;
             PreparedStatement pst=null;
@@ -406,17 +424,7 @@ public class updateMedicine extends javax.swing.JFrame {
     }//GEN-LAST:event_UMquantityActionPerformed
 
     private void UMmedicineKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UMmedicineKeyReleased
-        char c = evt.getKeyChar();
-
-        if(Character.isLetter(c) ||(c==KeyEvent.VK_BACK_SPACE) ||(c==KeyEvent.VK_SPACE) || c==KeyEvent.VK_DELETE || c==KeyEvent.VK_ENTER || c==KeyEvent.VK_MINUS){
-        }else if(evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK ){
-        }
-        else if(evt.getKeyCode() == KeyEvent.VK_SHIFT ){
-            UMmedicine.setEditable(true);
-        }else {
-            JOptionPane.showMessageDialog(null, "Invalid Character.");
-            UMmedicine.setText("");
-        }
+        
     }//GEN-LAST:event_UMmedicineKeyReleased
 
     private void UMmedicineKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UMmedicineKeyPressed
@@ -430,6 +438,16 @@ public class updateMedicine extends javax.swing.JFrame {
     private void UMdescriptionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UMdescriptionKeyPressed
         UMdescriptionempty.setText("");
     }//GEN-LAST:event_UMdescriptionKeyPressed
+
+    private void UMmedicineKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UMmedicineKeyTyped
+        //Letter only 
+//        if (!Character.isAlphabetic(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar())) {
+//        evt.consume();
+//        JOptionPane.showMessageDialog(null, "Please Input only Letter");
+//    } else if (UMmedicine.getText().trim().length() == 0 && Character.isLowerCase(evt.getKeyChar())) {
+//            evt.setKeyChar(Character.toUpperCase(evt.getKeyChar()));
+//    }
+    }//GEN-LAST:event_UMmedicineKeyTyped
 
     /**
      * @param args the command line arguments

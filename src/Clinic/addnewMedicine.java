@@ -7,6 +7,8 @@ package Clinic;
 
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,6 +22,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 
 
 /**
@@ -280,6 +283,9 @@ public class addnewMedicine extends javax.swing.JFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 AMmedicineKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                AMmedicineKeyTyped(evt);
+            }
         });
         jPanel2.add(AMmedicine, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 190, 30));
 
@@ -323,17 +329,7 @@ public class addnewMedicine extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AMmedicineKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AMmedicineKeyReleased
-        char c = evt.getKeyChar();
-
-        if(Character.isLetter(c) ||(c==KeyEvent.VK_BACK_SPACE) ||(c==KeyEvent.VK_SPACE) || c==KeyEvent.VK_DELETE || c==KeyEvent.VK_ENTER || c==KeyEvent.VK_MINUS){
-        }else if(evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK ){
-        }
-        else if(evt.getKeyCode() == KeyEvent.VK_SHIFT ){
-            AMmedicine.setEditable(true);
-        }else {
-            JOptionPane.showMessageDialog(null, "Invalid Character.");
-            AMmedicine.setText("");
-        }
+        
     }//GEN-LAST:event_AMmedicineKeyReleased
 
     private void AMmedicineKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AMmedicineKeyPressed
@@ -500,6 +496,16 @@ public class addnewMedicine extends javax.swing.JFrame {
     private void AMdateRMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AMdateRMouseMoved
         
     }//GEN-LAST:event_AMdateRMouseMoved
+
+    private void AMmedicineKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AMmedicineKeyTyped
+      //Letter only 
+//        if (!Character.isAlphabetic(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar())) {
+//        evt.consume();
+//        JOptionPane.showMessageDialog(null, "Please Input only Letter");
+//    } else if (AMmedicine.getText().trim().length() == 0 && Character.isLowerCase(evt.getKeyChar())) {
+//            evt.setKeyChar(Character.toUpperCase(evt.getKeyChar()));
+//    }
+    }//GEN-LAST:event_AMmedicineKeyTyped
 
     /**
      * @param args the command line arguments

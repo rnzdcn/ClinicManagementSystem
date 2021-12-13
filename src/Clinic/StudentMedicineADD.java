@@ -6,16 +6,21 @@
 package Clinic;
 
 import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -41,11 +46,22 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         updateTable();
         id();
-       updateTable1();
-       
-       
-
+        updateTable1();
+        showTime();
+        ASdate.getCalendar();
+        ASdate.setMinSelectableDate(new Date());
     }
+    void showTime() {
+        new Timer(0, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Date d = new Date();
+                SimpleDateFormat f = new SimpleDateFormat("hh:mm:ss a");
+                AStime.setText(f.format(d));
+            }
+        }).start();
+    }
+    
      public void updateTable1() {
         try {
             String sql1 = "select id,medicinename,quantity,status  from clinicmanagement.inventory";
@@ -251,6 +267,9 @@ public class StudentMedicineADD extends javax.swing.JFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 ASfirstKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ASfirstKeyTyped(evt);
+            }
         });
         jPanel2.add(ASfirst, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 190, 30));
 
@@ -314,9 +333,13 @@ public class StudentMedicineADD extends javax.swing.JFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 ASlastKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ASlastKeyTyped(evt);
+            }
         });
         jPanel2.add(ASlast, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 190, 30));
 
+        ASmedicine.setEditable(false);
         ASmedicine.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         ASmedicine.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         ASmedicine.setPreferredSize(new java.awt.Dimension(60, 20));
@@ -489,6 +512,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         jLabel12.setOpaque(true);
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, 130, 30));
 
+        ASavailable.setEditable(false);
         ASavailable.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         ASavailable.setPreferredSize(new java.awt.Dimension(60, 20));
         ASavailable.addActionListener(new java.awt.event.ActionListener() {
@@ -598,8 +622,8 @@ public class StudentMedicineADD extends javax.swing.JFrame {
                  ASdateempty.setText("Date recieved is empty");
 //            } else if (ASdate.getDate().toString().isEmpty()) {
 //                 ASdateempty.setText("middle name is empty");
-            } else if (AStime.getText().trim().isEmpty()) {
-                 AStimeempty.setText("time is empty");
+//            } else if (AStime.getText().trim().isEmpty()) {
+//                 AStimeempty.setText("time is empty");
             } else if (ASmedicine.getText().trim().isEmpty()) {
                  ASmedicineempty.setText("medicine is empty");
             } else if (ASdescription.getText().trim().isEmpty()) {
@@ -628,7 +652,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
                pst.setString(3, ASfirst.getText());
                pst.setString(4, ASlast.getText());
                pst.setString(5, ((JTextField)ASdate.getDateEditor().getUiComponent()).getText());
-               pst.setInt(6, Integer.parseInt(AStime.getText()));
+               pst.setString(6, AStime.getText());
                pst.setString(7, ASmedicine.getText());
                pst.setString(8, ASdescription.getText());
                pst.setFloat(9, a);
@@ -754,17 +778,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
     }//GEN-LAST:event_ASstudIDKeyTyped
 
     private void ASfirstKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ASfirstKeyReleased
-      char c = evt.getKeyChar();
-
-    if(Character.isLetter(c) ||(c==KeyEvent.VK_BACK_SPACE) ||(c==KeyEvent.VK_SPACE) || c==KeyEvent.VK_DELETE || c==KeyEvent.VK_ENTER || c==KeyEvent.VK_MINUS){
-    }else if(evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK ){
-    }
-    else if(evt.getKeyCode() == KeyEvent.VK_SHIFT ){    
-       ASfirst.setEditable(true);
-    }else {
-         JOptionPane.showMessageDialog(null, "Invalid Character.");
-        ASfirst.setText("");
-    }
+      
     }//GEN-LAST:event_ASfirstKeyReleased
 
     private void ASlastKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ASlastKeyReleased
@@ -886,6 +900,26 @@ public class StudentMedicineADD extends javax.swing.JFrame {
          
      }
     }//GEN-LAST:event_ASquantityKeyReleased
+
+    private void ASfirstKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ASfirstKeyTyped
+       //Letter only 
+        if (!Character.isAlphabetic(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar())) {
+        evt.consume();
+        JOptionPane.showMessageDialog(null, "Please Input only Letter");
+    } else if (ASfirst.getText().trim().length() == 0 && Character.isLowerCase(evt.getKeyChar())) {
+            evt.setKeyChar(Character.toUpperCase(evt.getKeyChar()));
+    }
+    }//GEN-LAST:event_ASfirstKeyTyped
+
+    private void ASlastKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ASlastKeyTyped
+        //Letter only 
+        if (!Character.isAlphabetic(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar())) {
+        evt.consume();
+        JOptionPane.showMessageDialog(null, "Please Input only Letter");
+    } else if (ASlast.getText().trim().length() == 0 && Character.isLowerCase(evt.getKeyChar())) {
+            evt.setKeyChar(Character.toUpperCase(evt.getKeyChar()));
+    }
+    }//GEN-LAST:event_ASlastKeyTyped
 
     /**
      * @param args the command line arguments

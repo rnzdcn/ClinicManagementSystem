@@ -22,10 +22,12 @@ import javax.swing.table.TableRowSorter;
 import net.proteanit.sql.DbUtils;
 
 public class Inventory extends javax.swing.JFrame {
+
     Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
-    Statement st=null;    
+    Statement st = null;
+
     /**
      * Creates new form Inventory
      */
@@ -35,15 +37,14 @@ public class Inventory extends javax.swing.JFrame {
 //        this.setLocationRelativeTo(null);
         updateTable();
         equaldate();
-        
+
         //mali pa to
     }
-     
 
-     public void updateTable() {
- 
-         try {
-            
+    public void updateTable() {
+
+        try {
+
             String sql = "select * from clinicmanagement.inventory";
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
@@ -51,40 +52,32 @@ public class Inventory extends javax.swing.JFrame {
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
-        }
-         
-         finally {
+        } finally {
             try {
                 rs.close();
                 pst.close();
             } catch (Exception e) {
             }
         }
-     }
-   
+    }
+
     public void update() {
         updateTable();
 
     }
-    public void equaldate (){
-       
+
+    public void equaldate() {
+
         String dateR = "update clinicmanagement.inventory set status= 'Not available' where expirationdate = CURDATE()";
-            try {
-                pst = conn.prepareStatement(dateR);
-                  pst.executeUpdate(dateR);
-                  updateTable();
-                  
-              
+        try {
+            pst = conn.prepareStatement(dateR);
+            pst.executeUpdate(dateR);
+            updateTable();
 
-            } catch (Exception e) {
+        } catch (Exception e) {
 
-            }
+        }
     }
-    
-                               
-
-    
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -100,7 +93,6 @@ public class Inventory extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Itable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -280,8 +272,8 @@ public class Inventory extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-       addnewMedicine c= new addnewMedicine();
-       c.setVisible(true);
+        addnewMedicine c = new addnewMedicine();
+        c.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -297,7 +289,7 @@ public class Inventory extends javax.swing.JFrame {
         } catch (ArrayIndexOutOfBoundsException e) {
             JOptionPane.showMessageDialog(null, "Please select an account.", "Error", JOptionPane.WARNING_MESSAGE);
 
-        }                                      
+        }
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -315,17 +307,33 @@ public class Inventory extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+//try {
+//        int row = Itable.getSelectedRow();
+//        String Table_click = (Itable.getModel().getValueAt(row, 0).toString());
+//        String update_In = "Insert into clinicmanagement.zeroquantity Select * from  clinicmanagement.inventory where id = ?";
+//        
+//            pst = conn.prepareStatement(update_In);
+//            pst.executeUpdate(update_In);
+//            updateTable();
+//        } catch (Exception e) {
+//
+//        }
+        // INSERT INTO persons_table SELECT * FROM customer_table WHERE person_name = 'tom';
         try {
             int selectedRow = Itable.getSelectedRow();
             String tmp = (Itable.getValueAt(selectedRow, 0).toString());
+           // String tmp1 = (Itable.getValueAt(selectedRow, 0).toString());
             int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this record?", "Delete Record", JOptionPane.YES_NO_OPTION);
             if (option == JOptionPane.YES_OPTION) {
-                String sql = "Delete from clinicmanagement.inventory where medicinename = ?";
+                String sql =  "Insert into clinicmanagement.zeroquantity Select * from  clinicmanagement.inventory where id=?";
+               // String sql1 = "Delete from clinicmanagement.inventory where medicinename =?";
                 pst = conn.prepareStatement(sql);
                 pst.setString(1, tmp);
+                //pst.setString(2, tmp1);
                 pst.execute();
                 updateTable();
                 JOptionPane.showMessageDialog(null, "Record deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                
                 rs.close();
                 pst.close();
 
@@ -338,13 +346,13 @@ public class Inventory extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-         Menu c = new Menu();
+        Menu c = new Menu();
         c.setVisible(true);
-        setVisible(false);  
+        setVisible(false);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-         MessageFormat header = new MessageFormat("Cavite State University Silang Campus Student Clinic Patients Record.");
+        MessageFormat header = new MessageFormat("Cavite State University Silang Campus Student Clinic Patients Record.");
 
         MessageFormat footer = new MessageFormat("Page{10,number,integer}");
         try {
@@ -360,14 +368,14 @@ public class Inventory extends javax.swing.JFrame {
     }//GEN-LAST:event_IsearchActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-         DefaultTableModel table = (DefaultTableModel) Itable.getModel();
-   
+        DefaultTableModel table = (DefaultTableModel) Itable.getModel();
+
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
         Itable.setRowSorter(tr);
-      
+
         Isearch.setText("");
-                            
-                                 
+
+
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void IsearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IsearchKeyReleased
@@ -423,7 +431,7 @@ public class Inventory extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Isearch;
-    private javax.swing.JTable Itable;
+    public static final javax.swing.JTable Itable = new javax.swing.JTable();
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

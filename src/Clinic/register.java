@@ -186,6 +186,9 @@ public class register extends javax.swing.JDialog {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 CRfirstnameKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CRfirstnameKeyTyped(evt);
+            }
         });
         jPanel1.add(CRfirstname, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 190, 30));
 
@@ -202,6 +205,9 @@ public class register extends javax.swing.JDialog {
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 CRlastnameKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CRlastnameKeyTyped(evt);
             }
         });
         jPanel1.add(CRlastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 190, 30));
@@ -431,147 +437,12 @@ public class register extends javax.swing.JDialog {
     }//GEN-LAST:event_CRconfirmpasswordKeyReleased
 
     private void CRfirstnameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CRfirstnameKeyReleased
-        if(evt.getKeyCode() == KeyEvent.VK_A ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_B ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_C ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_D ){
-    }   
-            else if(evt.getKeyCode() == KeyEvent.VK_E ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_F ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_G ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_H ){
-    }   
-            else if(evt.getKeyCode() == KeyEvent.VK_I ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_J ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_K ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_L ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_M ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_N){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_O ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_P ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_Q ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_R ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_S ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_T ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_U ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_V ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_W ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_X ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_Y ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_Z ){
-    }
-              else if(evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_SHIFT ){
-    }
-              else if(evt.getKeyCode() == KeyEvent.VK_SPACE){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_BACK_SPACE ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_ENTER ){
-    }
-      
-            else{
-            JOptionPane.showMessageDialog(null, "Invalid Character.");
-               CRfirstname.setText("");
-               
-                }        // TODO add your handling code here:
+        
                     
     }//GEN-LAST:event_CRfirstnameKeyReleased
 
     private void CRlastnameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CRlastnameKeyReleased
-       if(evt.getKeyCode() == KeyEvent.VK_A ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_B ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_C ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_D ){
-    }   
-            else if(evt.getKeyCode() == KeyEvent.VK_E ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_F ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_G ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_H ){
-    }   
-            else if(evt.getKeyCode() == KeyEvent.VK_I ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_J ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_K ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_L ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_M ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_N){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_O ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_P ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_Q ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_R ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_S ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_T ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_U ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_V ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_W ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_X ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_Y ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_Z ){
-    }
-              else if(evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_SHIFT ){
-    }
-              else if(evt.getKeyCode() == KeyEvent.VK_SPACE){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_BACK_SPACE ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_ENTER ){
-    }
-      
-            else{
-            JOptionPane.showMessageDialog(null, "Invalid Character.");
-               CRlastname.setText("");
-               
-                  // TODO add your handling code here:
-    }                 
+                   
     }//GEN-LAST:event_CRlastnameKeyReleased
 
     private void CRfirstnameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CRfirstnameKeyPressed
@@ -597,6 +468,25 @@ public class register extends javax.swing.JDialog {
     private void CRcodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CRcodeKeyPressed
        CRcodeempty.setText("");
     }//GEN-LAST:event_CRcodeKeyPressed
+
+    private void CRfirstnameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CRfirstnameKeyTyped
+        //Letter only 
+        if (!Character.isAlphabetic(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar())) {
+        evt.consume();
+        JOptionPane.showMessageDialog(null, "Please Input only Letter");
+    } else if (CRfirstname.getText().trim().length() == 0 && Character.isLowerCase(evt.getKeyChar())) {
+            evt.setKeyChar(Character.toUpperCase(evt.getKeyChar()));
+    }
+    }//GEN-LAST:event_CRfirstnameKeyTyped
+
+    private void CRlastnameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CRlastnameKeyTyped
+          if (!Character.isAlphabetic(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar())) {
+        evt.consume();
+        JOptionPane.showMessageDialog(null, "Please Input only Letter");
+    } else if (CRlastname.getText().trim().length() == 0 && Character.isLowerCase(evt.getKeyChar())) {
+            evt.setKeyChar(Character.toUpperCase(evt.getKeyChar()));
+    }
+    }//GEN-LAST:event_CRlastnameKeyTyped
 
     /**
      * @param args the command line arguments

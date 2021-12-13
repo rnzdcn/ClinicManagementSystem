@@ -5,6 +5,7 @@
  */
 package Clinic;
 
+import static Clinic.Inventory.Itable;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -43,6 +44,7 @@ import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.jdbc.JDBCCategoryDataset;
 
+
 /**
  *
  * @author jomari
@@ -66,37 +68,38 @@ public class Menu extends javax.swing.JFrame {
     
      
         //codes sa pie chart
-//        try{
-//          String f = "select * from clinicmanagement.inventory where status='Available'";
-//            pst=conn.prepareStatement(f);
-//            rs=pst.executeQuery();
-//             Mtable.setModel(DbUtils.resultSetToTableModel(rs));
-//            int f1=Mtable.getRowCount();
-//         
-//        String g = "select * from clinicmanagement.inventory where status='Not available'";
-//            pst=conn.prepareStatement(g);
-//            rs=pst.executeQuery();
-//             Mtable.setModel(DbUtils.resultSetToTableModel(rs));
-//            int g1=Mtable.getRowCount();
-//            
-//            DefaultPieDataset dataset2 = new DefaultPieDataset();
-//            dataset2.setValue("Available",new Integer(f1));
-//            dataset2.setValue("Not Available",new Integer(g1));
-//            
-//            JFreeChart chart2 = ChartFactory.createPieChart("Available Medicine",dataset2, true,true,true);
-//            PiePlot P = (PiePlot)chart2.getPlot();
-//            ChartPanel CP2 = new ChartPanel(chart2);
-//            jPanel5.setPreferredSize(new Dimension(500, 250));
-//            jPanel5.setLayout(new java.awt.BorderLayout());
-//            j`    Panel5.add(CP2,BorderLayout.CENTER);
-//            jPanel5.validate();
-//            chart2.setBackgroundPaint(Color.green);
-//            chart2.getTitle().setPaint(Color.WHITE);
-//            CategoryPlot ax =chart2.getCategoryPlot();
-//             ax.setRangeGridlinePaint(Color.WHITE);
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, e);    
-//        }
+        try{
+          String f = "select * from clinicmanagement.inventory where status='Available'";
+          pst=conn.prepareStatement(f);
+          rs=pst.executeQuery();
+          Itable.setModel(DbUtils.resultSetToTableModel(rs));
+          int f1=Itable.getRowCount();
+         
+          String g = "select * from clinicmanagement.inventory where status='Not available'";
+          pst=conn.prepareStatement(g);
+          rs=pst.executeQuery();
+          Itable.setModel(DbUtils.resultSetToTableModel(rs));
+          int g1=Itable.getRowCount();
+          
+          
+          DefaultPieDataset dataset2 = new DefaultPieDataset();
+          dataset2.setValue("Available",new Integer(f1));
+          dataset2.setValue("Not Available",new Integer(g1));
+       
+          JFreeChart chart2 = ChartFactory.createPieChart("Available Medicine",dataset2, true,true,true);
+          PiePlot P = (PiePlot)chart2.getPlot();
+          ChartPanel CP2 = new ChartPanel(chart2);
+          jPanel6.setPreferredSize(new Dimension(500, 250));
+          jPanel6.setLayout(new java.awt.BorderLayout());
+          jPanel6.add(CP2,BorderLayout.CENTER);
+          jPanel6.validate();
+          chart2.setBackgroundPaint(Color.green);
+          chart2.getTitle().setPaint(Color.WHITE);
+//          CategoryPlot ax =chart2.getCategoryPlot();
+//          ax.setRangeGridlinePaint(Color.WHITE);
+        } catch (Exception e) {
+          JOptionPane.showMessageDialog(null, e);    
+        }
         
         
         //codes sa bar chart
@@ -110,8 +113,9 @@ public class Menu extends javax.swing.JFrame {
             ChartPanel CP1 = new ChartPanel(cha);
             jPanel4.setPreferredSize(new Dimension(500, 250));
             jPanel4.setLayout(new java.awt.BorderLayout());
-            
             jPanel4.add(CP1, BorderLayout.CENTER);
+            cha.setBackgroundPaint(Color.green);
+            cha.getTitle().setPaint(Color.WHITE);
             jPanel4.validate();
 
         } catch (Exception e) {
@@ -132,6 +136,8 @@ public class Menu extends javax.swing.JFrame {
             jPanel3.setPreferredSize(new Dimension(500, 250));
             jPanel3.setLayout(new java.awt.BorderLayout());
             jPanel3.add(CP1, BorderLayout.CENTER);
+            cha.setBackgroundPaint(Color.green);
+            cha.getTitle().setPaint(Color.WHITE);
             jPanel3.validate();
 
         } catch (Exception e) {
@@ -189,6 +195,18 @@ public class Menu extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
+          try {
+            String sq1 = "select count(studreportno) from clinicmanagement.studentmedicine";
+            pst = conn.prepareStatement(sq1);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                String sum1 = rs.getString("count(studreportno)");
+                givemedicine.setText(sum1);
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
 
     }
         void showTime() {
@@ -232,6 +250,10 @@ public class Menu extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         Mtime = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        panel3 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        givemedicine = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
@@ -293,6 +315,7 @@ public class Menu extends javax.swing.JFrame {
 
         panel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panel1.setOpaque(false);
+        panel1.setPreferredSize(new java.awt.Dimension(190, 120));
 
         Label1.setBackground(new java.awt.Color(10, 46, 54));
         Label1.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
@@ -326,7 +349,7 @@ public class Menu extends javax.swing.JFrame {
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addComponent(Label1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Mnumberofpatients, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -342,7 +365,7 @@ public class Menu extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 230, 270, 310));
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 230, 270, 310));
 
         jPanel5.setBackground(new java.awt.Color(87, 191, 109));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -417,6 +440,55 @@ public class Menu extends javax.swing.JFrame {
         Mcalendar.setForeground(new java.awt.Color(255, 255, 255));
         Mcalendar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/Menucalendar.png"))); // NOI18N
         jPanel2.add(Mcalendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 70, 180, 30));
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 230, 270, 310));
+
+        panel3.setBackground(new java.awt.Color(255, 255, 255));
+        panel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel3.setOpaque(false);
+
+        jLabel4.setBackground(new java.awt.Color(10, 46, 54));
+        jLabel4.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Given Medicine");
+        jLabel4.setOpaque(true);
+
+        givemedicine.setBackground(new java.awt.Color(10, 46, 54));
+        givemedicine.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
+        givemedicine.setForeground(new java.awt.Color(255, 255, 255));
+        givemedicine.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        givemedicine.setOpaque(true);
+        givemedicine.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                givemedicineMouseDragged(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panel3Layout = new javax.swing.GroupLayout(panel3);
+        panel3.setLayout(panel3Layout);
+        panel3Layout.setHorizontalGroup(
+            panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                    .addComponent(givemedicine, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        panel3Layout.setVerticalGroup(
+            panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel3Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(givemedicine, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(panel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 30, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1280, 600));
 
@@ -499,6 +571,10 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void givemedicineMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_givemedicineMouseDragged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_givemedicineMouseDragged
+
     /**
      * @param args the command line arguments
      */
@@ -540,6 +616,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel Mnumberofpatients;
     private javax.swing.JLabel Mtime;
     private javax.swing.JLabel Mtotalmedicine;
+    private javax.swing.JLabel givemedicine;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -547,13 +624,16 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel panel1;
     private javax.swing.JPanel panel2;
+    private javax.swing.JPanel panel3;
     public static final javax.swing.JLabel userName = new javax.swing.JLabel();
     // End of variables declaration//GEN-END:variables
 

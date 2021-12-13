@@ -237,6 +237,9 @@ public final class addnewPatients extends javax.swing.JFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 ANPfirstKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ANPfirstKeyTyped(evt);
+            }
         });
         jPanel2.add(ANPfirst, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 190, 30));
 
@@ -293,6 +296,9 @@ public final class addnewPatients extends javax.swing.JFrame {
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 ANPmiddleKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ANPmiddleKeyTyped(evt);
             }
         });
         jPanel2.add(ANPmiddle, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 190, 30));
@@ -785,117 +791,37 @@ public final class addnewPatients extends javax.swing.JFrame {
     }//GEN-LAST:event_ANPstudIdKeyReleased
 
     private void ANPfirstKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPfirstKeyReleased
-        
-            if(evt.getKeyCode() == KeyEvent.VK_A ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_B ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_C ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_D ){
-    }   
-            else if(evt.getKeyCode() == KeyEvent.VK_E ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_F ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_G ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_H ){
-    }   
-            else if(evt.getKeyCode() == KeyEvent.VK_I ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_J ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_K ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_L ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_M ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_N){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_O ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_P ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_Q ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_R ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_S ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_T ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_U ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_V ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_W ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_X ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_Y ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_Z ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_SHIFT ){
-    }           
-            else if(evt.getKeyCode() == KeyEvent.VK_MINUS){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_PERIOD){     
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_SPACE){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_BACK_SPACE ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_ENTER ){
-    }
-            else if(evt.getKeyCode() == KeyEvent.VK_MINUS){
-    }
-      
-      
-            else{
-            JOptionPane.showMessageDialog(null, "Invalid Character.");
-               ANPfirst.setText("");
-                }
+  
                                   
     }//GEN-LAST:event_ANPfirstKeyReleased
 
     private void ANPlastKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPlastKeyReleased
-      // FOR ALPHABETIC ONLY NOT SURE IF IT IS WORKING
-     char c = evt.getKeyChar();
-
-    if(Character.isLetter(c) ||Character.isWhitespace(c) ||Character.isISOControl(c)||Character.isUpperCase(c)){
-    }else if(evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK ){
-    }
-    else if(evt.getKeyCode() == KeyEvent.VK_SHIFT ){    
-      ANPlast.setEditable(true);
-    }else {
-         JOptionPane.showMessageDialog(null, "Invalid Character.");
-        ANPlast.setText("");
-    }
+//      // FOR ALPHABETIC ONLY NOT SURE IF IT IS WORKING
+//     char c = evt.getKeyChar();
+//
+//    if(Character.isLetter(c) ||Character.isWhitespace(c) ||Character.isISOControl(c)||Character.isUpperCase(c)){
+//    }else if(evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK ){
+//    }
+//    else if(evt.getKeyCode() == KeyEvent.VK_SHIFT ){    
+//      ANPlast.setEditable(true);
+//    }else {
+//         JOptionPane.showMessageDialog(null, "Invalid Character.");
+//        ANPlast.setText("");
+//    }
     }//GEN-LAST:event_ANPlastKeyReleased
 
     private void ANPlastKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPlastKeyTyped
-         
+      //Letter only 
+        if (!Character.isAlphabetic(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar())) {
+        evt.consume();
+        JOptionPane.showMessageDialog(null, "Please Input only Letter");
+    } else if (ANPlast.getText().trim().length() == 0 && Character.isLowerCase(evt.getKeyChar())) {
+            evt.setKeyChar(Character.toUpperCase(evt.getKeyChar()));
+    }   
     }//GEN-LAST:event_ANPlastKeyTyped
 
     private void ANPmiddleKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPmiddleKeyReleased
-       // FOR ALPHABETIC ONLY NOT SURE IF IT IS WORKING
-     char c = evt.getKeyChar();
-
-    if(Character.isLetter(c) ||Character.isWhitespace(c) ||Character.isISOControl(c)||Character.isUpperCase(c)){
-    }
-    else if(evt.getKeyCode() == KeyEvent.VK_CAPS_LOCK ){
-    }
-    else if(evt.getKeyCode() == KeyEvent.VK_SHIFT ){    
-      ANPmiddle.setEditable(true);
-    }else {
-         JOptionPane.showMessageDialog(null, "Invalid Character.");
-        ANPmiddle.setText("");
-    }
+      
     }//GEN-LAST:event_ANPmiddleKeyReleased
 
     private void ANPcontactnumberKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPcontactnumberKeyReleased
@@ -1005,6 +931,26 @@ public final class addnewPatients extends javax.swing.JFrame {
     private void ANPageKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPageKeyTyped
      ANPageempty.setText("");
     }//GEN-LAST:event_ANPageKeyTyped
+
+    private void ANPfirstKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPfirstKeyTyped
+       //Letter only 
+        if (!Character.isAlphabetic(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar())) {
+        evt.consume();
+        JOptionPane.showMessageDialog(null, "Please Input only Letter");
+    } else if (ANPfirst.getText().trim().length() == 0 && Character.isLowerCase(evt.getKeyChar())) {
+            evt.setKeyChar(Character.toUpperCase(evt.getKeyChar()));
+    }
+    }//GEN-LAST:event_ANPfirstKeyTyped
+
+    private void ANPmiddleKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPmiddleKeyTyped
+       //Letter only 
+        if (!Character.isAlphabetic(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar())) {
+        evt.consume();
+        JOptionPane.showMessageDialog(null, "Please Input only Letter");
+    } else if (ANPmiddle.getText().trim().length() == 0 && Character.isLowerCase(evt.getKeyChar())) {
+            evt.setKeyChar(Character.toUpperCase(evt.getKeyChar()));
+    }
+    }//GEN-LAST:event_ANPmiddleKeyTyped
 
     /**
      * @param args the command line arguments

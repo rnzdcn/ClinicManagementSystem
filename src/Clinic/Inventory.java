@@ -307,29 +307,16 @@ public class Inventory extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-//try {
-//        int row = Itable.getSelectedRow();
-//        String Table_click = (Itable.getModel().getValueAt(row, 0).toString());
-//        String update_In = "Insert into clinicmanagement.zeroquantity Select * from  clinicmanagement.inventory where id = ?";
-//        
-//            pst = conn.prepareStatement(update_In);
-//            pst.executeUpdate(update_In);
-//            updateTable();
-//        } catch (Exception e) {
-//
-//        }
-        // INSERT INTO persons_table SELECT * FROM customer_table WHERE person_name = 'tom';
         try {
             int selectedRow = Itable.getSelectedRow();
-            String tmp = (Itable.getValueAt(selectedRow, 0).toString());
-           // String tmp1 = (Itable.getValueAt(selectedRow, 0).toString());
+           // String tmp1 = (Itable.getModel().getValueAt(selectedRow, 0).toString());  
+           String tmp = (Itable.getValueAt(selectedRow, 0).toString());
             int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this record?", "Delete Record", JOptionPane.YES_NO_OPTION);
             if (option == JOptionPane.YES_OPTION) {
-                String sql =  "Insert into clinicmanagement.zeroquantity Select * from  clinicmanagement.inventory where id=?";
-               // String sql1 = "Delete from clinicmanagement.inventory where medicinename =?";
-                pst = conn.prepareStatement(sql);
-                pst.setString(1, tmp);
-                //pst.setString(2, tmp1);
+                String sql =  "Delete clinicmanagement.inventory where id = ?";                 
+               pst = conn.prepareStatement(sql); 
+               pst.setString(1, tmp);
+            //   pst.setString(2, tmp1);
                 pst.execute();
                 updateTable();
                 JOptionPane.showMessageDialog(null, "Record deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -339,10 +326,45 @@ public class Inventory extends javax.swing.JFrame {
 
             }
         } catch (ArrayIndexOutOfBoundsException e) {
-            JOptionPane.showMessageDialog(null, "Please select an account", "Errpr", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please select an account", "Error", JOptionPane.WARNING_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
+//        try{
+//        int row = Itable.getSelectedRow();
+//        String cell = Itable.getModel().getValueAt(row, 0).toString();
+//        int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this record?", "Delete Record", JOptionPane.YES_NO_OPTION);
+//            if (option == JOptionPane.YES_OPTION) {
+//        String sql1 ="Insert into clinicmanagement.zeroquantity select * from  clinicmanagement.inventory where id='"+cell+"' "; 
+//        
+//            pst=conn.prepareStatement(sql1);
+//      
+//            pst.execute();
+//            updateTable();
+//            JOptionPane.showMessageDialog(null, "Deleted Successfully");
+//            }
+//        }catch (Exception e){
+//            JOptionPane.showMessageDialog(null, e);
+//        }
+//        try {
+//        int row = Itable.getSelectedRow();
+//        String cell = Itable.getModel().getValueAt(row, 0).toString();
+//             String sql ="Delete from clinicmanagement.inventory where id='"+cell+"' ";
+//            
+//                pst = conn.prepareStatement(sql);       
+//                pst.execute(sql);
+//                updateTable();
+//                 } catch (Exception e) {
+//                     JOptionPane.showMessageDialog(null, e);
+//
+//            }
+        
+        
+        
+    
+        
+            
+            
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed

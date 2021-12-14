@@ -328,6 +328,7 @@ public class Menu extends javax.swing.JFrame {
         Mnumberofpatients.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
         Mnumberofpatients.setForeground(new java.awt.Color(255, 255, 255));
         Mnumberofpatients.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Mnumberofpatients.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/menupatient.png"))); // NOI18N
         Mnumberofpatients.setOpaque(true);
         Mnumberofpatients.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {

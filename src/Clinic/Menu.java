@@ -65,28 +65,53 @@ public class Menu extends javax.swing.JFrame {
          currentDate();
          showTime();
        
-    
-     
-        //codes sa pie chart
-        try{
-          String f = "select * from clinicmanagement.inventory where status='Available'";
+         
+          try{
+          String f = "select * from clinicmanagement.patients where sick='Headache'";
           pst=conn.prepareStatement(f);
           rs=pst.executeQuery();
           Itable.setModel(DbUtils.resultSetToTableModel(rs));
           int f1=Itable.getRowCount();
          
-          String g = "select * from clinicmanagement.inventory where status='Not available'";
+          String g = "select * from clinicmanagement.patients where sick='Cold'";
           pst=conn.prepareStatement(g);
           rs=pst.executeQuery();
           Itable.setModel(DbUtils.resultSetToTableModel(rs));
           int g1=Itable.getRowCount();
+         
+          String h = "select * from clinicmanagement.patients where sick='Diarrhea'";
+          pst=conn.prepareStatement(h);
+          rs=pst.executeQuery();
+          Itable.setModel(DbUtils.resultSetToTableModel(rs));
+          int h1=Itable.getRowCount();
+         
+          String i = "select * from clinicmanagement.patients where sick='Flu'";
+          pst=conn.prepareStatement(i);
+          rs=pst.executeQuery();
+          Itable.setModel(DbUtils.resultSetToTableModel(rs));
+          int i1=Itable.getRowCount();
           
+          String j = "select * from clinicmanagement.patients where sick='Injury'";
+          pst=conn.prepareStatement(j);
+          rs=pst.executeQuery();
+          Itable.setModel(DbUtils.resultSetToTableModel(rs));
+          int j1=Itable.getRowCount();
+   
+           String k = "select * from clinicmanagement.patients where sick='Stomachache'";
+          pst=conn.prepareStatement(k);
+          rs=pst.executeQuery();
+          Itable.setModel(DbUtils.resultSetToTableModel(rs));
+          int k1=Itable.getRowCount();
           
           DefaultPieDataset dataset2 = new DefaultPieDataset();
-          dataset2.setValue("Available",new Integer(f1));
-          dataset2.setValue("Not Available",new Integer(g1));
+          dataset2.setValue("Headache",new Integer(f1));
+          dataset2.setValue("Cold",new Integer(g1));
+          dataset2.setValue("Diarrhea",new Integer(h1));
+          dataset2.setValue("Flu",new Integer(i1));
+          dataset2.setValue("Injury",new Integer(j1));
+          dataset2.setValue("Stomachache",new Integer(k1));
        
-          JFreeChart chart2 = ChartFactory.createPieChart("Available Medicine",dataset2, true,true,true);
+          JFreeChart chart2 = ChartFactory.createPieChart3D("Common Student Illness",dataset2, true,true,true);
           PiePlot P = (PiePlot)chart2.getPlot();
           ChartPanel CP2 = new ChartPanel(chart2);
           jPanel6.setPreferredSize(new Dimension(500, 250));
@@ -100,13 +125,46 @@ public class Menu extends javax.swing.JFrame {
         } catch (Exception e) {
           JOptionPane.showMessageDialog(null, e);    
         }
+        //codes sa pie chart
+//        try{
+//          String f = "select * from clinicmanagement.inventory where status='Available'";
+//          pst=conn.prepareStatement(f);
+//          rs=pst.executeQuery();
+//          Itable.setModel(DbUtils.resultSetToTableModel(rs));
+//          int f1=Itable.getRowCount();
+//         
+//          String g = "select * from clinicmanagement.inventory where status='Not available'";
+//          pst=conn.prepareStatement(g);
+//          rs=pst.executeQuery();
+//          Itable.setModel(DbUtils.resultSetToTableModel(rs));
+//          int g1=Itable.getRowCount();
+//          
+//          
+//          DefaultPieDataset dataset2 = new DefaultPieDataset();
+//          dataset2.setValue("Available",new Integer(f1));
+//          dataset2.setValue("Not Available",new Integer(g1));
+//       
+//          JFreeChart chart2 = ChartFactory.createPieChart3D("Available Medicine",dataset2, true,true,true);
+//          PiePlot P = (PiePlot)chart2.getPlot();
+//          ChartPanel CP2 = new ChartPanel(chart2);
+//          jPanel6.setPreferredSize(new Dimension(500, 250));
+//          jPanel6.setLayout(new java.awt.BorderLayout());
+//          jPanel6.add(CP2,BorderLayout.CENTER);
+//          jPanel6.validate();
+//          chart2.setBackgroundPaint(Color.green);
+//          chart2.getTitle().setPaint(Color.WHITE);
+////          CategoryPlot ax =chart2.getCategoryPlot();
+////          ax.setRangeGridlinePaint(Color.WHITE);
+//        } catch (Exception e) {
+//          JOptionPane.showMessageDialog(null, e);    
+//        }
         
         
         //codes sa bar chart
          try {
-            String query = "select date,count(studentid) from clinicmanagement.patients";
+            String query = "select date , count(studentid) from clinicmanagement.patients";
             JDBCCategoryDataset dataset = new JDBCCategoryDataset(connection.ConnecrDb(), query);
-            JFreeChart cha = ChartFactory.createBarChart("Number of patients", "Date", "Student", dataset, PlotOrientation.VERTICAL, false, true, true);
+            JFreeChart cha = ChartFactory.createBarChart3D("Number of patients", "Date", "Student", dataset, PlotOrientation.VERTICAL, false, true, true);
             BarRenderer renderer = null;
             CategoryPlot plot = null;
             renderer = new BarRenderer();
@@ -128,7 +186,7 @@ public class Menu extends javax.swing.JFrame {
         try {
             String query = "select daterecieved,quantity from clinicmanagement.inventory";
             JDBCCategoryDataset dataset = new JDBCCategoryDataset(connection.ConnecrDb(), query);
-            JFreeChart cha = ChartFactory.createLineChart("Number of medicine Recieved", "Daterecieved", "Quantity", dataset, PlotOrientation.VERTICAL, false, true, true);
+            JFreeChart cha = ChartFactory.createLineChart3D("Number of medicine Recieved", "Daterecieved", "Quantity", dataset, PlotOrientation.VERTICAL, false, true, true);
             BarRenderer renderer = null;
             CategoryPlot plot = null;
             renderer = new BarRenderer();
@@ -362,7 +420,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(10, 46, 54));
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 270, 310));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 290, 310));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

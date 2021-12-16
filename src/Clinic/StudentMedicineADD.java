@@ -697,20 +697,20 @@ public class StudentMedicineADD extends javax.swing.JFrame {
 
             }
             
-             String deletedzero = "delete from clinicmanagement.inventory where quantity=0 output deleted.* into clinicmanagement.zeroquantity ";
-            try {
-                ps = conn.prepareStatement(deletedzero);
-                  ps.executeUpdate(deletedzero);
-                  updateTable();
-
-              //  JOptionPane.showMessageDialog(rootPane, "Stock Out Successfully!");
-
-            } catch (Exception e) {
-
-            }JOptionPane.showMessageDialog(null, "Successfully Added");
-                new StudentMedicine().setVisible(true);
-                setVisible(false);  
-            
+////             String deletedzero = "delete from clinicmanagement.inventory where quantity=0 output deleted.* into clinicmanagement.zeroquantity ";
+////            try {
+////                ps = conn.prepareStatement(deletedzero);
+////                  ps.executeUpdate(deletedzero);
+////                  updateTable();
+////
+////              //  JOptionPane.showMessageDialog(rootPane, "Stock Out Successfully!");
+////
+////            } catch (Exception e) {
+//
+//            }JOptionPane.showMessageDialog(null, "Successfully Added");
+//                new StudentMedicine().setVisible(true);
+//                setVisible(false);  
+//            
             }
         
         } catch (NumberFormatException | HeadlessException e) {
@@ -862,7 +862,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
                 ASmedicine.setText(add1);
                  int add2 = Integer.parseInt(rs.getString("quantity"));
                 ASavailable.setText(Integer.toString(add2));
-                JOptionPane.showMessageDialog(null, "You select medicine:"+"  " +  add1);
+                JOptionPane.showMessageDialog(null, "You select medicine:" + "\n" +  add1 + "\n" + "Quantity:" + "\n" +  add2);
                 }
             else{
                 

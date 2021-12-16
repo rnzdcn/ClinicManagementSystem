@@ -37,10 +37,12 @@ public class Inventory extends javax.swing.JFrame {
 //        this.setLocationRelativeTo(null);
         updateTable();
         equaldate();
+        
 
         //mali pa to
     }
-
+    
+    
     public void updateTable() {
 
         try {
@@ -67,18 +69,14 @@ public class Inventory extends javax.swing.JFrame {
     }
 
     public void equaldate() {
-
         String dateR = "update clinicmanagement.inventory set status= 'Not available' where expirationdate = CURDATE()";
         try {
             pst = conn.prepareStatement(dateR);
             pst.executeUpdate(dateR);
             updateTable();
-
         } catch (Exception e) {
-
         }
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -279,7 +277,6 @@ public class Inventory extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-
             int selectedRow = Itable.getSelectedRow();
             String row = (Itable.getModel().getValueAt(selectedRow, 0).toString());
             viewMedicine.setRow(row);
@@ -288,9 +285,7 @@ public class Inventory extends javax.swing.JFrame {
             setVisible(false);
         } catch (ArrayIndexOutOfBoundsException e) {
             JOptionPane.showMessageDialog(null, "Please select an account.", "Error", JOptionPane.WARNING_MESSAGE);
-
         }
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -307,45 +302,44 @@ public class Inventory extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        try {
-            int selectedRow = Itable.getSelectedRow();
-           // String tmp1 = (Itable.getModel().getValueAt(selectedRow, 0).toString());  
-           String tmp = (Itable.getValueAt(selectedRow, 0).toString());
-            int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this record?", "Delete Record", JOptionPane.YES_NO_OPTION);
-            if (option == JOptionPane.YES_OPTION) {
-                String sql =  "Delete clinicmanagement.inventory where id = ?";                 
-               pst = conn.prepareStatement(sql); 
-               pst.setString(1, tmp);
-            //   pst.setString(2, tmp1);
-                pst.execute();
-                updateTable();
-                JOptionPane.showMessageDialog(null, "Record deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-                
-                rs.close();
-                pst.close();
-
-            }
-        } catch (ArrayIndexOutOfBoundsException e) {
-            JOptionPane.showMessageDialog(null, "Please select an account", "Error", JOptionPane.WARNING_MESSAGE);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-//        try{
-//        int row = Itable.getSelectedRow();
-//        String cell = Itable.getModel().getValueAt(row, 0).toString();
-//        int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this record?", "Delete Record", JOptionPane.YES_NO_OPTION);
+//        try {
+//            int selectedRow = Itable.getSelectedRow();
+//           // String tmp1 = (Itable.getModel().getValueAt(selectedRow, 0).toString());  
+//           String tmp = (Itable.getValueAt(selectedRow, 0).toString());
+//            int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this record?", "Delete Record", JOptionPane.YES_NO_OPTION);
 //            if (option == JOptionPane.YES_OPTION) {
-//        String sql1 ="Insert into clinicmanagement.zeroquantity select * from  clinicmanagement.inventory where id='"+cell+"' "; 
-//        
-//            pst=conn.prepareStatement(sql1);
-//      
-//            pst.execute();
-//            updateTable();
-//            JOptionPane.showMessageDialog(null, "Deleted Successfully");
+//                String sql =  "Delete clinicmanagement.inventory where id = ?";                 
+//               pst = conn.prepareStatement(sql); 
+//               pst.setString(1, tmp);
+//            //   pst.setString(2, tmp1);
+//                pst.execute();
+//                updateTable();
+//                JOptionPane.showMessageDialog(null, "Record deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);                
+//                rs.close();
+//                pst.close();
 //            }
-//        }catch (Exception e){
+//        } catch (ArrayIndexOutOfBoundsException e) {
+//            JOptionPane.showMessageDialog(null, "Please select an account", "Error", JOptionPane.WARNING_MESSAGE);
+//        } catch (Exception e) {
 //            JOptionPane.showMessageDialog(null, e);
 //        }
+        try{
+        int row = Itable.getSelectedRow();
+        String cell = Itable.getModel().getValueAt(row, 0).toString();
+        int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this record?", "Delete Record", JOptionPane.YES_NO_OPTION);
+        if (option == JOptionPane.YES_OPTION) {
+        //String sql1 ="Insert into clinicmanagement.zeroquantity  select * from  clinicmanagement.inventory where id =?";
+       String sql ="Delete from clinicmanagement.inventory where id=? ";
+            pst=conn.prepareStatement(sql);
+            pst.setString(1, cell);
+          //  pst.setString(2, cell);
+            pst.executeUpdate();
+            updateTable();
+            JOptionPane.showMessageDialog(null, "Deleted Successfully");
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
 //        try {
 //        int row = Itable.getSelectedRow();
 //        String cell = Itable.getModel().getValueAt(row, 0).toString();
@@ -357,14 +351,7 @@ public class Inventory extends javax.swing.JFrame {
 //                 } catch (Exception e) {
 //                     JOptionPane.showMessageDialog(null, e);
 //
-//            }
-        
-        
-        
-    
-        
-            
-            
+//            }                                             
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed

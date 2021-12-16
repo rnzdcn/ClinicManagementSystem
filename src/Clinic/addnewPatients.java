@@ -814,7 +814,7 @@ public final class addnewPatients extends javax.swing.JFrame {
       //Letter only 
         if (!Character.isAlphabetic(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar())) {
         evt.consume();
-        JOptionPane.showMessageDialog(null, "Please Input only Letter");
+       // JOptionPane.showMessageDialog(null, "Please Input only Letter");
     } else if (ANPlast.getText().trim().length() == 0 && Character.isLowerCase(evt.getKeyChar())) {
             evt.setKeyChar(Character.toUpperCase(evt.getKeyChar()));
     }   
@@ -830,12 +830,14 @@ public final class addnewPatients extends javax.swing.JFrame {
      Pattern patt=Pattern.compile(PATTERN);
       
      Matcher match=patt.matcher(ANPcontactnumber.getText());
-     if(!match.matches()){
+     if(!match.matches())
+         
+     {
          JOptionPane.showMessageDialog(null, "Invalid Input");
          ANPcontactempty.setText("INPUT 11 DIGIT MOBILE NUMBER ONLY");
          ANPcontactnumber.setText("");
      }else{
-         
+       
          
      }
             
@@ -934,11 +936,12 @@ public final class addnewPatients extends javax.swing.JFrame {
 
     private void ANPfirstKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPfirstKeyTyped
        //Letter only 
-        if (!Character.isAlphabetic(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar())) {
+        if (!Character.isAlphabetic(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar())  && !Character.isSpaceChar(evt.getKeyChar())) {
         evt.consume();
-        JOptionPane.showMessageDialog(null, "Please Input only Letter");
+        
     } else if (ANPfirst.getText().trim().length() == 0 && Character.isLowerCase(evt.getKeyChar())) {
             evt.setKeyChar(Character.toUpperCase(evt.getKeyChar()));
+            
     }
     }//GEN-LAST:event_ANPfirstKeyTyped
 
@@ -946,7 +949,7 @@ public final class addnewPatients extends javax.swing.JFrame {
        //Letter only 
         if (!Character.isAlphabetic(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar())) {
         evt.consume();
-        JOptionPane.showMessageDialog(null, "Please Input only Letter");
+       // JOptionPane.showMessageDialog(null, "Please Input only Letter");
     } else if (ANPmiddle.getText().trim().length() == 0 && Character.isLowerCase(evt.getKeyChar())) {
             evt.setKeyChar(Character.toUpperCase(evt.getKeyChar()));
     }

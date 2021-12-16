@@ -855,7 +855,7 @@ public class editPatients extends javax.swing.JFrame {
        //Letter only 
         if (!Character.isAlphabetic(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar())) {
         evt.consume();
-        JOptionPane.showMessageDialog(null, "Please Input only Letter");
+     //   JOptionPane.showMessageDialog(null, "Please Input only Letter");
     } else if (editpatientfirst.getText().trim().length() == 0 && Character.isLowerCase(evt.getKeyChar())) {
             evt.setKeyChar(Character.toUpperCase(evt.getKeyChar()));
     }
@@ -864,8 +864,9 @@ public class editPatients extends javax.swing.JFrame {
     private void editpatientlastKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editpatientlastKeyTyped
         //Letter only 
         if (!Character.isAlphabetic(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar())) {
+        getToolkit().beep();
         evt.consume();
-        JOptionPane.showMessageDialog(null, "Please Input only Letter");
+      //  JOptionPane.showMessageDialog(null, "Please Input only Letter");
     } else if (editpatientlast.getText().trim().length() == 0 && Character.isLowerCase(evt.getKeyChar())) {
             evt.setKeyChar(Character.toUpperCase(evt.getKeyChar()));
     }
@@ -875,7 +876,7 @@ public class editPatients extends javax.swing.JFrame {
        //Letter only 
         if (!Character.isAlphabetic(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar())) {
         evt.consume();
-        JOptionPane.showMessageDialog(null, "Please Input only Letter");
+     //   JOptionPane.showMessageDialog(null, "Please Input only Letter");
     } else if (editpatientmiddle.getText().trim().length() == 0 && Character.isLowerCase(evt.getKeyChar())) {
             evt.setKeyChar(Character.toUpperCase(evt.getKeyChar()));
     }

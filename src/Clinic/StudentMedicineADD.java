@@ -466,7 +466,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(LMtable);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 750, 70));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 750, 80));
 
         jLabel3.setBackground(new java.awt.Color(87, 191, 109));
         jLabel3.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N

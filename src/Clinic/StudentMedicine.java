@@ -34,31 +34,8 @@ public class StudentMedicine extends javax.swing.JFrame {
         conn = connection.ConnecrDb();
         this.setLocationRelativeTo(null);
         updateTable();
-        updateTable1();
     }
-     public void updateTable1() {
-        try {
-            String sql1 = "select medicinename,status  from clinicmanagement.inventory";
-            pst = conn.prepareStatement(sql1);
-            rs = pst.executeQuery();
-            LMtable.setModel(DbUtils.resultSetToTableModel(rs));
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        } finally {
-            try {
-                rs.close();
-                pst.close();
-            } catch (Exception e) {
-            }
-        }
-    }
-
-    public void update1() {
-        updateTable();
-
-    }
-    
+     
      public void updateTable() {
         try {
             String sql = "select * from clinicmanagement.studentmedicine";
@@ -98,24 +75,18 @@ public class StudentMedicine extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        LMtable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         SMtable = new javax.swing.JTable();
-        LMsearch = new javax.swing.JTextField();
-        LMrefresh = new javax.swing.JButton();
         SMpatientrecord = new javax.swing.JTextField();
         jButton11 = new javax.swing.JButton();
-        jButton30 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jButton32 = new javax.swing.JButton();
         jButton33 = new javax.swing.JButton();
         jButton27 = new javax.swing.JButton();
         jButton34 = new javax.swing.JButton();
+        jButton35 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -175,23 +146,6 @@ public class StudentMedicine extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(10, 46, 54));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        LMtable.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        LMtable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Medicine Name", "Status"
-            }
-        ));
-        LMtable.setRowHeight(32);
-        jScrollPane1.setViewportView(LMtable);
-
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 390, 980, 200));
-
         jLabel2.setBackground(new java.awt.Color(87, 191, 109));
         jLabel2.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -200,15 +154,6 @@ public class StudentMedicine extends javax.swing.JFrame {
         jLabel2.setText("RECORD OF STUDENT ");
         jLabel2.setOpaque(true);
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 980, 30));
-
-        jLabel3.setBackground(new java.awt.Color(87, 191, 109));
-        jLabel3.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/managepatients.png"))); // NOI18N
-        jLabel3.setText("LIST OF MEDICINE");
-        jLabel3.setOpaque(true);
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 360, 980, 30));
 
         SMtable.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         SMtable.setModel(new javax.swing.table.DefaultTableModel(
@@ -226,30 +171,6 @@ public class StudentMedicine extends javax.swing.JFrame {
         jScrollPane3.setViewportView(SMtable);
 
         jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 980, 200));
-
-        LMsearch.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        LMsearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LMsearchActionPerformed(evt);
-            }
-        });
-        LMsearch.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                LMsearchKeyReleased(evt);
-            }
-        });
-        jPanel2.add(LMsearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 320, 240, 30));
-
-        LMrefresh.setBackground(new java.awt.Color(255, 255, 255));
-        LMrefresh.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        LMrefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/refresh.png"))); // NOI18N
-        LMrefresh.setText("Refresh");
-        LMrefresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LMrefreshActionPerformed(evt);
-            }
-        });
-        jPanel2.add(LMrefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, 100, 30));
 
         SMpatientrecord.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         SMpatientrecord.addActionListener(new java.awt.event.ActionListener() {
@@ -274,27 +195,6 @@ public class StudentMedicine extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 100, 30));
-
-        jButton30.setBackground(new java.awt.Color(255, 255, 255));
-        jButton30.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        jButton30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/RegisterIMG/registerback.png"))); // NOI18N
-        jButton30.setText("BACK");
-        jButton30.setIconTextGap(0);
-        jButton30.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton30ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton30, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 230, 40));
-
-        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/search.png"))); // NOI18N
-        jLabel5.setText("Search");
-        jLabel5.setToolTipText("");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 320, 70, 30));
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
@@ -355,9 +255,21 @@ public class StudentMedicine extends javax.swing.JFrame {
         });
         jPanel3.add(jButton34, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 200, 30));
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 1220, 240));
+        jButton35.setBackground(new java.awt.Color(255, 255, 255));
+        jButton35.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        jButton35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/back.png"))); // NOI18N
+        jButton35.setText("BACK");
+        jButton35.setIconTextGap(0);
+        jButton35.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton35ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton35, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 200, 30));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1280, 600));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 1220, 300));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1280, 390));
 
         jPanel4.setBackground(new java.awt.Color(204, 255, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -397,12 +309,6 @@ public class StudentMedicine extends javax.swing.JFrame {
                                         
     }//GEN-LAST:event_jButton27ActionPerformed
 
-    private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
-            Menu m = new Menu();
-            m.setVisible(true);
-            setVisible(false); 
-    }//GEN-LAST:event_jButton30ActionPerformed
-
     private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton31ActionPerformed
@@ -440,19 +346,6 @@ public class StudentMedicine extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton34ActionPerformed
 
-    private void LMsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LMsearchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LMsearchActionPerformed
-
-    private void LMrefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LMrefreshActionPerformed
-        DefaultTableModel table = (DefaultTableModel) LMtable.getModel();
-   
-        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
-        LMtable.setRowSorter(tr);
-      
-        LMsearch.setText("");                 
-    }//GEN-LAST:event_LMrefreshActionPerformed
-
     private void SMpatientrecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SMpatientrecordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SMpatientrecordActionPerformed
@@ -474,20 +367,17 @@ public class StudentMedicine extends javax.swing.JFrame {
         tr.setRowFilter(RowFilter.regexFilter(sea));
     }//GEN-LAST:event_SMpatientrecordKeyReleased
 
-    private void LMsearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LMsearchKeyReleased
-        DefaultTableModel table = (DefaultTableModel) LMtable.getModel();
-        String sea = LMsearch.getText();
-        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
-        LMtable.setRowSorter(tr);
-        tr.setRowFilter(RowFilter.regexFilter(sea));
-
-    }//GEN-LAST:event_LMsearchKeyReleased
-
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         logout c = new logout();
         c.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton35ActionPerformed
+        Menu m = new Menu();
+        m.setVisible(true);
+        setVisible(false);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton35ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -526,30 +416,24 @@ public class StudentMedicine extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton LMrefresh;
-    private javax.swing.JTextField LMsearch;
-    private javax.swing.JTable LMtable;
     private javax.swing.JTextField SMpatientrecord;
     private javax.swing.JTable SMtable;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton27;
-    private javax.swing.JButton jButton30;
     private javax.swing.JButton jButton31;
     private javax.swing.JButton jButton32;
     private javax.swing.JButton jButton33;
     private javax.swing.JButton jButton34;
+    private javax.swing.JButton jButton35;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable2;

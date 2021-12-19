@@ -376,7 +376,7 @@ public class addnewMedicine extends javax.swing.JFrame {
              && ((JTextField)AMdateE.getDateEditor().getUiComponent()).getText().isEmpty())
 
         {
-            JOptionPane.showMessageDialog(null, "Enter all details before proceeding");
+            JOptionPane.showMessageDialog(null, "Enter all details before proceeding", "Error", JOptionPane.ERROR_MESSAGE);
             AMmedicineempty.setText("Medicine is empty");
             AMquantityempty.setText("Quanity name is empty");
             AMdateRempty.setText("Date Recieved is empty");

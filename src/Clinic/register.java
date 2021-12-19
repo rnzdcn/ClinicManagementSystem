@@ -314,7 +314,7 @@ public class register extends javax.swing.JDialog {
              .getText().trim().isEmpty()) {
                     
          
-            JOptionPane.showMessageDialog(null, "Enter all details before proceeding");
+            JOptionPane.showMessageDialog(null, "Enter all details before proceeding", "Error", JOptionPane.ERROR_MESSAGE);
             CRfirstempty.setText("fistname is empty");
             CRlastempty.setText("lastname is empty");
              CRuserempty.setText("username is empty");

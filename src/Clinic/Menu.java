@@ -162,9 +162,9 @@ public class Menu extends javax.swing.JFrame {
         
         //codes sa bar chart
          try {
-            String query = "select date , count(studentid) from clinicmanagement.patients";
+            String query = "select date , quantity from clinicmanagement.studentmedicine";
             JDBCCategoryDataset dataset = new JDBCCategoryDataset(connection.ConnecrDb(), query);
-            JFreeChart cha = ChartFactory.createBarChart3D("Number of patients", "Date", "Student", dataset, PlotOrientation.VERTICAL, false, true, true);
+            JFreeChart cha = ChartFactory.createBarChart("Number of medicine give", "Date", "quantity", dataset, PlotOrientation.VERTICAL, false, true, true);
             BarRenderer renderer = null;
             CategoryPlot plot = null;
             renderer = new BarRenderer();
@@ -278,7 +278,7 @@ public class Menu extends javax.swing.JFrame {
         }).start();
     }
      public void  currentDate(){
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-d");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MMM-d");
         Date d = new Date();
         Mcalendar.setText(dateFormat.format(d));
        

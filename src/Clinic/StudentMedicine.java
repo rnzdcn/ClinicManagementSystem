@@ -158,10 +158,7 @@ public class StudentMedicine extends javax.swing.JFrame {
         SMtable.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         SMtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Student ID", "First Name", "Last Name", "Date", "Time", "Medicine", "Description"
@@ -368,9 +365,12 @@ public class StudentMedicine extends javax.swing.JFrame {
     }//GEN-LAST:event_SMpatientrecordKeyReleased
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        logout c = new logout();
-        c.setVisible(true);
-        setVisible(false);
+      int response = JOptionPane.showConfirmDialog(this, "Are you sure you want to Exit?","Confirm",
+                JOptionPane.YES_NO_OPTION ,JOptionPane.QUESTION_MESSAGE);
+        if(response==JOptionPane.YES_OPTION){
+            new signup().setVisible(true);
+            dispose();
+        }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton35ActionPerformed

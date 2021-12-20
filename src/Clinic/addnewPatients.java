@@ -103,12 +103,11 @@ public final class addnewPatients extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         ANPtime = new javax.swing.JTextField();
-        ANPcontactnumber = new javax.swing.JTextField();
+        ANPdates = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         ANPadd = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        ANPdate = new com.toedter.calendar.JDateChooser();
         ANPgender = new javax.swing.JComboBox();
         ANPguardianempty = new javax.swing.JLabel();
         ANPstudentIDempty = new javax.swing.JLabel();
@@ -120,8 +119,8 @@ public final class addnewPatients extends javax.swing.JFrame {
         ANPtimeempty = new javax.swing.JLabel();
         ANPbedempty = new javax.swing.JLabel();
         ANPsickempty = new javax.swing.JLabel();
-        ANPdates = new javax.swing.JTextField();
         ANPage = new javax.swing.JTextField();
+        ANPcontactnumber = new javax.swing.JTextField();
 
         jLabel4.setBackground(new java.awt.Color(204, 255, 255));
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -415,26 +414,27 @@ public final class addnewPatients extends javax.swing.JFrame {
         });
         jPanel2.add(ANPtime, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, 210, 30));
 
-        ANPcontactnumber.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        ANPcontactnumber.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        ANPcontactnumber.setPreferredSize(new java.awt.Dimension(60, 20));
-        ANPcontactnumber.addActionListener(new java.awt.event.ActionListener() {
+        ANPdates.setEditable(false);
+        ANPdates.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        ANPdates.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        ANPdates.setPreferredSize(new java.awt.Dimension(60, 20));
+        ANPdates.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ANPcontactnumberActionPerformed(evt);
+                ANPdatesActionPerformed(evt);
             }
         });
-        ANPcontactnumber.addKeyListener(new java.awt.event.KeyAdapter() {
+        ANPdates.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                ANPcontactnumberKeyPressed(evt);
+                ANPdatesKeyPressed(evt);
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                ANPcontactnumberKeyReleased(evt);
+                ANPdatesKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                ANPcontactnumberKeyTyped(evt);
+                ANPdatesKeyTyped(evt);
             }
         });
-        jPanel2.add(ANPcontactnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, 210, 30));
+        jPanel2.add(ANPdates, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 30, 210, 30));
 
         jLabel15.setBackground(new java.awt.Color(10, 46, 54));
         jLabel15.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -478,9 +478,6 @@ public final class addnewPatients extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, 120, 40));
-
-        ANPdate.setDateFormatString("yyyy-MM-d");
-        jPanel2.add(ANPdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 30, 210, 30));
 
         ANPgender.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         ANPgender.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MALE", "FEMALE" }));
@@ -536,9 +533,6 @@ public final class addnewPatients extends javax.swing.JFrame {
         ANPsickempty.setForeground(new java.awt.Color(237, 74, 65));
         jPanel2.add(ANPsickempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 260, 210, 20));
 
-        ANPdates.setEditable(false);
-        jPanel2.add(ANPdates, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 0, 210, 30));
-
         ANPage.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         ANPage.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         ANPage.setPreferredSize(new java.awt.Dimension(60, 20));
@@ -559,6 +553,27 @@ public final class addnewPatients extends javax.swing.JFrame {
             }
         });
         jPanel2.add(ANPage, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 190, 30));
+
+        ANPcontactnumber.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        ANPcontactnumber.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        ANPcontactnumber.setPreferredSize(new java.awt.Dimension(60, 20));
+        ANPcontactnumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ANPcontactnumberActionPerformed(evt);
+            }
+        });
+        ANPcontactnumber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ANPcontactnumberKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                ANPcontactnumberKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ANPcontactnumberKeyTyped(evt);
+            }
+        });
+        jPanel2.add(ANPcontactnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, 210, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 750, 400));
 
@@ -598,9 +613,9 @@ public final class addnewPatients extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ANPtimeActionPerformed
 
-    private void ANPcontactnumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ANPcontactnumberActionPerformed
+    private void ANPdatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ANPdatesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ANPcontactnumberActionPerformed
+    }//GEN-LAST:event_ANPdatesActionPerformed
 
     private void ANPaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ANPaddActionPerformed
         
@@ -616,8 +631,7 @@ public final class addnewPatients extends javax.swing.JFrame {
          
          
         if (ANPstudId.getText().trim().isEmpty() && ANPfirst.getText().trim().isEmpty() && ANPlast.getText().trim().isEmpty() && ANPmiddle.getText().trim().isEmpty()
-            && ANPage.getText().trim().isEmpty() && ANPcontactnumber.getText().trim().isEmpty() 
-            && ANPbednumber.getText().trim().isEmpty() && ANPsick.getText().trim().isEmpty() && ANPguardian.getText().trim().isEmpty()) 
+            && ANPage.getText().trim().isEmpty() && ANPbednumber.getText().trim().isEmpty() && ANPsick.getText().trim().isEmpty() && ANPguardian.getText().trim().isEmpty()) 
             //&& ANPtime.getText().trim().isEmpty()
             //di pa naayos tinamad na
         {
@@ -676,9 +690,9 @@ public final class addnewPatients extends javax.swing.JFrame {
                 pst.setString(4, ANPmiddle.getText());
                 pst.setInt(5, Integer.parseInt(ANPage.getText()));
                 pst.setString(6, ANPgender.getSelectedItem().toString());
-        //      pst.setString(7, ((JTextField) ANPdate.getDateEditor().getUiComponent()).getText());
+               // pst.setString(7, ((JTextField) ANPdate.getDateEditor().getUiComponent()).getText());
                 pst.setString(7, ANPdates.getText());
-                pst.setString(8, ANPcontactnumber.getText());
+                pst.setString(8, ANPdates.getText());
 //              pst.setInt(8, Integer.parseInt(ANPcontactnumber.getText()));
 //              pst.setInt(9, Integer.parseInt(ANPtime.getText()));
                 pst.setString(9, ANPtime.getText());
@@ -729,9 +743,9 @@ public final class addnewPatients extends javax.swing.JFrame {
         ANPmiddleempty.setText("");
     }//GEN-LAST:event_ANPmiddleKeyPressed
 
-    private void ANPcontactnumberKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPcontactnumberKeyPressed
+    private void ANPdatesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPdatesKeyPressed
         ANPcontactempty.setText("");
-    }//GEN-LAST:event_ANPcontactnumberKeyPressed
+    }//GEN-LAST:event_ANPdatesKeyPressed
 
     private void ANPtimeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPtimeKeyPressed
         ANPtimeempty.setText("");
@@ -824,29 +838,29 @@ public final class addnewPatients extends javax.swing.JFrame {
       
     }//GEN-LAST:event_ANPmiddleKeyReleased
 
-    private void ANPcontactnumberKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPcontactnumberKeyReleased
+    private void ANPdatesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPdatesKeyReleased
        
      String PATTERN="^[0][0-9]{0,10}$";
      Pattern patt=Pattern.compile(PATTERN);
       
-     Matcher match=patt.matcher(ANPcontactnumber.getText());
+     Matcher match=patt.matcher(ANPdates.getText());
      if(!match.matches())
          
      {
          JOptionPane.showMessageDialog(null, "Invalid Input");
          ANPcontactempty.setText("INPUT 11 DIGIT MOBILE NUMBER ONLY");
-         ANPcontactnumber.setText("");
+         ANPdates.setText("");
      }else{
        
          
      }
             
-    }//GEN-LAST:event_ANPcontactnumberKeyReleased
+    }//GEN-LAST:event_ANPdatesKeyReleased
 
-    private void ANPcontactnumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPcontactnumberKeyTyped
+    private void ANPdatesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPdatesKeyTyped
       
         
-    }//GEN-LAST:event_ANPcontactnumberKeyTyped
+    }//GEN-LAST:event_ANPdatesKeyTyped
 
     private void ANPtimeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPtimeKeyTyped
         char c = evt.getKeyChar();
@@ -955,6 +969,34 @@ public final class addnewPatients extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_ANPmiddleKeyTyped
 
+    private void ANPcontactnumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ANPcontactnumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ANPcontactnumberActionPerformed
+
+    private void ANPcontactnumberKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPcontactnumberKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ANPcontactnumberKeyPressed
+
+    private void ANPcontactnumberKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPcontactnumberKeyReleased
+        String PATTERN="^[0][0-9]{0,10}$";
+      Pattern patt=Pattern.compile(PATTERN);
+     Matcher match=patt.matcher(ANPcontactnumber.getText());
+     if(!match.matches()){
+         
+         JOptionPane.showMessageDialog(null, "Invalid Input");
+         ANPcontactnumber.setText("");
+         ANPcontactempty.setText("INPUT MOBILE NUMBER ONLY");
+         
+     }else{
+         
+        
+     }
+    }//GEN-LAST:event_ANPcontactnumberKeyReleased
+
+    private void ANPcontactnumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ANPcontactnumberKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ANPcontactnumberKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -998,7 +1040,6 @@ public final class addnewPatients extends javax.swing.JFrame {
     private javax.swing.JTextField ANPbednumber;
     private javax.swing.JLabel ANPcontactempty;
     private javax.swing.JTextField ANPcontactnumber;
-    private com.toedter.calendar.JDateChooser ANPdate;
     private javax.swing.JTextField ANPdates;
     private javax.swing.JTextField ANPfirst;
     private javax.swing.JLabel ANPfirstempty;

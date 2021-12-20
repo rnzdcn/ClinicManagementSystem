@@ -449,10 +449,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         LMtable.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         LMtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Medicine Name", "Status", "Title 3", "Title 4"

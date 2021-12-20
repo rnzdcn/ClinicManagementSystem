@@ -328,8 +328,8 @@ public class Inventory extends javax.swing.JFrame {
         String cell = Itable.getModel().getValueAt(row, 0).toString();
         int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this record?", "Delete Record", JOptionPane.YES_NO_OPTION);
         if (option == JOptionPane.YES_OPTION) {
-        //String sql1 ="Insert into clinicmanagement.zeroquantity  select * from  clinicmanagement.inventory where id =?";
-       String sql ="Delete from clinicmanagement.inventory where id=? ";
+     //   String sql1 ="Insert into clinicmanagement.zeroquantity  select * from  clinicmanagement.inventory where id =?;Delete from clinicmanagement.inventory where id=? ";
+      String sql ="Delete from clinicmanagement.inventory where id=? ";
             pst=conn.prepareStatement(sql);
             pst.setString(1, cell);
           //  pst.setString(2, cell);
@@ -397,10 +397,12 @@ public class Inventory extends javax.swing.JFrame {
     }//GEN-LAST:event_IsearchKeyReleased
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        logout c = new logout();
-        c.setVisible(true);
-        setVisible(false);
-
+     int response = JOptionPane.showConfirmDialog(this, "Are you sure you want to Exit?","Confirm",
+                JOptionPane.YES_NO_OPTION ,JOptionPane.QUESTION_MESSAGE);
+        if(response==JOptionPane.YES_OPTION){
+            new signup().setVisible(true);
+            dispose();
+        }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     /**

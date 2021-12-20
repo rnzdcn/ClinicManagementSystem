@@ -144,10 +144,7 @@ public class Main extends javax.swing.JFrame {
 
         maintable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Student ID", "Last Name", "First Name", "Middle Name", "Gender", "Year and Course Section", "Age", "Contact No.", "Date", "Time Admit", "Guardian Contact Number", "Bed Number"
@@ -393,10 +390,12 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_searchKeyReleased
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-       logout l = new logout();
-        l.setVisible(true);
-        setVisible(false);
-               
+       int response = JOptionPane.showConfirmDialog(this, "Are you sure you want to Exit?","Confirm",
+                JOptionPane.YES_NO_OPTION ,JOptionPane.QUESTION_MESSAGE);
+        if(response==JOptionPane.YES_OPTION){
+            new signup().setVisible(true);
+            dispose();
+        }
         
        
         

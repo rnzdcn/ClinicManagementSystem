@@ -6,6 +6,7 @@
 package Clinic;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,6 +16,7 @@ import java.text.MessageFormat;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import net.proteanit.sql.DbUtils;
@@ -36,13 +38,27 @@ public class StudentMedicine extends javax.swing.JFrame {
         conn = connection.ConnecrDb();
         this.setLocationRelativeTo(null);
         updateTable();
-     SMtable.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
-     SMtable.getTableHeader().setOpaque(false);
-     SMtable.getTableHeader().setBackground(new Color(87,191,109));
-     SMtable.setRowHeight(25);    
+      
          //cell not editable     
-    SMtable.setDefaultEditor(Object.class, null);
+        SMtable.setDefaultEditor(Object.class, null);
+        SMtable.getTableHeader().setDefaultRenderer(new HeaderColor());
+        SMtable.setRowHeight(30);
+    
     }
+    public class HeaderColor extends DefaultTableCellRenderer {
+      public HeaderColor() {
+            setOpaque(true);
+            
+        }
+
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
+            super.getTableCellRendererComponent(table, value, selected, focused, row, column);
+             //table design
+       setFont(new Font("Segoe UI", Font.BOLD, 12));
+       setBackground(new java.awt.Color(32, 136, 203));
+           return this;
+       }
+        }
      
      public void updateTable() {
         try {

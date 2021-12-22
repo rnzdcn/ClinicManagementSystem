@@ -7,6 +7,7 @@ package Clinic;
 
 import static Clinic.Inventory.Itable;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,6 +19,7 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import net.proteanit.sql.DbUtils;
@@ -44,11 +46,8 @@ public class Main extends javax.swing.JFrame {
     setTitle("Patients Record - table");
     updateTable();
     
-       //table design
-        maintable.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
-        maintable.getTableHeader().setOpaque(false);
-        maintable.getTableHeader().setBackground(new Color(87,191,109));
-        maintable.setRowHeight(25);
+    
+     
     //table columns
          maintable.getColumnModel().getColumn(0).setPreferredWidth(880);
          maintable.getColumnModel().getColumn(1).setPreferredWidth(800);
@@ -65,9 +64,26 @@ public class Main extends javax.swing.JFrame {
         
     //cell not editable     
     maintable.setDefaultEditor(Object.class, null);
-       
+    //header design
+    maintable.getTableHeader().setDefaultRenderer(new HeaderColor());
+        maintable.setRowHeight(30);
     
     }
+    public class HeaderColor extends DefaultTableCellRenderer {
+      public HeaderColor() {
+            setOpaque(true);
+            
+        }
+
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
+            super.getTableCellRendererComponent(table, value, selected, focused, row, column);
+             //table design
+       setFont(new Font("Segoe UI", Font.BOLD, 12));
+       setBackground(new java.awt.Color(32, 136, 203));
+           return this;
+       }
+        }
+    
      public void updateTable() {
         try {
            // String sql = "select * from clinicmanagement.patients";
@@ -106,8 +122,6 @@ public class Main extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         search = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        maintable = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
@@ -119,6 +133,8 @@ public class Main extends javax.swing.JFrame {
         mainDelete = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        maintable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("patientInformation");
@@ -152,47 +168,6 @@ public class Main extends javax.swing.JFrame {
         });
         jPanel1.add(search, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 110, 240, 30));
         search.getAccessibleContext().setAccessibleDescription("");
-
-        maintable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        maintable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Student ID", "Last Name", "First Name", "Middle Name", "Gender", "Year and Course Section", "Age", "Contact No.", "Date", "Time Admit", "Guardian Contact Number", "Bed Number"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        maintable.setPreferredSize(new java.awt.Dimension(375, 128));
-        maintable.setRowHeight(32);
-        maintable.setSelectionBackground(new java.awt.Color(153, 255, 153));
-        maintable.setSelectionForeground(new java.awt.Color(0, 0, 0));
-        maintable.getTableHeader().setResizingAllowed(false);
-        maintable.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(maintable);
-        if (maintable.getColumnModel().getColumnCount() > 0) {
-            maintable.getColumnModel().getColumn(0).setPreferredWidth(150);
-            maintable.getColumnModel().getColumn(1).setPreferredWidth(150);
-            maintable.getColumnModel().getColumn(2).setPreferredWidth(150);
-            maintable.getColumnModel().getColumn(3).setPreferredWidth(150);
-            maintable.getColumnModel().getColumn(4).setPreferredWidth(150);
-            maintable.getColumnModel().getColumn(5).setPreferredWidth(150);
-            maintable.getColumnModel().getColumn(6).setPreferredWidth(150);
-            maintable.getColumnModel().getColumn(7).setPreferredWidth(150);
-            maintable.getColumnModel().getColumn(8).setPreferredWidth(150);
-            maintable.getColumnModel().getColumn(9).setPreferredWidth(150);
-            maintable.getColumnModel().getColumn(10).setPreferredWidth(200);
-            maintable.getColumnModel().getColumn(11).setPreferredWidth(150);
-        }
-
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 980, 540));
 
         jPanel3.setBackground(new java.awt.Color(87, 191, 109));
         jPanel3.setForeground(new java.awt.Color(204, 255, 255));
@@ -304,6 +279,31 @@ public class Main extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/search.png"))); // NOI18N
         jLabel3.setText("Search");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 110, -1, 30));
+
+        maintable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        maintable.setSelectionBackground(new java.awt.Color(87, 191, 109));
+        maintable.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setViewportView(maintable);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 980, 510));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 700));
 
@@ -490,7 +490,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton mainDelete;
     private javax.swing.JButton mainView;
     private javax.swing.JTable maintable;

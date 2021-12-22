@@ -58,7 +58,7 @@ public class loading extends javax.swing.JFrame {
         num.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         num.setForeground(new java.awt.Color(255, 255, 255));
         num.setText("jLabel3");
-        jPanel1.add(num, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, -1, 34));
+        jPanel1.add(num, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, -1, 34));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 270));
 

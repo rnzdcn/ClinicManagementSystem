@@ -6,12 +6,15 @@
 package Clinic;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -31,14 +34,26 @@ public class manageAdmin extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         updateTable();
-     //table design
-     MAtable.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
-     MAtable.getTableHeader().setOpaque(false);
-     MAtable.getTableHeader().setBackground(new Color(87,191,109));
-     MAtable.setRowHeight(25);  
          //cell not editable     
-    MAtable.setDefaultEditor(Object.class, null);
+        MAtable.setDefaultEditor(Object.class, null);
+        MAtable.getTableHeader().setDefaultRenderer(new HeaderColor());
+        MAtable.setRowHeight(30);
+    
     }
+    public class HeaderColor extends DefaultTableCellRenderer {
+      public HeaderColor() {
+            setOpaque(true);
+            
+        }
+
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
+            super.getTableCellRendererComponent(table, value, selected, focused, row, column);
+             //table design
+       setFont(new Font("Segoe UI", Font.BOLD, 12));
+       setBackground(new java.awt.Color(32, 136, 203));
+           return this;
+       }
+        }
     public void updateTable() {
         try {
             String sql = "select * from clinicmanagement.admin";

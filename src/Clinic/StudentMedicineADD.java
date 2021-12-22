@@ -6,6 +6,7 @@
 package Clinic;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
@@ -21,8 +22,10 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.Timer;
+import javax.swing.table.DefaultTableCellRenderer;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -52,14 +55,27 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         showTime();
         ASdate.getCalendar();
         ASdate.setMinSelectableDate(new Date());
-        //table design
-        LMtable.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
-        LMtable.getTableHeader().setOpaque(false);
-        LMtable.getTableHeader().setBackground(new Color(87,191,109));
-        LMtable.setRowHeight(25);  
+      
          //cell not editable     
         LMtable.setDefaultEditor(Object.class, null);
+        LMtable.getTableHeader().setDefaultRenderer(new HeaderColor());
+        LMtable.setRowHeight(30);
+    
     }
+    public class HeaderColor extends DefaultTableCellRenderer {
+      public HeaderColor() {
+            setOpaque(true);
+            
+        }
+
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
+            super.getTableCellRendererComponent(table, value, selected, focused, row, column);
+             //table design
+       setFont(new Font("Segoe UI", Font.BOLD, 12));
+       setBackground(new java.awt.Color(32, 136, 203));
+           return this;
+       }
+        }
     void showTime() {
         new Timer(0, new ActionListener() {
             @Override

@@ -7,6 +7,7 @@ package Clinic;
 
 import static Clinic.Menu.Mcalendar;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,6 +20,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import net.proteanit.sql.DbUtils;
@@ -40,17 +42,27 @@ public class Inventory extends javax.swing.JFrame {
         updateTable();
         equaldate();
         
-        //table design
-        Itable.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
-        Itable.getTableHeader().setOpaque(false);
-        Itable.setRowHeight(25);
-        
+     
         //cell not-editable
        Itable.setDefaultEditor(Object.class, null);
-        
+      Itable.getTableHeader().setDefaultRenderer(new HeaderColor());
+        Itable.setRowHeight(30);
+    
     }
-    
-    
+    public class HeaderColor extends DefaultTableCellRenderer {
+      public HeaderColor() {
+            setOpaque(true);
+            
+        }
+
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
+            super.getTableCellRendererComponent(table, value, selected, focused, row, column);
+             //table design
+       setFont(new Font("Segoe UI", Font.BOLD, 12));
+       setBackground(new java.awt.Color(32, 136, 203));
+           return this;
+       }
+        }
     public void updateTable() {
 
         try {
@@ -99,7 +111,6 @@ public class Inventory extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -110,6 +121,7 @@ public class Inventory extends javax.swing.JFrame {
         Isearch = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -143,36 +155,6 @@ public class Inventory extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(10, 46, 54));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Itable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        Itable.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        Itable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Medicine Name", "Quanity", "Date Recieved", "Expiration Date", "Status"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        Itable.setRowHeight(32);
-        Itable.setSelectionBackground(new java.awt.Color(153, 255, 153));
-        Itable.setSelectionForeground(new java.awt.Color(0, 0, 0));
-        Itable.getTableHeader().setResizingAllowed(false);
-        Itable.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(Itable);
-
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 980, 540));
 
         jLabel2.setBackground(new java.awt.Color(10, 46, 54));
         jLabel2.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
@@ -282,6 +264,35 @@ public class Inventory extends javax.swing.JFrame {
         jLabel4.setText("Search");
         jLabel4.setToolTipText("");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 10, 70, 30));
+
+        Itable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        Itable.setSelectionBackground(new java.awt.Color(87, 191, 109));
+        Itable.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        Itable.setShowHorizontalLines(false);
+        Itable.setShowVerticalLines(false);
+        Itable.getTableHeader().setResizingAllowed(false);
+        Itable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(Itable);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 980, 500));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1280, 600));
 
@@ -481,6 +492,6 @@ public class Inventory extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

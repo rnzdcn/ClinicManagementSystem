@@ -5,6 +5,8 @@
  */
 package Clinic;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,6 +31,13 @@ public class manageAdmin extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         updateTable();
+     //table design
+     MAtable.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+     MAtable.getTableHeader().setOpaque(false);
+     MAtable.getTableHeader().setBackground(new Color(87,191,109));
+     MAtable.setRowHeight(25);  
+         //cell not editable     
+    MAtable.setDefaultEditor(Object.class, null);
     }
     public void updateTable() {
         try {
@@ -161,9 +170,21 @@ public class manageAdmin extends javax.swing.JFrame {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         MAtable.setPreferredSize(new java.awt.Dimension(375, 128));
         MAtable.setRowHeight(32);
+        MAtable.setSelectionBackground(new java.awt.Color(153, 255, 153));
+        MAtable.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        MAtable.getTableHeader().setResizingAllowed(false);
+        MAtable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(MAtable);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 980, 540));
@@ -232,12 +253,16 @@ public class manageAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-     int response = JOptionPane.showConfirmDialog(this, "Are you sure you want to Exit?","Confirm",
-                JOptionPane.YES_NO_OPTION ,JOptionPane.QUESTION_MESSAGE);
-        if(response==JOptionPane.YES_OPTION){
-            new signup().setVisible(true);
-            dispose();
-        }
+//     int response = JOptionPane.showConfirmDialog(this, "Are you sure you want to Exit?","Confirm",
+//                JOptionPane.YES_NO_OPTION ,JOptionPane.QUESTION_MESSAGE);
+//        if(response==JOptionPane.YES_OPTION){
+//            new signup().setVisible(true);
+//            dispose();
+//        }
+        this.toBack();
+        logout l = new logout();
+        l.setVisible(true);
+        l.toFront();
     }//GEN-LAST:event_jButton8ActionPerformed
 
     /**

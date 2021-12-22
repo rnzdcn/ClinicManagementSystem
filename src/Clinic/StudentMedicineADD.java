@@ -5,6 +5,8 @@
  */
 package Clinic;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -50,6 +52,13 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         showTime();
         ASdate.getCalendar();
         ASdate.setMinSelectableDate(new Date());
+        //table design
+        LMtable.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        LMtable.getTableHeader().setOpaque(false);
+        LMtable.getTableHeader().setBackground(new Color(87,191,109));
+        LMtable.setRowHeight(25);  
+         //cell not editable     
+        LMtable.setDefaultEditor(Object.class, null);
     }
     void showTime() {
         new Timer(0, new ActionListener() {
@@ -454,8 +463,20 @@ public class StudentMedicineADD extends javax.swing.JFrame {
             new String [] {
                 "Medicine Name", "Status", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         LMtable.setRowHeight(14);
+        LMtable.setSelectionBackground(new java.awt.Color(153, 255, 153));
+        LMtable.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        LMtable.getTableHeader().setResizingAllowed(false);
+        LMtable.getTableHeader().setReorderingAllowed(false);
         LMtable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 LMtableMouseClicked(evt);

@@ -254,11 +254,11 @@ public class Menu extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
           try {
-            String sq1 = "select count(studreportno) from clinicmanagement.studentmedicine";
+            String sq1 = "select sum(quantity) from clinicmanagement.studentmedicine";
             pst = conn.prepareStatement(sq1);
             rs = pst.executeQuery();
             if (rs.next()) {
-                String sum1 = rs.getString("count(studreportno)");
+                String sum1 = rs.getString("sum(quantity)");
                 givemedicine.setText(sum1);
 
             }
@@ -616,18 +616,19 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_MtotalmedicineMouseDragged
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-//        logout c = new logout();
-//        c.setVisible(true);
-//        setVisible(false);
-        
+
         
         //different approach to logout
-        int response = JOptionPane.showConfirmDialog(this, "Are you sure you want to Exit?","Confirm",
-                JOptionPane.YES_NO_OPTION ,JOptionPane.QUESTION_MESSAGE);
-        if(response==JOptionPane.YES_OPTION){
-            new signup().setVisible(true);
-            dispose();
-        }
+//        int response = JOptionPane.showConfirmDialog(this, "Are you sure you want to Exit?","Confirm",
+//                JOptionPane.YES_NO_OPTION ,JOptionPane.QUESTION_MESSAGE);
+//        if(response==JOptionPane.YES_OPTION){
+//            new signup().setVisible(true);
+//            dispose();
+//        }
+         this.toBack();
+        logout l = new logout();
+        l.setVisible(true);
+        l.toFront();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void givemedicineMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_givemedicineMouseDragged

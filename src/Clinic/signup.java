@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import static Clinic.Menu.userName;
+import java.awt.Color;
 
 public class signup extends javax.swing.JFrame {
 
@@ -17,7 +18,9 @@ public class signup extends javax.swing.JFrame {
 //     Creates new form signup
     public signup() {
         initComponents();
-//may admin id talalga nilagyan ko lang yan haha
+      
+        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -124,6 +127,9 @@ public class signup extends javax.swing.JFrame {
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 passwordKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                passwordKeyTyped(evt);
             }
         });
         jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 220, 40));
@@ -318,6 +324,10 @@ public class signup extends javax.swing.JFrame {
     private void passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordKeyPressed
         labelpass.setText("");
     }//GEN-LAST:event_passwordKeyPressed
+
+    private void passwordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordKeyTyped
+       
+    }//GEN-LAST:event_passwordKeyTyped
 
     /**
      * @param args the command line arguments

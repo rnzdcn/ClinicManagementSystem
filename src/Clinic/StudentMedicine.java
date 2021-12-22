@@ -5,6 +5,8 @@
  */
 package Clinic;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -34,6 +36,12 @@ public class StudentMedicine extends javax.swing.JFrame {
         conn = connection.ConnecrDb();
         this.setLocationRelativeTo(null);
         updateTable();
+     SMtable.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+     SMtable.getTableHeader().setOpaque(false);
+     SMtable.getTableHeader().setBackground(new Color(87,191,109));
+     SMtable.setRowHeight(25);    
+         //cell not editable     
+    SMtable.setDefaultEditor(Object.class, null);
     }
      
      public void updateTable() {
@@ -163,8 +171,20 @@ public class StudentMedicine extends javax.swing.JFrame {
             new String [] {
                 "Student ID", "First Name", "Last Name", "Date", "Time", "Medicine", "Description"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         SMtable.setRowHeight(32);
+        SMtable.setSelectionBackground(new java.awt.Color(153, 255, 153));
+        SMtable.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        SMtable.getTableHeader().setResizingAllowed(false);
+        SMtable.getTableHeader().setReorderingAllowed(false);
         jScrollPane3.setViewportView(SMtable);
 
         jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 980, 200));
@@ -365,12 +385,16 @@ public class StudentMedicine extends javax.swing.JFrame {
     }//GEN-LAST:event_SMpatientrecordKeyReleased
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-      int response = JOptionPane.showConfirmDialog(this, "Are you sure you want to Exit?","Confirm",
-                JOptionPane.YES_NO_OPTION ,JOptionPane.QUESTION_MESSAGE);
-        if(response==JOptionPane.YES_OPTION){
-            new signup().setVisible(true);
-            dispose();
-        }
+//      int response = JOptionPane.showConfirmDialog(this, "Are you sure you want to Exit?","Confirm",
+//                JOptionPane.YES_NO_OPTION ,JOptionPane.QUESTION_MESSAGE);
+//        if(response==JOptionPane.YES_OPTION){
+//            new signup().setVisible(true);
+//            dispose();
+//        }
+         this.toBack();
+        logout l = new logout();
+        l.setVisible(true);
+        l.toFront();
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton35ActionPerformed

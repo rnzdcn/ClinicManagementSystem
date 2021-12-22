@@ -6,6 +6,8 @@
 package Clinic;
 
 import static Clinic.Menu.Mcalendar;
+import java.awt.Color;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -38,8 +40,14 @@ public class Inventory extends javax.swing.JFrame {
         updateTable();
         equaldate();
         
-
-        //mali pa to
+        //table design
+        Itable.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        Itable.getTableHeader().setOpaque(false);
+        Itable.setRowHeight(25);
+        
+        //cell not-editable
+       Itable.setDefaultEditor(Object.class, null);
+        
     }
     
     
@@ -51,6 +59,7 @@ public class Inventory extends javax.swing.JFrame {
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
             Itable.setModel(DbUtils.resultSetToTableModel(rs));
+            
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -147,8 +156,20 @@ public class Inventory extends javax.swing.JFrame {
             new String [] {
                 "Medicine Name", "Quanity", "Date Recieved", "Expiration Date", "Status"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         Itable.setRowHeight(32);
+        Itable.setSelectionBackground(new java.awt.Color(153, 255, 153));
+        Itable.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        Itable.getTableHeader().setResizingAllowed(false);
+        Itable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(Itable);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 980, 540));
@@ -397,12 +418,16 @@ public class Inventory extends javax.swing.JFrame {
     }//GEN-LAST:event_IsearchKeyReleased
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-     int response = JOptionPane.showConfirmDialog(this, "Are you sure you want to Exit?","Confirm",
-                JOptionPane.YES_NO_OPTION ,JOptionPane.QUESTION_MESSAGE);
-        if(response==JOptionPane.YES_OPTION){
-            new signup().setVisible(true);
-            dispose();
-        }
+//     int response = JOptionPane.showConfirmDialog(this, "Are you sure you want to Exit?","Confirm",
+//                JOptionPane.YES_NO_OPTION ,JOptionPane.QUESTION_MESSAGE);
+//        if(response==JOptionPane.YES_OPTION){
+//            new signup().setVisible(true);
+//            dispose();
+//        }
+        this.toBack();
+        logout l = new logout();
+        l.setVisible(true);
+        l.toFront();
     }//GEN-LAST:event_jButton8ActionPerformed
 
     /**

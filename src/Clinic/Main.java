@@ -5,11 +5,15 @@
  */
 package Clinic;
 
+import static Clinic.Inventory.Itable;
+import java.awt.Color;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.MessageFormat;
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -39,6 +43,12 @@ public class Main extends javax.swing.JFrame {
     updateTable();
     setTitle("Patients Record - table");
     updateTable();
+    
+       //table design
+        maintable.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        maintable.getTableHeader().setOpaque(false);
+        maintable.getTableHeader().setBackground(new Color(87,191,109));
+        maintable.setRowHeight(25);
     //table columns
          maintable.getColumnModel().getColumn(0).setPreferredWidth(880);
          maintable.getColumnModel().getColumn(1).setPreferredWidth(800);
@@ -52,8 +62,9 @@ public class Main extends javax.swing.JFrame {
          maintable.getColumnModel().getColumn(9).setPreferredWidth(880);
          maintable.getColumnModel().getColumn(10).setPreferredWidth(880);
          maintable.getColumnModel().getColumn(11).setPreferredWidth(880);
-         
-    
+        
+    //cell not editable     
+    maintable.setDefaultEditor(Object.class, null);
        
     
     }
@@ -142,6 +153,7 @@ public class Main extends javax.swing.JFrame {
         jPanel1.add(search, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 110, 240, 30));
         search.getAccessibleContext().setAccessibleDescription("");
 
+        maintable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         maintable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -149,9 +161,21 @@ public class Main extends javax.swing.JFrame {
             new String [] {
                 "Student ID", "Last Name", "First Name", "Middle Name", "Gender", "Year and Course Section", "Age", "Contact No.", "Date", "Time Admit", "Guardian Contact Number", "Bed Number"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         maintable.setPreferredSize(new java.awt.Dimension(375, 128));
         maintable.setRowHeight(32);
+        maintable.setSelectionBackground(new java.awt.Color(153, 255, 153));
+        maintable.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        maintable.getTableHeader().setResizingAllowed(false);
+        maintable.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(maintable);
         if (maintable.getColumnModel().getColumnCount() > 0) {
             maintable.getColumnModel().getColumn(0).setPreferredWidth(150);
@@ -208,6 +232,11 @@ public class Main extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/addpatients.png"))); // NOI18N
         jButton2.setText("Add new patients");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton2MousePressed(evt);
+            }
+        });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -390,17 +419,30 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_searchKeyReleased
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-       int response = JOptionPane.showConfirmDialog(this, "Are you sure you want to Exit?","Confirm",
-                JOptionPane.YES_NO_OPTION ,JOptionPane.QUESTION_MESSAGE);
-        if(response==JOptionPane.YES_OPTION){
-            new signup().setVisible(true);
-            dispose();
-        }
-        
+//       int response = JOptionPane.showConfirmDialog(this, "Are you sure you want to Exit?","Confirm",
+//                JOptionPane.YES_NO_OPTION ,JOptionPane.QUESTION_MESSAGE);
+//        if(response==JOptionPane.YES_OPTION){
+//            new signup().setVisible(true);
+//            dispose();
+//        }
+         this.toBack();
+        logout l = new logout();
+        l.setVisible(true);
+        l.toFront();
        
         
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void jButton2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MousePressed
+        setLblColor(jButton2);
+    }//GEN-LAST:event_jButton2MousePressed
+    public void setLblColor(JButton btn){
+        btn.setForeground(new Color(48,201,235));
+    }
+    public void resetColor(JButton btn){
+        btn.setForeground(new Color(166,166,166));
+        
+    }
     /**
      * @param args the command line arguments
      */

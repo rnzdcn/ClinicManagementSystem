@@ -96,20 +96,25 @@
           <SubComponents>
             <Component class="javax.swing.JTable" name="maintable">
               <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder/>
+                  </Border>
+                </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="12" rowCount="0">
-                    <Column editable="true" title="Student ID" type="java.lang.Object"/>
-                    <Column editable="true" title="Last Name" type="java.lang.Object"/>
-                    <Column editable="true" title="First Name" type="java.lang.Object"/>
-                    <Column editable="true" title="Middle Name" type="java.lang.Object"/>
-                    <Column editable="true" title="Gender" type="java.lang.Object"/>
-                    <Column editable="true" title="Year and Course Section" type="java.lang.Object"/>
-                    <Column editable="true" title="Age" type="java.lang.Object"/>
-                    <Column editable="true" title="Contact No." type="java.lang.Object"/>
-                    <Column editable="true" title="Date" type="java.lang.Object"/>
-                    <Column editable="true" title="Time Admit" type="java.lang.Object"/>
-                    <Column editable="true" title="Guardian Contact Number" type="java.lang.Object"/>
-                    <Column editable="true" title="Bed Number" type="java.lang.Object"/>
+                    <Column editable="false" title="Student ID" type="java.lang.Object"/>
+                    <Column editable="false" title="Last Name" type="java.lang.Object"/>
+                    <Column editable="false" title="First Name" type="java.lang.Object"/>
+                    <Column editable="false" title="Middle Name" type="java.lang.Object"/>
+                    <Column editable="false" title="Gender" type="java.lang.Object"/>
+                    <Column editable="false" title="Year and Course Section" type="java.lang.Object"/>
+                    <Column editable="false" title="Age" type="java.lang.Object"/>
+                    <Column editable="false" title="Contact No." type="java.lang.Object"/>
+                    <Column editable="false" title="Date" type="java.lang.Object"/>
+                    <Column editable="false" title="Time Admit" type="java.lang.Object"/>
+                    <Column editable="false" title="Guardian Contact Number" type="java.lang.Object"/>
+                    <Column editable="false" title="Bed Number" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -180,8 +185,14 @@
                   <Dimension value="[375, 128]"/>
                 </Property>
                 <Property name="rowHeight" type="int" value="32"/>
+                <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="99" green="ff" red="99" type="rgb"/>
+                </Property>
+                <Property name="selectionForeground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                  <TableHeader reorderingAllowed="false" resizingAllowed="false"/>
                 </Property>
               </Properties>
             </Component>
@@ -289,6 +300,7 @@
             <Property name="text" type="java.lang.String" value="Add new patients"/>
           </Properties>
           <Events>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton2MousePressed"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
           </Events>
           <Constraints>

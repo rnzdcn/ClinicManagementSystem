@@ -44,7 +44,6 @@ import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.jdbc.JDBCCategoryDataset;
 
-
 /**
  *
  * @author jomari
@@ -55,75 +54,74 @@ public class Menu extends javax.swing.JFrame {
     ResultSet rs = null;
     PreparedStatement pst = null;
     Statement st = null;
-   
+
     public Menu() {
         initComponents();
         conn = connection.ConnecrDb();
         this.setLocationRelativeTo(null);
     //    setDefaultLookAndFeelDecorated(true);
-        
-         currentDate();
-         showTime();
-       
-         
-          try{
-          String f = "select * from clinicmanagement.patients where sick='Headache'";
-          pst=conn.prepareStatement(f);
-          rs=pst.executeQuery();
-          Itable.setModel(DbUtils.resultSetToTableModel(rs));
-          int f1=Itable.getRowCount();
-         
-          String g = "select * from clinicmanagement.patients where sick='Cold'";
-          pst=conn.prepareStatement(g);
-          rs=pst.executeQuery();
-          Itable.setModel(DbUtils.resultSetToTableModel(rs));
-          int g1=Itable.getRowCount();
-         
-          String h = "select * from clinicmanagement.patients where sick='Diarrhea'";
-          pst=conn.prepareStatement(h);
-          rs=pst.executeQuery();
-          Itable.setModel(DbUtils.resultSetToTableModel(rs));
-          int h1=Itable.getRowCount();
-         
-          String i = "select * from clinicmanagement.patients where sick='Flu'";
-          pst=conn.prepareStatement(i);
-          rs=pst.executeQuery();
-          Itable.setModel(DbUtils.resultSetToTableModel(rs));
-          int i1=Itable.getRowCount();
-          
-          String j = "select * from clinicmanagement.patients where sick='Injury'";
-          pst=conn.prepareStatement(j);
-          rs=pst.executeQuery();
-          Itable.setModel(DbUtils.resultSetToTableModel(rs));
-          int j1=Itable.getRowCount();
-   
-           String k = "select * from clinicmanagement.patients where sick='Stomachache'";
-          pst=conn.prepareStatement(k);
-          rs=pst.executeQuery();
-          Itable.setModel(DbUtils.resultSetToTableModel(rs));
-          int k1=Itable.getRowCount();
-          
-          DefaultPieDataset dataset2 = new DefaultPieDataset();
-          dataset2.setValue("Headache",new Integer(f1));
-          dataset2.setValue("Cold",new Integer(g1));
-          dataset2.setValue("Diarrhea",new Integer(h1));
-          dataset2.setValue("Flu",new Integer(i1));
-          dataset2.setValue("Injury",new Integer(j1));
-          dataset2.setValue("Stomachache",new Integer(k1));
-       
-          JFreeChart chart2 = ChartFactory.createPieChart3D("Common Student Illness",dataset2, true,true,true);
-          PiePlot P = (PiePlot)chart2.getPlot();
-          ChartPanel CP2 = new ChartPanel(chart2);
-          jPanel6.setPreferredSize(new Dimension(500, 250));
-          jPanel6.setLayout(new java.awt.BorderLayout());
-          jPanel6.add(CP2,BorderLayout.CENTER);
-          jPanel6.validate();
-          chart2.setBackgroundPaint(Color.green);
-          chart2.getTitle().setPaint(Color.WHITE);
+
+        currentDate();
+        showTime();
+
+        try {
+            String f = "select * from clinicmanagement.patients where sick='Headache'";
+            pst = conn.prepareStatement(f);
+            rs = pst.executeQuery();
+            Itable.setModel(DbUtils.resultSetToTableModel(rs));
+            int f1 = Itable.getRowCount();
+
+            String g = "select * from clinicmanagement.patients where sick='Cold'";
+            pst = conn.prepareStatement(g);
+            rs = pst.executeQuery();
+            Itable.setModel(DbUtils.resultSetToTableModel(rs));
+            int g1 = Itable.getRowCount();
+
+            String h = "select * from clinicmanagement.patients where sick='Diarrhea'";
+            pst = conn.prepareStatement(h);
+            rs = pst.executeQuery();
+            Itable.setModel(DbUtils.resultSetToTableModel(rs));
+            int h1 = Itable.getRowCount();
+
+            String i = "select * from clinicmanagement.patients where sick='Flu'";
+            pst = conn.prepareStatement(i);
+            rs = pst.executeQuery();
+            Itable.setModel(DbUtils.resultSetToTableModel(rs));
+            int i1 = Itable.getRowCount();
+
+            String j = "select * from clinicmanagement.patients where sick='Injury'";
+            pst = conn.prepareStatement(j);
+            rs = pst.executeQuery();
+            Itable.setModel(DbUtils.resultSetToTableModel(rs));
+            int j1 = Itable.getRowCount();
+
+            String k = "select * from clinicmanagement.patients where sick='Stomachache'";
+            pst = conn.prepareStatement(k);
+            rs = pst.executeQuery();
+            Itable.setModel(DbUtils.resultSetToTableModel(rs));
+            int k1 = Itable.getRowCount();
+
+            DefaultPieDataset dataset2 = new DefaultPieDataset();
+            dataset2.setValue("Headache", new Integer(f1));
+            dataset2.setValue("Cold", new Integer(g1));
+            dataset2.setValue("Diarrhea", new Integer(h1));
+            dataset2.setValue("Flu", new Integer(i1));
+            dataset2.setValue("Injury", new Integer(j1));
+            dataset2.setValue("Stomachache", new Integer(k1));
+
+            JFreeChart chart2 = ChartFactory.createPieChart3D("Common Student Illness", dataset2, true, true, true);
+            PiePlot P = (PiePlot) chart2.getPlot();
+            ChartPanel CP2 = new ChartPanel(chart2);
+            jPanel6.setPreferredSize(new Dimension(500, 250));
+            jPanel6.setLayout(new java.awt.BorderLayout());
+            jPanel6.add(CP2, BorderLayout.CENTER);
+            jPanel6.validate();
+            chart2.setBackgroundPaint(Color.green);
+            chart2.getTitle().setPaint(Color.WHITE);
 //          CategoryPlot ax =chart2.getCategoryPlot();
 //          ax.setRangeGridlinePaint(Color.WHITE);
         } catch (Exception e) {
-          JOptionPane.showMessageDialog(null, e);    
+            JOptionPane.showMessageDialog(null, e);
         }
         //codes sa pie chart
 //        try{
@@ -158,10 +156,9 @@ public class Menu extends javax.swing.JFrame {
 //        } catch (Exception e) {
 //          JOptionPane.showMessageDialog(null, e);    
 //        }
-        
-        
+
         //codes sa bar chart
-         try {
+        try {
             String query = "select date , quantity from clinicmanagement.studentmedicine";
             JDBCCategoryDataset dataset = new JDBCCategoryDataset(connection.ConnecrDb(), query);
             JFreeChart cha = ChartFactory.createBarChart("Number of medicine give", "Date", "quantity", dataset, PlotOrientation.VERTICAL, false, true, true);
@@ -177,7 +174,7 @@ public class Menu extends javax.swing.JFrame {
             jPanel4.validate();
 
         } catch (Exception e) {
-           JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, e);
         }
 //        
 //        
@@ -212,9 +209,8 @@ public class Menu extends javax.swing.JFrame {
 //        panel2.setBounds(6, 6, 180, 100);
 //        panel2.setOpaque(false);
 //        panel2.setBackground(new Color(10,46,54));
-        
+
         //codes sa panel na border keme
-        
         // JPanel p2 = new RoundedPanel(40, new Color(10,46,54));
 //        JPanel p2 = new RoundedPanel(40, new Color(10,46,54));
 //        JPanel p1 = new RoundedPanel(40, new Color(10,46,54));
@@ -223,10 +219,6 @@ public class Menu extends javax.swing.JFrame {
 //        p1.setBorder(whiteLine);
 //        panel1.add(p1);
 //        panel2.add(p2);
-        
-       
-       
-
         //codes sa mga total patients at medicine 
         try {
             String sq1 = "select sum(quantity) from clinicmanagement.inventory";
@@ -253,7 +245,7 @@ public class Menu extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
-          try {
+        try {
             String sq1 = "select sum(quantity) from clinicmanagement.studentmedicine";
             pst = conn.prepareStatement(sq1);
             rs = pst.executeQuery();
@@ -267,7 +259,8 @@ public class Menu extends javax.swing.JFrame {
         }
 
     }
-        void showTime() {
+
+    void showTime() {
         new Timer(0, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -277,11 +270,12 @@ public class Menu extends javax.swing.JFrame {
             }
         }).start();
     }
-     public void  currentDate(){
+
+    public void currentDate() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MMM-d");
         Date d = new Date();
         Mcalendar.setText(dateFormat.format(d));
-       
+
     }
 
     /**
@@ -313,19 +307,19 @@ public class Menu extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         button1 = new javax.swing.JPanel();
         indicator1 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
+        SMlabel = new javax.swing.JLabel();
         jPanel16 = new javax.swing.JPanel();
         button2 = new javax.swing.JPanel();
         indicator2 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
+        PRlabel = new javax.swing.JLabel();
         jPanel19 = new javax.swing.JPanel();
         button3 = new javax.swing.JPanel();
         indicator3 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
+        Ilabel = new javax.swing.JLabel();
         jPanel22 = new javax.swing.JPanel();
         button4 = new javax.swing.JPanel();
         indicator4 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
+        MAlabel = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
 
         Label1.setBackground(new java.awt.Color(10, 46, 54));
@@ -563,9 +557,9 @@ public class Menu extends javax.swing.JFrame {
             .addGap(0, 50, Short.MAX_VALUE)
         );
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/medecine_record.png"))); // NOI18N
-        jLabel9.setText("STUDENT MEDICINE");
+        SMlabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        SMlabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/medecine_record.png"))); // NOI18N
+        SMlabel.setText("STUDENT MEDICINE");
 
         javax.swing.GroupLayout button1Layout = new javax.swing.GroupLayout(button1);
         button1.setLayout(button1Layout);
@@ -574,15 +568,15 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(button1Layout.createSequentialGroup()
                 .addComponent(indicator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
-                .addComponent(jLabel9)
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addComponent(SMlabel, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                .addContainerGap())
         );
         button1Layout.setVerticalGroup(
             button1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(indicator1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(button1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel9)
+                .addComponent(SMlabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -629,9 +623,9 @@ public class Menu extends javax.swing.JFrame {
             .addGap(0, 50, Short.MAX_VALUE)
         );
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/patient_record.png"))); // NOI18N
-        jLabel10.setText("PATIENTS RECORD");
+        PRlabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        PRlabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/patient_record.png"))); // NOI18N
+        PRlabel.setText("PATIENTS RECORD");
 
         javax.swing.GroupLayout button2Layout = new javax.swing.GroupLayout(button2);
         button2.setLayout(button2Layout);
@@ -640,15 +634,15 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(button2Layout.createSequentialGroup()
                 .addComponent(indicator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
-                .addComponent(jLabel10)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addComponent(PRlabel, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                .addContainerGap())
         );
         button2Layout.setVerticalGroup(
             button2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(indicator2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(button2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel10)
+                .addComponent(PRlabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -695,9 +689,9 @@ public class Menu extends javax.swing.JFrame {
             .addGap(0, 50, Short.MAX_VALUE)
         );
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/inventory.png"))); // NOI18N
-        jLabel11.setText("INVENTORY");
+        Ilabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        Ilabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/inventory.png"))); // NOI18N
+        Ilabel.setText("INVENTORY");
 
         javax.swing.GroupLayout button3Layout = new javax.swing.GroupLayout(button3);
         button3.setLayout(button3Layout);
@@ -706,15 +700,15 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(button3Layout.createSequentialGroup()
                 .addComponent(indicator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
-                .addComponent(jLabel11)
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addComponent(Ilabel, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+                .addContainerGap())
         );
         button3Layout.setVerticalGroup(
             button3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(indicator3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(button3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel11)
+                .addComponent(Ilabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -761,9 +755,9 @@ public class Menu extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/profile.png"))); // NOI18N
-        jLabel12.setText("MANAGE ADMIN");
+        MAlabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        MAlabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/profile.png"))); // NOI18N
+        MAlabel.setText("MANAGE ADMIN");
 
         javax.swing.GroupLayout button4Layout = new javax.swing.GroupLayout(button4);
         button4.setLayout(button4Layout);
@@ -772,15 +766,15 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(button4Layout.createSequentialGroup()
                 .addComponent(indicator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addComponent(MAlabel, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                .addContainerGap())
         );
         button4Layout.setVerticalGroup(
             button4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(indicator4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, button4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel12)
+                .addComponent(MAlabel)
                 .addGap(16, 16, 16))
         );
 
@@ -804,7 +798,6 @@ public class Menu extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
 
-        
         //different approach to logout
 //        int response = JOptionPane.showConfirmDialog(this, "Are you sure you want to Exit?","Confirm",
 //                JOptionPane.YES_NO_OPTION ,JOptionPane.QUESTION_MESSAGE);
@@ -812,7 +805,7 @@ public class Menu extends javax.swing.JFrame {
 //            new signup().setVisible(true);
 //            dispose();
 //        }
-         this.toBack();
+        this.toBack();
         logout l = new logout();
         l.setVisible(true);
         l.toFront();
@@ -823,37 +816,38 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_givemedicineMouseDragged
 
     private void button2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button2MouseClicked
-       Main m = new Main();
+        Main m = new Main();
         m.setVisible(true);
         setVisible(false);
-       
+
     }//GEN-LAST:event_button2MouseClicked
 
     private void button3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button3MouseClicked
-       Inventory i = new Inventory();
+        Inventory i = new Inventory();
         i.setVisible(true);
         setVisible(false);
-       
+
     }//GEN-LAST:event_button3MouseClicked
 
     private void button4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button4MouseClicked
         manageAdmin c = new manageAdmin();
         c.setVisible(true);
         setVisible(false);
-       
+
     }//GEN-LAST:event_button4MouseClicked
 
     private void button2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button2MouseEntered
-         onClick(button2);
+        onClick(button2);
         onLeaveClick(button1);
         onLeaveClick(button3);
         onLeaveClick(button4);
-        
+
+        PRlabel.setFont(new Font("", Font.BOLD, 15));
         indicator1.setOpaque(false);
         indicator2.setOpaque(true);
         indicator3.setOpaque(false);
         indicator4.setOpaque(false);
-     
+
     }//GEN-LAST:event_button2MouseEntered
 
     private void button3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button3MouseEntered
@@ -861,20 +855,20 @@ public class Menu extends javax.swing.JFrame {
         onLeaveClick(button2);
         onLeaveClick(button1);
         onLeaveClick(button4);
-        
+        Ilabel.setFont(new Font("", Font.BOLD, 15));
         indicator1.setOpaque(false);
         indicator2.setOpaque(false);
         indicator3.setOpaque(true);
         indicator4.setOpaque(false);
-       
+
     }//GEN-LAST:event_button3MouseEntered
 
     private void button4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button4MouseEntered
-       onClick(button4);
+        onClick(button4);
         onLeaveClick(button2);
         onLeaveClick(button3);
         onLeaveClick(button1);
-        
+        MAlabel.setFont(new Font("", Font.BOLD, 15));
         indicator1.setOpaque(false);
         indicator2.setOpaque(false);
         indicator3.setOpaque(false);
@@ -882,23 +876,26 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_button4MouseEntered
 
     private void button2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button2MouseExited
-       onLeaveClick(button2);
+        PRlabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+        onLeaveClick(button2);
         indicator2.setOpaque(false);
     }//GEN-LAST:event_button2MouseExited
 
     private void button3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button3MouseExited
+        Ilabel.setFont(new Font("Tahoma", Font.BOLD, 11));
         onLeaveClick(button3);
         indicator3.setOpaque(false);
     }//GEN-LAST:event_button3MouseExited
 
     private void button4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button4MouseExited
+        MAlabel.setFont(new Font("Tahoma", Font.BOLD, 11));
         onLeaveClick(button4);
         indicator4.setOpaque(false);
     }//GEN-LAST:event_button4MouseExited
 
     private void button1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button1MouseClicked
-    
-          StudentMedicine s = new StudentMedicine();
+
+        StudentMedicine s = new StudentMedicine();
         s.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_button1MouseClicked
@@ -908,7 +905,7 @@ public class Menu extends javax.swing.JFrame {
         onLeaveClick(button2);
         onLeaveClick(button3);
         onLeaveClick(button4);
-        
+        SMlabel.setFont(new Font("", Font.BOLD, 15));
         indicator1.setOpaque(true);
         indicator2.setOpaque(false);
         indicator3.setOpaque(false);
@@ -916,15 +913,18 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_button1MouseEntered
 
     private void button1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button1MouseExited
-       onLeaveClick(button1);
+        SMlabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+        onLeaveClick(button1);
         indicator1.setOpaque(false);
     }//GEN-LAST:event_button1MouseExited
-     private void onClick(JPanel panel){
-        panel.setBackground(new Color(153,255,204));
+    private void onClick(JPanel panel) {
+        panel.setBackground(new Color(153, 255, 204));
     }
-    private void onLeaveClick(JPanel panel){
+
+    private void onLeaveClick(JPanel panel) {
         panel.setBackground(Color.white);
     }
+
     /**
      * @param args the command line arguments
      */
@@ -961,11 +961,15 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Ilabel;
     private javax.swing.JLabel Label1;
+    private javax.swing.JLabel MAlabel;
     public static final javax.swing.JLabel Mcalendar = new javax.swing.JLabel();
     private javax.swing.JLabel Mnumberofpatients;
     private javax.swing.JLabel Mtime;
     private javax.swing.JLabel Mtotalmedicine;
+    private javax.swing.JLabel PRlabel;
+    private javax.swing.JLabel SMlabel;
     private javax.swing.JPanel button1;
     private javax.swing.JPanel button2;
     private javax.swing.JPanel button3;
@@ -977,13 +981,9 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel indicator4;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel19;

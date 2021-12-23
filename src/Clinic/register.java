@@ -5,6 +5,7 @@
  */
 package Clinic;
 
+import java.awt.Color;
 import java.awt.Dialog;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
@@ -447,6 +448,7 @@ public class register extends javax.swing.JDialog {
 
     private void CRfirstnameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CRfirstnameKeyPressed
         CRfirstempty.setText("");
+      
     }//GEN-LAST:event_CRfirstnameKeyPressed
 
     private void CRlastnameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CRlastnameKeyPressed

@@ -50,7 +50,7 @@ public class manageAdmin extends javax.swing.JFrame {
             super.getTableCellRendererComponent(table, value, selected, focused, row, column);
              //table design
        setFont(new Font("Segoe UI", Font.BOLD, 12));
-       setBackground(new java.awt.Color(32, 136, 203));
+       setBackground(new java.awt.Color(153,255,204));
            return this;
        }
         }

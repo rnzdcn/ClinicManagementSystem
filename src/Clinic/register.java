@@ -473,7 +473,7 @@ public class register extends javax.swing.JDialog {
         //Letter only 
         if (!Character.isAlphabetic(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar())) {
         evt.consume();
-        JOptionPane.showMessageDialog(null, "Please Input only Letter");
+       
     } else if (CRfirstname.getText().trim().length() == 0 && Character.isLowerCase(evt.getKeyChar())) {
             evt.setKeyChar(Character.toUpperCase(evt.getKeyChar()));
     }
@@ -482,7 +482,7 @@ public class register extends javax.swing.JDialog {
     private void CRlastnameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CRlastnameKeyTyped
           if (!Character.isAlphabetic(evt.getKeyChar()) && !Character.isSpaceChar(evt.getKeyChar())) {
         evt.consume();
-        JOptionPane.showMessageDialog(null, "Please Input only Letter");
+       
     } else if (CRlastname.getText().trim().length() == 0 && Character.isLowerCase(evt.getKeyChar())) {
             evt.setKeyChar(Character.toUpperCase(evt.getKeyChar()));
     }

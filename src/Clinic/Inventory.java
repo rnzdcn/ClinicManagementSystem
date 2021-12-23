@@ -59,7 +59,7 @@ public class Inventory extends javax.swing.JFrame {
             super.getTableCellRendererComponent(table, value, selected, focused, row, column);
              //table design
        setFont(new Font("Segoe UI", Font.BOLD, 12));
-       setBackground(new java.awt.Color(32, 136, 203));
+       setBackground(new java.awt.Color(153,255,204));
            return this;
        }
         }
@@ -232,7 +232,9 @@ public class Inventory extends javax.swing.JFrame {
         });
         jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 230, 40));
 
+        Isearch.setBackground(new java.awt.Color(10, 46, 54));
         Isearch.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        Isearch.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         Isearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IsearchActionPerformed(evt);

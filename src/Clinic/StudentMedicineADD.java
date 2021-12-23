@@ -59,7 +59,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
          //cell not editable     
         LMtable.setDefaultEditor(Object.class, null);
         LMtable.getTableHeader().setDefaultRenderer(new HeaderColor());
-        LMtable.setRowHeight(30);
+        LMtable.setRowHeight(15);
     
     }
     public class HeaderColor extends DefaultTableCellRenderer {
@@ -71,8 +71,8 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
             super.getTableCellRendererComponent(table, value, selected, focused, row, column);
              //table design
-       setFont(new Font("Segoe UI", Font.BOLD, 12));
-       setBackground(new java.awt.Color(32, 136, 203));
+       setFont(new Font("Segoe UI", Font.BOLD, 10));
+       setBackground(new java.awt.Color(153,255,204));
            return this;
        }
         }
@@ -491,6 +491,8 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         LMtable.setRowHeight(14);
         LMtable.setSelectionBackground(new java.awt.Color(153, 255, 153));
         LMtable.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        LMtable.setShowHorizontalLines(false);
+        LMtable.setShowVerticalLines(false);
         LMtable.getTableHeader().setResizingAllowed(false);
         LMtable.getTableHeader().setReorderingAllowed(false);
         LMtable.addMouseListener(new java.awt.event.MouseAdapter() {

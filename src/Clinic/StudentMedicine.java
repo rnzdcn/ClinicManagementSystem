@@ -55,7 +55,7 @@ public class StudentMedicine extends javax.swing.JFrame {
             super.getTableCellRendererComponent(table, value, selected, focused, row, column);
              //table design
        setFont(new Font("Segoe UI", Font.BOLD, 12));
-       setBackground(new java.awt.Color(32, 136, 203));
+       setBackground(new java.awt.Color(153,255,204));
            return this;
        }
         }
@@ -205,7 +205,9 @@ public class StudentMedicine extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 980, 200));
 
+        SMpatientrecord.setBackground(new java.awt.Color(10, 46, 54));
         SMpatientrecord.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        SMpatientrecord.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         SMpatientrecord.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SMpatientrecordActionPerformed(evt);

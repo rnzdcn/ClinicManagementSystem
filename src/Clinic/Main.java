@@ -79,7 +79,7 @@ public class Main extends javax.swing.JFrame {
             super.getTableCellRendererComponent(table, value, selected, focused, row, column);
              //table design
        setFont(new Font("Segoe UI", Font.BOLD, 12));
-       setBackground(new java.awt.Color(32, 136, 203));
+       setBackground(new java.awt.Color(153,255,204));
            return this;
        }
         }
@@ -156,6 +156,10 @@ public class Main extends javax.swing.JFrame {
         });
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 100, 30));
 
+        search.setBackground(new java.awt.Color(10, 46, 54));
+        search.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        search.setForeground(new java.awt.Color(255, 255, 255));
+        search.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchActionPerformed(evt);

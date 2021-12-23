@@ -326,6 +326,7 @@ public class Menu extends javax.swing.JFrame {
         button4 = new javax.swing.JPanel();
         indicator4 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
 
         Label1.setBackground(new java.awt.Color(10, 46, 54));
         Label1.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
@@ -585,7 +586,7 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 270, 50));
+        getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 270, 50));
 
         jPanel16.setBackground(new java.awt.Color(87, 191, 109));
 
@@ -651,7 +652,7 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 270, 50));
+        getContentPane().add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 270, 50));
 
         jPanel19.setBackground(new java.awt.Color(87, 191, 109));
 
@@ -717,7 +718,7 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 270, 50));
+        getContentPane().add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 270, 50));
 
         jPanel22.setBackground(new java.awt.Color(87, 191, 109));
 
@@ -783,7 +784,11 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(16, 16, 16))
         );
 
-        getContentPane().add(button4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 270, 50));
+        getContentPane().add(button4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 270, 50));
+
+        jPanel5.setBackground(new java.awt.Color(87, 191, 109));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 270, 600));
 
         pack();
         setLocationRelativeTo(null);
@@ -915,7 +920,7 @@ public class Menu extends javax.swing.JFrame {
         indicator1.setOpaque(false);
     }//GEN-LAST:event_button1MouseExited
      private void onClick(JPanel panel){
-        panel.setBackground(new Color(69,252,3));
+        panel.setBackground(new Color(153,255,204));
     }
     private void onLeaveClick(JPanel panel){
         panel.setBackground(Color.white);
@@ -986,6 +991,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel panel1;
     private javax.swing.JPanel panel2;

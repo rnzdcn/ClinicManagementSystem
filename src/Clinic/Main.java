@@ -88,7 +88,7 @@ public class Main extends javax.swing.JFrame {
         try {
            // String sql = "select * from clinicmanagement.patients";
              String sql = "select studentid as 'Student ID', firstname as 'Firstname', lastname as 'Lastname', middlename as 'Middle name', age as 'Age', gender as 'Gender', date as 'Date', contactnumber as 'Contact No.', "
-                    + "time as 'Time Admit', bednumber as 'Bed No.', sick as 'Sick', guardiannumber as 'Guardian Contact No.' from clinicmanagement.patients";
+                    + "time as 'Time Admit', bednumber as 'bednumber', sick as 'Sick', guardiannumber as 'Guardian Contact No.' from clinicmanagement.patients";
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
             maintable.setModel(DbUtils.resultSetToTableModel(rs));
@@ -212,6 +212,12 @@ public class Main extends javax.swing.JFrame {
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/addpatients.png"))); // NOI18N
         jButton2.setText("Add new patients");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton2MouseExited(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton2MousePressed(evt);
             }
@@ -227,6 +233,14 @@ public class Main extends javax.swing.JFrame {
         mainView.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         mainView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/viewinfo.png"))); // NOI18N
         mainView.setText("View information");
+        mainView.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                mainViewMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                mainViewMouseExited(evt);
+            }
+        });
         mainView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mainViewActionPerformed(evt);
@@ -238,6 +252,14 @@ public class Main extends javax.swing.JFrame {
         jButton9.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/update.png"))); // NOI18N
         jButton9.setText("Update Patient");
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton9MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton9MouseExited(evt);
+            }
+        });
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
@@ -249,6 +271,14 @@ public class Main extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/printer.png"))); // NOI18N
         jButton3.setText("Print");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton3MouseExited(evt);
+            }
+        });
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -260,6 +290,14 @@ public class Main extends javax.swing.JFrame {
         mainDelete.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         mainDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/delete.png"))); // NOI18N
         mainDelete.setText("Delete");
+        mainDelete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                mainDeleteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                mainDeleteMouseExited(evt);
+            }
+        });
         mainDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mainDeleteActionPerformed(evt);
@@ -271,6 +309,14 @@ public class Main extends javax.swing.JFrame {
         jButton6.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/back.png"))); // NOI18N
         jButton6.setText("Back");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton6MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton6MouseExited(evt);
+            }
+        });
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -305,6 +351,8 @@ public class Main extends javax.swing.JFrame {
         });
         maintable.setSelectionBackground(new java.awt.Color(87, 191, 109));
         maintable.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        maintable.getTableHeader().setResizingAllowed(false);
+        maintable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(maintable);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 980, 510));
@@ -438,14 +486,75 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MousePressed
-        setLblColor(jButton2);
+       
     }//GEN-LAST:event_jButton2MousePressed
-    public void setLblColor(JButton btn){
-        btn.setForeground(new Color(48,201,235));
+
+    private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
+    jButton2.setFont(new Font("", Font.BOLD, 20));
+    onClick(jButton2);
+    
+    }//GEN-LAST:event_jButton2MouseEntered
+
+    private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited
+      onLeaveClick(jButton2);
+      jButton2.setFont(new Font("Poppins", Font.BOLD, 14));
+    }//GEN-LAST:event_jButton2MouseExited
+
+    private void mainViewMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainViewMouseEntered
+        mainView.setFont(new Font("", Font.BOLD, 20));
+    onClick(mainView);
+    }//GEN-LAST:event_mainViewMouseEntered
+
+    private void mainViewMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainViewMouseExited
+       onLeaveClick(mainView);
+      mainView.setFont(new Font("Poppins", Font.BOLD, 14));
+    }//GEN-LAST:event_mainViewMouseExited
+
+    private void jButton9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseEntered
+         jButton9.setFont(new Font("", Font.BOLD, 20));
+    onClick(jButton9);
+    }//GEN-LAST:event_jButton9MouseEntered
+
+    private void jButton9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseExited
+      onLeaveClick(jButton9);
+      jButton9.setFont(new Font("Poppins", Font.BOLD, 14));
+    }//GEN-LAST:event_jButton9MouseExited
+
+    private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
+        jButton3.setFont(new Font("", Font.BOLD, 20));
+    onClick(jButton3);
+    }//GEN-LAST:event_jButton3MouseEntered
+
+    private void jButton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseExited
+         onLeaveClick(jButton3);
+      jButton3.setFont(new Font("Poppins", Font.BOLD, 14));
+    }//GEN-LAST:event_jButton3MouseExited
+
+    private void mainDeleteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainDeleteMouseEntered
+        mainDelete.setFont(new Font("", Font.BOLD, 20));
+    onClick(mainDelete);
+    }//GEN-LAST:event_mainDeleteMouseEntered
+
+    private void mainDeleteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainDeleteMouseExited
+       onLeaveClick(mainDelete);
+      mainDelete.setFont(new Font("Poppins", Font.BOLD, 14));
+    }//GEN-LAST:event_mainDeleteMouseExited
+
+    private void jButton6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseEntered
+          jButton6.setFont(new Font("", Font.BOLD, 20));
+    onClick(jButton6);
+    }//GEN-LAST:event_jButton6MouseEntered
+
+    private void jButton6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseExited
+         onLeaveClick(jButton6);
+      jButton6.setFont(new Font("Poppins", Font.BOLD, 14));
+    }//GEN-LAST:event_jButton6MouseExited
+      private void onClick(JButton button) {
+        button.setBackground(new Color(87,191,109));
     }
-    public void resetColor(JButton btn){
-        btn.setForeground(new Color(166,166,166));
-        
+
+    private void onLeaveClick(JButton button) {
+        button.setBackground(Color.white);
     }
     /**
      * @param args the command line arguments

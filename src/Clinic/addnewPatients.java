@@ -18,6 +18,8 @@ import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.BorderFactory;
@@ -38,6 +40,8 @@ public final class addnewPatients extends javax.swing.JFrame {
     PreparedStatement pst = null;
     Statement st = null;
     private Object arg0;
+    int id;
+    
 
     public addnewPatients() {
         initComponents();
@@ -48,6 +52,7 @@ public final class addnewPatients extends javax.swing.JFrame {
         showTime();
         currentDate();
         current();
+   
        
     }
      void showTime() {
@@ -121,6 +126,8 @@ public final class addnewPatients extends javax.swing.JFrame {
         ANPsickempty = new javax.swing.JLabel();
         ANPage = new javax.swing.JTextField();
         ANPcontactnumber = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        ANPcourse = new javax.swing.JComboBox();
 
         jLabel4.setBackground(new java.awt.Color(204, 255, 255));
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -175,7 +182,7 @@ public final class addnewPatients extends javax.swing.JFrame {
         jLabel5.setText("Student ID");
         jLabel5.setToolTipText("");
         jLabel5.setOpaque(true);
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 110, 30));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 90, 30));
 
         jLabel6.setBackground(new java.awt.Color(10, 46, 54));
         jLabel6.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -184,7 +191,7 @@ public final class addnewPatients extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewFIRST.png"))); // NOI18N
         jLabel6.setText("First Name");
         jLabel6.setOpaque(true);
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 110, 30));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 90, 30));
 
         jLabel7.setBackground(new java.awt.Color(10, 46, 54));
         jLabel7.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -193,7 +200,7 @@ public final class addnewPatients extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewLAST.png"))); // NOI18N
         jLabel7.setText("Last Name");
         jLabel7.setOpaque(true);
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 110, 30));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 110, 30));
 
         jLabel8.setBackground(new java.awt.Color(10, 46, 54));
         jLabel8.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -202,7 +209,7 @@ public final class addnewPatients extends javax.swing.JFrame {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewMIDDLE.png"))); // NOI18N
         jLabel8.setText("Middle Name");
         jLabel8.setOpaque(true);
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 120, 30));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 120, 30));
 
         jLabel10.setBackground(new java.awt.Color(10, 46, 54));
         jLabel10.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -211,7 +218,7 @@ public final class addnewPatients extends javax.swing.JFrame {
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewGENDER.png"))); // NOI18N
         jLabel10.setText("Gender");
         jLabel10.setOpaque(true);
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 100, 30));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 100, 30));
 
         jLabel11.setBackground(new java.awt.Color(10, 46, 54));
         jLabel11.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -219,7 +226,7 @@ public final class addnewPatients extends javax.swing.JFrame {
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewAGE.png"))); // NOI18N
         jLabel11.setText("Age");
         jLabel11.setOpaque(true);
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 100, 30));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 100, 30));
 
         ANPfirst.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         ANPfirst.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -240,7 +247,7 @@ public final class addnewPatients extends javax.swing.JFrame {
                 ANPfirstKeyTyped(evt);
             }
         });
-        jPanel2.add(ANPfirst, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 190, 30));
+        jPanel2.add(ANPfirst, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 190, 30));
 
         ANPstudId.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         ANPstudId.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -258,7 +265,7 @@ public final class addnewPatients extends javax.swing.JFrame {
                 ANPstudIdKeyReleased(evt);
             }
         });
-        jPanel2.add(ANPstudId, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 190, 30));
+        jPanel2.add(ANPstudId, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 190, 30));
 
         ANPlast.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         ANPlast.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -279,7 +286,7 @@ public final class addnewPatients extends javax.swing.JFrame {
                 ANPlastKeyTyped(evt);
             }
         });
-        jPanel2.add(ANPlast, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 190, 30));
+        jPanel2.add(ANPlast, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 190, 30));
 
         ANPmiddle.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         ANPmiddle.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -300,7 +307,7 @@ public final class addnewPatients extends javax.swing.JFrame {
                 ANPmiddleKeyTyped(evt);
             }
         });
-        jPanel2.add(ANPmiddle, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 190, 30));
+        jPanel2.add(ANPmiddle, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 190, 30));
 
         ANPsick.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         ANPsick.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -464,7 +471,7 @@ public final class addnewPatients extends javax.swing.JFrame {
                 ANPaddActionPerformed(evt);
             }
         });
-        jPanel2.add(ANPadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 340, 120, 40));
+        jPanel2.add(ANPadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 390, 120, 40));
 
         jButton2.setBackground(new java.awt.Color(237, 74, 65));
         jButton2.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -477,7 +484,7 @@ public final class addnewPatients extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, 120, 40));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 390, 120, 40));
 
         ANPgender.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         ANPgender.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MALE", "FEMALE" }));
@@ -486,7 +493,7 @@ public final class addnewPatients extends javax.swing.JFrame {
                 ANPgenderActionPerformed(evt);
             }
         });
-        jPanel2.add(ANPgender, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 190, 30));
+        jPanel2.add(ANPgender, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 190, 30));
 
         ANPguardianempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
         ANPguardianempty.setForeground(new java.awt.Color(237, 74, 65));
@@ -495,27 +502,27 @@ public final class addnewPatients extends javax.swing.JFrame {
         ANPstudentIDempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
         ANPstudentIDempty.setForeground(new java.awt.Color(237, 74, 65));
         ANPstudentIDempty.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jPanel2.add(ANPstudentIDempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 190, 20));
+        jPanel2.add(ANPstudentIDempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 190, 20));
 
         ANPfirstempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
         ANPfirstempty.setForeground(new java.awt.Color(237, 74, 65));
         ANPfirstempty.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jPanel2.add(ANPfirstempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 190, 20));
+        jPanel2.add(ANPfirstempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 190, 20));
 
         ANPlastempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
         ANPlastempty.setForeground(new java.awt.Color(237, 74, 65));
         ANPlastempty.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jPanel2.add(ANPlastempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 190, 20));
+        jPanel2.add(ANPlastempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 190, 20));
 
         ANPmiddleempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
         ANPmiddleempty.setForeground(new java.awt.Color(237, 74, 65));
         ANPmiddleempty.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jPanel2.add(ANPmiddleempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 190, 20));
+        jPanel2.add(ANPmiddleempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 190, 20));
 
         ANPageempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
         ANPageempty.setForeground(new java.awt.Color(237, 74, 65));
         ANPageempty.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jPanel2.add(ANPageempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 190, 20));
+        jPanel2.add(ANPageempty, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, 190, 20));
 
         ANPcontactempty.setFont(new java.awt.Font("Poppins", 2, 10)); // NOI18N
         ANPcontactempty.setForeground(new java.awt.Color(237, 74, 65));
@@ -552,7 +559,7 @@ public final class addnewPatients extends javax.swing.JFrame {
                 ANPageKeyTyped(evt);
             }
         });
-        jPanel2.add(ANPage, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 190, 30));
+        jPanel2.add(ANPage, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 190, 30));
 
         ANPcontactnumber.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         ANPcontactnumber.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -575,7 +582,26 @@ public final class addnewPatients extends javax.swing.JFrame {
         });
         jPanel2.add(ANPcontactnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, 210, 30));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 750, 400));
+        jLabel17.setBackground(new java.awt.Color(10, 46, 54));
+        jLabel17.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewSTUDID.png"))); // NOI18N
+        jLabel17.setText("Student/Employee");
+        jLabel17.setToolTipText("");
+        jLabel17.setOpaque(true);
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 140, 30));
+
+        ANPcourse.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        ANPcourse.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "BSP", "BSE", "BECE", "BSBM", "BSTM", "BSCS", "BSIT", "BSBM", "HighSchoolStudent", "Employee", "Visitor" }));
+        ANPcourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ANPcourseActionPerformed(evt);
+            }
+        });
+        jPanel2.add(ANPcourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 190, 30));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 750, 460));
 
         pack();
         setLocationRelativeTo(null);
@@ -680,7 +706,7 @@ public final class addnewPatients extends javax.swing.JFrame {
        
         } else {
             
-            String sql = "Insert into clinicmanagement.patients (studentid, firstname, lastname, middlename, age, gender, date, contactnumber, time, bednumber, sick ,guardiannumber) values (?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "Insert into clinicmanagement.patients (studentid, firstname, lastname, middlename, age, gender, date, contactnumber, time, bednumber, sick ,guardiannumber,studcourse) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
             try {
                 pst = conn.prepareStatement(sql);
 
@@ -692,13 +718,14 @@ public final class addnewPatients extends javax.swing.JFrame {
                 pst.setString(6, ANPgender.getSelectedItem().toString());
                // pst.setString(7, ((JTextField) ANPdate.getDateEditor().getUiComponent()).getText());
                 pst.setString(7, ANPdates.getText());
-                pst.setString(8, ANPdates.getText());
+                pst.setString(8, ANPcontactnumber.getText());
 //              pst.setInt(8, Integer.parseInt(ANPcontactnumber.getText()));
 //              pst.setInt(9, Integer.parseInt(ANPtime.getText()));
                 pst.setString(9, ANPtime.getText());
                 pst.setInt(10, Integer.parseInt(ANPbednumber.getText()));
                 pst.setString(11, ANPsick.getText());
                 pst.setString(12, ANPguardian.getText());
+                pst.setString(13, ANPcourse.getSelectedItem().toString());
 //              pst.setInt(12, Integer.parseInt(ANPguardian.getText()));
 
                 pst.execute();
@@ -997,6 +1024,87 @@ public final class addnewPatients extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ANPcontactnumberKeyTyped
 
+    private void ANPcourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ANPcourseActionPerformed
+       String monss = (String) ANPcourse.getSelectedItem();
+     
+       
+        switch (monss) {       
+             case "BSP":
+                jLabel5.setText("Student ID");
+                ANPstudId.setEditable(true);
+                break;
+            case "BSE":
+                jLabel5.setText("Student ID");
+                ANPstudId.setEditable(true);
+                break;
+            case "BECE":
+                jLabel5.setText("Student ID");
+                ANPstudId.setEditable(true);
+                break;
+            case "BSBM":
+                jLabel5.setText("Student ID");
+                ANPstudId.setEditable(true);
+                break;    
+            case "BSTM":
+                jLabel5.setText("Student ID");
+                ANPstudId.setEditable(true);
+                break;    
+            case "BSCS":
+                jLabel5.setText("Student ID");
+                ANPstudId.setEditable(true);
+                break;
+            case "BSIT":
+                jLabel5.setText("Student ID");
+                ANPstudId.setEditable(true);
+                break;
+            case "HighSchoolStudent":
+                jLabel5.setText("Student ID");
+                ANPstudId.setEditable(true);
+                break;     
+            case "Employee":
+                jLabel5.setText("Emloyee ID");
+                ANPstudId.setEditable(true);
+                ANPstudId.setText("");
+                break;
+            case "Visitor":
+                jLabel5.setText("Visitor");
+                ANPstudId.setEditable(false);
+                //AUTO CREATE NUMBER
+//              int num = 1; 
+//             String var = String.format("%03d", num); // var is "001"
+//            ANPstudId.setText(res);
+//    
+             String a = "100";   
+             Random objGenerator = new Random();
+             for (int iCount = 0; iCount< 10; iCount++){   
+             int randomNumber = objGenerator.nextInt(10000);
+             String b=a+randomNumber;
+             ANPstudId.setText(b);
+            }
+//               try
+//        {
+//         String sql1 = "select min(studentid) from clinicmanagement.patients";
+//         st = conn.createStatement();
+//         rs = st.executeQuery(sql1);
+//        if(rs.next())
+//         {
+//             id=rs.getInt(1);
+//             id++;
+//             String qw="100";
+//            String a=qw+id;
+//             ANPstudId.setText(a);
+//         }
+//        }
+//        catch(Exception e)
+//        {
+//            JOptionPane.showMessageDialog(this, e);
+//    }
+//                break;
+//        }
+            
+        }
+    }//GEN-LAST:event_ANPcourseActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1040,6 +1148,7 @@ public final class addnewPatients extends javax.swing.JFrame {
     private javax.swing.JTextField ANPbednumber;
     private javax.swing.JLabel ANPcontactempty;
     private javax.swing.JTextField ANPcontactnumber;
+    private javax.swing.JComboBox ANPcourse;
     private javax.swing.JTextField ANPdates;
     private javax.swing.JTextField ANPfirst;
     private javax.swing.JLabel ANPfirstempty;
@@ -1065,6 +1174,7 @@ public final class addnewPatients extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

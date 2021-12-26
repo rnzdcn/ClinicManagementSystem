@@ -493,6 +493,7 @@ public class Main extends javax.swing.JFrame {
     jButton2.setFont(new Font("", Font.BOLD, 20));
     onClick(jButton2);
     
+        
     }//GEN-LAST:event_jButton2MouseEntered
 
     private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited

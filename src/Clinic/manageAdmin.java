@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -135,6 +136,14 @@ public class manageAdmin extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/addAdmin.png"))); // NOI18N
         jButton2.setText("Add Admin");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton2MouseExited(evt);
+            }
+        });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -146,6 +155,14 @@ public class manageAdmin extends javax.swing.JFrame {
         jButton9.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/update.png"))); // NOI18N
         jButton9.setText("Update Admin");
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton9MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton9MouseExited(evt);
+            }
+        });
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
@@ -157,6 +174,14 @@ public class manageAdmin extends javax.swing.JFrame {
         jButton5.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/delete.png"))); // NOI18N
         jButton5.setText("Delete");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton5MouseExited(evt);
+            }
+        });
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -168,6 +193,14 @@ public class manageAdmin extends javax.swing.JFrame {
         jButton7.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/back.png"))); // NOI18N
         jButton7.setText("Back");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton7MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton7MouseExited(evt);
+            }
+        });
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -280,6 +313,52 @@ public class manageAdmin extends javax.swing.JFrame {
         l.toFront();
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
+       jButton2.setFont(new Font("", Font.BOLD, 20));
+    onClick(jButton2);
+    }//GEN-LAST:event_jButton2MouseEntered
+
+    private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited
+         onLeaveClick(jButton2);
+      jButton2.setFont(new Font("Poppins", Font.BOLD, 14));
+    }//GEN-LAST:event_jButton2MouseExited
+
+    private void jButton9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseEntered
+      jButton9.setFont(new Font("", Font.BOLD, 20));
+    onClick(jButton9);
+    }//GEN-LAST:event_jButton9MouseEntered
+
+    private void jButton9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseExited
+      onLeaveClick(jButton9);
+      jButton9.setFont(new Font("Poppins", Font.BOLD, 14));
+    }//GEN-LAST:event_jButton9MouseExited
+
+    private void jButton5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseEntered
+        jButton5.setFont(new Font("", Font.BOLD, 20));
+    onClick(jButton5);
+    }//GEN-LAST:event_jButton5MouseEntered
+
+    private void jButton5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseExited
+      onLeaveClick(jButton5);
+      jButton5.setFont(new Font("Poppins", Font.BOLD, 14));
+    }//GEN-LAST:event_jButton5MouseExited
+
+    private void jButton7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseEntered
+        jButton7.setFont(new Font("", Font.BOLD, 20));
+    onClick(jButton7);
+    }//GEN-LAST:event_jButton7MouseEntered
+
+    private void jButton7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseExited
+       onLeaveClick(jButton7);
+      jButton7.setFont(new Font("Poppins", Font.BOLD, 14));
+    }//GEN-LAST:event_jButton7MouseExited
+     private void onClick(JButton button) {
+        button.setBackground(new Color(87,191,109));
+    }
+
+    private void onLeaveClick(JButton button) {
+        button.setBackground(Color.white);
+    }
     /**
      * @param args the command line arguments
      */

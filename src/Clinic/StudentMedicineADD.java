@@ -54,7 +54,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         updateTable1();
         showTime();
         ASdate.getCalendar();
-        ASdate.setMinSelectableDate(new Date());
+      //  ASdate.setMinSelectableDate(new Date());
       
          //cell not editable     
         LMtable.setDefaultEditor(Object.class, null);
@@ -153,6 +153,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         updateTable();
 
     }
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -412,7 +413,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/addnewpatientsimage/addnewSTUDID.png"))); // NOI18N
         jLabel10.setText("Description");
         jLabel10.setOpaque(true);
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, 130, 30));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, 130, 30));
 
         ASdescription.setColumns(5);
         ASdescription.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
@@ -424,7 +425,7 @@ public class StudentMedicineADD extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(ASdescription);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, 190, 80));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 290, 190, 80));
 
         AScancel.setBackground(new java.awt.Color(237, 74, 65));
         AScancel.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N

@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.MessageFormat;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
@@ -247,6 +248,14 @@ public class StudentMedicine extends javax.swing.JFrame {
         jButton32.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         jButton32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/viewinfo.png"))); // NOI18N
         jButton32.setText("ADD");
+        jButton32.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton32MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton32MouseExited(evt);
+            }
+        });
         jButton32.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton32ActionPerformed(evt);
@@ -259,6 +268,14 @@ public class StudentMedicine extends javax.swing.JFrame {
         jButton33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/update.png"))); // NOI18N
         jButton33.setText("UPDATE");
         jButton33.setIconTextGap(2);
+        jButton33.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton33MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton33MouseExited(evt);
+            }
+        });
         jButton33.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton33ActionPerformed(evt);
@@ -271,6 +288,14 @@ public class StudentMedicine extends javax.swing.JFrame {
         jButton27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/delete.png"))); // NOI18N
         jButton27.setText("DELETE");
         jButton27.setIconTextGap(0);
+        jButton27.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton27MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton27MouseExited(evt);
+            }
+        });
         jButton27.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton27ActionPerformed(evt);
@@ -283,6 +308,14 @@ public class StudentMedicine extends javax.swing.JFrame {
         jButton34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/printer.png"))); // NOI18N
         jButton34.setText("PRINT");
         jButton34.setIconTextGap(0);
+        jButton34.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton34MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton34MouseExited(evt);
+            }
+        });
         jButton34.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton34ActionPerformed(evt);
@@ -295,6 +328,14 @@ public class StudentMedicine extends javax.swing.JFrame {
         jButton35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clinic/image/back.png"))); // NOI18N
         jButton35.setText("BACK");
         jButton35.setIconTextGap(0);
+        jButton35.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton35MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton35MouseExited(evt);
+            }
+        });
         jButton35.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton35ActionPerformed(evt);
@@ -421,6 +462,72 @@ public class StudentMedicine extends javax.swing.JFrame {
         setVisible(false);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton35ActionPerformed
 
+    private void jButton32MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton32MouseEntered
+        jButton32.setFont(new Font("", Font.BOLD, 20));
+        jButton32.setForeground(Color.WHITE);
+        onClick(jButton32);
+    }//GEN-LAST:event_jButton32MouseEntered
+
+    private void jButton32MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton32MouseExited
+         onLeaveClick(jButton32);
+      jButton32.setFont(new Font("Poppins", Font.BOLD, 14));
+      jButton32.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jButton32MouseExited
+
+    private void jButton33MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton33MouseEntered
+       jButton33.setFont(new Font("", Font.BOLD, 20));
+        jButton33.setForeground(Color.WHITE);
+        onClick(jButton33);
+    }//GEN-LAST:event_jButton33MouseEntered
+
+    private void jButton33MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton33MouseExited
+         onLeaveClick(jButton33);
+      jButton33.setFont(new Font("Poppins", Font.BOLD, 14));
+      jButton33.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jButton33MouseExited
+
+    private void jButton27MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton27MouseEntered
+      jButton27.setFont(new Font("", Font.BOLD, 20));
+        jButton27.setForeground(Color.WHITE);
+        onClick(jButton27);
+    }//GEN-LAST:event_jButton27MouseEntered
+
+    private void jButton27MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton27MouseExited
+        onLeaveClick(jButton27);
+      jButton27.setFont(new Font("Poppins", Font.BOLD, 14));
+      jButton27.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jButton27MouseExited
+
+    private void jButton34MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton34MouseEntered
+       jButton34.setFont(new Font("", Font.BOLD, 20));
+        jButton34.setForeground(Color.WHITE);
+        onClick(jButton34);
+    }//GEN-LAST:event_jButton34MouseEntered
+
+    private void jButton34MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton34MouseExited
+       onLeaveClick(jButton34);
+      jButton34.setFont(new Font("Poppins", Font.BOLD, 14));
+      jButton34.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jButton34MouseExited
+
+    private void jButton35MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton35MouseEntered
+        jButton35.setFont(new Font("", Font.BOLD, 20));
+        jButton35.setForeground(Color.WHITE);
+        onClick(jButton35);
+    }//GEN-LAST:event_jButton35MouseEntered
+
+    private void jButton35MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton35MouseExited
+         onLeaveClick(jButton35);
+      jButton35.setFont(new Font("Poppins", Font.BOLD, 14));
+      jButton35.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jButton35MouseExited
+     private void onClick(JButton button) {
+        button.setBackground(new Color(10,46,54));
+    }
+
+    private void onLeaveClick(JButton button) {
+        button.setBackground(Color.white);
+    }
     /**
      * @param args the command line arguments
      */

@@ -92,6 +92,7 @@ public class Main extends javax.swing.JFrame {
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
             maintable.setModel(DbUtils.resultSetToTableModel(rs));
+            
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
